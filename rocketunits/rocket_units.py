@@ -44,15 +44,13 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.3'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.4'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
 #
 # import statements here. (built-in first, then 3rd party, then yours)
 #
-#from __future__ import print_function
-#print('NOTE:  Remove __future__ statement in unit_conv_data.py')
 
 categoryD = {}    # index=category name, value=list of members (e.g. 'Area':['inch**2', 'ft**2', 'cm**2', 'm**2'])
 cat_defaultD = {} # index=category name, value=default units (e.g. 'Area':'inch**2')
