@@ -26,10 +26,10 @@ class MyTest(unittest.TestCase):
 
     def test_myclass_existence(self):
         """Check that function returns result"""
-        result = convert_value()
+        result = convert_value(1.0, 'lbm', 'g')
 
         # Function should return None
-        self.assertEqual(result, None)
+        self.assertAlmostEqual(result, 453.59237, places=3)  # a within 3 decimal places of b
 
 if __name__ == '__main__':
     # Can test just this file from command prompt

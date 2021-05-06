@@ -60,7 +60,7 @@ if __name__ == "__main__":
     MINOR version when they add functionality in a backwards-compatible manner, and
     MAINTENANCE version when they make backwards-compatible bug fixes.    
     """
-    metadataD =  {"<<version>>":"0.1.2"} # <== change value then run
+    metadataD =  {"<<version>>":"0.1.3"} # <== change value then run
 
     render_file( os.path.abspath('./docs/conf.py'), metadataD )
     render_file( os.path.abspath('./setup.py'), metadataD )

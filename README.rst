@@ -12,7 +12,6 @@
     
 
 RocketUnits Provides A Graphic User Interface (GUI) For Engineering Units Conversion.
-=====================================================================================
 
 
 See the Code at: `<https://github.com/sonofeft/RocketUnits>`_
@@ -36,8 +35,5 @@ Pressure, Surface Tension, Temperature, Thermal Conductivity, Time, Velocity,
 
 Unit conversion can be performed either with the included GUI, or directly
 from python by importing **RocketUnits**.
-(see :ref:`import-rocketunits`)
-
-
 
 

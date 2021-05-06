@@ -27,21 +27,22 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the relevant file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
+#long_description = """RocketUnits Provides A Graphic User Interface (GUI) For Engineering Units Conversion."""
 
 # Place install_requires into the text file "requirements.txt"
 with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f2:
     requires = f2.read().strip().splitlines()
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.2'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.3'  # METADATA_RESET:__version__ = '<<version>>'
 
 setup(
     name='rocketunits',
     version = __version__,
 
     description = 'RocketUnits provides a graphic user interface (GUI) for engineering units conversion.',
-    long_description = long_description,
     long_description_content_type='text/x-rst',
+    long_description = long_description,
 
     # The project's main homepage.
     url='http://rocketunits.readthedocs.org/en/latest/',
