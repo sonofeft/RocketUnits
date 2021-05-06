@@ -75,22 +75,24 @@ Stand-Alone EXE
 ---------------
 
 If desired, the **RocketUnits** GUI can be run as a stand-alone executable (EXE) file
-that **DOES NOT** require python to be installed on the machine.
+that **DOES NOT** require python to be installed on the machine. (see :ref:`internal_exe_download`)
 
 This is made possible though the use of the 
 `pyinstaller <http://www.pyinstaller.org/>`__ project.
 (see  `documentation <https://readthedocs.org/projects/pyinstaller/downloads/pdf/stable/>`_).
 
-For convenience, a Windows EXE file on the 
-`RocketUnits Github page <https://github.com/sonofeft/RocketUnits>`_ can be
-downloaded (created with python 3.7 64 bit version).
+The Windows EXE file  on the 
+`RocketUnits Github page <https://github.com/sonofeft/RocketUnits>`_ 
+was created with python 3.7 64 bit version. If you have a 32 bit system,
+you will need to download the 32 bit EXE, tk_rocket_units_32bit.exe.
 
-Place the executable anywhere in your system PATH or create a desktop shortcut.
+You can place the executable anywhere in your system PATH or 
+`create a desktop shortcut <https://www.computerhope.com/issues/ch000739.htm>`__ .
 
 There is also a Windows batch file "build_pyinstaller_EXE.bat" that shows 
 the required pyinstaller command to create
-a platform-compliant executable if `pyinstaller <http://www.pyinstaller.org/>`__ 
-is installed.
+a platform-compliant executable using `pyinstaller <http://www.pyinstaller.org/>`__.
+(visit `pyinstaller <http://www.pyinstaller.org/>`__  for install instructions).
 
 From a console, navigate to the **RocketUnits** install directory and give the 
 following command.

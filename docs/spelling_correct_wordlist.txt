@@ -1,4 +1,14 @@
 nosetests
+statusbars
+pyinstaller
+inp
+param
+rtype
+degC
+Cstar
+Tcham
+DeltaT
+tk
 py
 pypy
 txt

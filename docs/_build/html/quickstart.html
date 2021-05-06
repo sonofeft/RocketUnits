@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>QuickStart &#8212; RocketUnits 0.1.3 documentation</title>
+    <title>QuickStart &#8212; RocketUnits 0.1.4 documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="index.html" title="RocketUnits"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.4 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -59,6 +59,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Using RocketUnits GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloadexe.html">Windows EXE Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">RocketUnits Code Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
@@ -151,18 +152,20 @@ The path for the rocketunits executable might be something like</p>
 <div class="section" id="stand-alone-exe">
 <h2>Stand-Alone EXE<a class="headerlink" href="#stand-alone-exe" title="Permalink to this headline">¶</a></h2>
 <p>If desired, the <strong>RocketUnits</strong> GUI can be run as a stand-alone executable (EXE) file
-that <strong>DOES NOT</strong> require python to be installed on the machine.</p>
+that <strong>DOES NOT</strong> require python to be installed on the machine. (see <a class="reference internal" href="downloadexe.html#internal-exe-download"><span class="std std-ref">Windows EXE Download</span></a>)</p>
 <p>This is made possible though the use of the
 <a class="reference external" href="http://www.pyinstaller.org/">pyinstaller</a> project.
 (see  <a class="reference external" href="https://readthedocs.org/projects/pyinstaller/downloads/pdf/stable/">documentation</a>).</p>
-<p>For convenience, a Windows EXE file on the
-<a class="reference external" href="https://github.com/sonofeft/RocketUnits">RocketUnits Github page</a> can be
-downloaded (created with python 3.7 64 bit version).</p>
-<p>Place the executable anywhere in your system PATH or create a desktop shortcut.</p>
-<p>There is also a Windows batch file “build_pyinstaller_EXE.bat” that shows
+<p>The Windows EXE file  on the
+<a class="reference external" href="https://github.com/sonofeft/RocketUnits">RocketUnits Github page</a>
+was created with python 3.7 64 bit version. If you have a 32 bit system,
+you will need to download the 32 bit EXE, tk_rocket_units_32bit.exe.</p>
+<p>You can place the executable anywhere in your system PATH or
+<a class="reference external" href="https://www.computerhope.com/issues/ch000739.htm">create a desktop shortcut</a> .</p>
+<p>There is also a Windows batch file &quot;build_pyinstaller_EXE.bat&quot; that shows
 the required pyinstaller command to create
-a platform-compliant executable if <a class="reference external" href="http://www.pyinstaller.org/">pyinstaller</a>
-is installed.</p>
+a platform-compliant executable using <a class="reference external" href="http://www.pyinstaller.org/">pyinstaller</a>.
+(visit <a class="reference external" href="http://www.pyinstaller.org/">pyinstaller</a>  for install instructions).</p>
 <p>From a console, navigate to the <strong>RocketUnits</strong> install directory and give the
 following command.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pyinstaller --onefile --noconsole --icon=black_gauge.ico tk_rocket_units.py</span>
@@ -218,7 +221,7 @@ from PyPI and installing from source as shown above at
         <li class="right" >
           <a href="index.html" title="RocketUnits"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.4 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

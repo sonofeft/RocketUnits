@@ -16,6 +16,7 @@ Contents:
 
    quickstart
    usage
+   downloadexe
    functions
    copyright
    authors
