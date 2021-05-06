@@ -1,0 +1,12 @@
+
+*) make some direct-call examples
+
+*) add tests
+   
+============= DONE ==============   
+   
+*) change _version.py approach
+
+*) verify python versions
+
+*) add command prompt launch to setup.py

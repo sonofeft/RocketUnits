@@ -1,0 +1,230 @@
+[app_attr]
+name = tk_rocket_units
+x = 3072
+y = 34
+width = 403
+height = 513
+guitype = main
+hideokbutton = no
+hasmenu = no
+menu = File\n  New\n  Open\n  Save\n\n  Exit\nHelp\n  Sounds\n    Moo\n    Meow
+add_menu_ctrl_keys = yes
+hasstatusbar = no
+hasstddialmess = no
+hasstddialfile = no
+hasstddialcolor = no
+hasstdalarm = no
+resizable = yes
+row_weights = 3:1
+col_weights = 1:1
+
+[Combobox_1]
+widget_type = Combobox
+tab_label = Frame_1
+row = 1
+col = 1
+docstring = 
+sticky = e
+columnspan = 
+rowspan = 
+values = Mine Yours Ours
+text = Combobox_1
+width = 15
+
+[Combobox_2]
+widget_type = Combobox
+tab_label = Frame_1
+row = 3
+col = 1
+docstring = 
+sticky = e
+columnspan = 
+rowspan = 
+values = Mine Yours Ours
+text = Combobox_2
+width = 15
+
+[Combobox_3]
+widget_type = Combobox
+tab_label = Frame_1
+row = 6
+col = 3
+docstring = 
+sticky = e
+columnspan = 
+rowspan = 
+values = Mine Yours Ours
+text = Combobox_3
+width = 12
+
+[Entry_1]
+widget_type = Entry
+tab_label = Frame_1
+row = 5
+col = 1
+docstring = 
+sticky = e
+columnspan = 
+rowspan = 
+scrollx = no
+text = Entry_1
+width = 13
+
+[Frame_1]
+widget_type = Frame
+tab_label = Main
+row = 1
+col = 1
+docstring = 
+sticky = w
+columnspan = 
+rowspan = 
+row_weights = 
+col_weights = 
+width = 60
+height = 50
+borderwidth = 0
+relief = flat
+
+[Label_1]
+widget_type = Label
+tab_label = Frame_1
+row = 1
+col = 2
+docstring = 
+sticky = w
+columnspan = 
+rowspan = 
+text = Category
+width = 15
+anchor = w
+
+[Label_10]
+widget_type = Label
+tab_label = Main
+row = 0
+col = 0
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 4
+
+[Label_11]
+widget_type = Label
+tab_label = Main
+row = 4
+col = 1
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 4
+
+[Label_2]
+widget_type = Label
+tab_label = Frame_1
+row = 3
+col = 2
+docstring = 
+sticky = w
+columnspan = 
+rowspan = 
+text = Units
+width = 15
+anchor = w
+
+[Label_3]
+widget_type = Label
+tab_label = Frame_1
+row = 5
+col = 2
+docstring = 
+sticky = w
+columnspan = 
+rowspan = 
+text = Value
+width = 15
+anchor = w
+
+[Label_4]
+widget_type = Label
+tab_label = Frame_1
+row = 5
+col = 3
+docstring = 
+columnspan = 
+rowspan = 
+text = Number Format
+width = 15
+
+[Label_5]
+widget_type = Label
+tab_label = Frame_1
+row = 2
+col = 1
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 15
+
+[Label_6]
+widget_type = Label
+tab_label = Frame_1
+row = 4
+col = 1
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 15
+
+[Label_7]
+widget_type = Label
+tab_label = Main
+row = 2
+col = 1
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 15
+
+[Label_8]
+widget_type = Label
+tab_label = Main
+row = 1
+col = 0
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 4
+
+[Label_9]
+widget_type = Label
+tab_label = Main
+row = 1
+col = 2
+docstring = 
+columnspan = 
+rowspan = 
+text = 
+width = 4
+
+[Text_1]
+widget_type = Text
+tab_label = Main
+row = 3
+col = 1
+docstring = 
+sticky = nsew
+columnspan = 
+rowspan = 
+scrolly = no
+scrollx = no
+text = Text_1
+width = 40
+height = 20
+
