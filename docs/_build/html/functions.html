@@ -1,0 +1,179 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.3 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Copyright" href="copyright.html" />
+    <link rel="prev" title="Using RocketUnits GUI" href="usage.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using RocketUnits GUI"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/generic_logo.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using RocketUnits GUI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RocketUnits Code Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Using RocketUnits GUI</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="copyright.html"
+                        title="next chapter">Copyright</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/functions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-rocketunits.rocket_units">
+<span id="rocketunits-code-functions"></span><h1>RocketUnits Code Functions<a class="headerlink" href="#module-rocketunits.rocket_units" title="Permalink to this headline">¶</a></h1>
+<p>RocketUnits provides a graphic user interface (GUI) for engineering units conversion.</p>
+<p>RocketUnits provides units conversion for a number of engineering categories.
+Included units categories include: Acceleration, Angle, AngVelocity, 
+Area, DeltaT, Density, ElementDensity, Energy, EnergySpec, Force, Frequency, 
+HeatCapacity, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
+Pressure, SurfaceTension, Temperature, ThermalCond, Time, Velocity, 
+Viscosity_Dynamic, Viscosity_Kinematic, Volume, and VolumeFlow.
+Unit conversion can be performed either with the included GUI, or directly
+from python by importing the units conversion data file.</p>
+<p>RocketUnits
+Copyright (C) 2020  Applied Python</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
+<hr class="docutils" />
+<dl class="py function">
+<dt id="rocketunits.rocket_units.convert_value">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">convert_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inp_val</span><span class="o">=</span><span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">inp_units</span><span class="o">=</span><span class="default_value">'degC'</span></em>, <em class="sig-param"><span class="n">out_units</span><span class="o">=</span><span class="default_value">'degK'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert inp_val from inp_units to out_units and return.
+:param inp_val   : input value to be converted
+:param inp_units : units of inp_val
+:param out_units : desired output units
+:type inp_val   : float
+:type inp_units : str
+:type out_units : str
+:return: value converted from inp_units to out_units
+:rtype: float</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rocketunits.rocket_units.get_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_category</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">units</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the category that units belongs to.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rocketunits.rocket_units.get_degK">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_degK</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em>, <em class="sig-param"><span class="n">inp_units</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degK" title="Permalink to this definition">¶</a></dt>
+<dd><p>val uses input units… e.g. 25, ‘degC’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rocketunits.rocket_units.get_degR">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_degR</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em>, <em class="sig-param"><span class="n">inp_units</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degR" title="Permalink to this definition">¶</a></dt>
+<dd><p>val uses input units… e.g. 25, ‘degC’</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using RocketUnits GUI"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.0.
+    </div>
+  </body>
+</html>
