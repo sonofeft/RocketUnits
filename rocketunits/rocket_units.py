@@ -51,8 +51,6 @@ __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 #
 # import statements here. (built-in first, then 3rd party, then yours)
 #
-#from __future__ import print_function
-#print('NOTE:  Remove __future__ statement in unit_conv_data.py')
 
 categoryD = {}    # index=category name, value=list of members (e.g. 'Area':['inch**2', 'ft**2', 'cm**2', 'm**2'])
 cat_defaultD = {} # index=category name, value=default units (e.g. 'Area':'inch**2')
