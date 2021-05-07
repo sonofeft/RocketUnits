@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.4 documentation</title>
+    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.5 documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="downloadexe.html" title="Windows EXE Download"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.5 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -115,6 +115,13 @@ GNU General Public License for more details.</p>
 along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
 <hr class="docutils" />
 <dl class="py function">
+<dt id="rocketunits.rocket_units.add_units_to_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">add_units_to_category</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_name</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">u_name</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">conv_factor</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.add_units_to_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add conversion factor and offset for Units(u_name) to Category(c_name)
+Read As: 1 default unit = conv_factor u_name units</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="rocketunits.rocket_units.convert_value">
 <code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">convert_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inp_val</span><span class="o">=</span><span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">inp_units</span><span class="o">=</span><span class="default_value">'degC'</span></em>, <em class="sig-param"><span class="n">out_units</span><span class="o">=</span><span class="default_value">'degK'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert inp_val from inp_units to out_units and return.
@@ -125,7 +132,13 @@ along with this program.  If not, see &lt;<a class="reference external" href="ht
 :type inp_units : str
 :type out_units : str
 :return: value converted from inp_units to out_units
-:rtype: float</p>
+:retype: float</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rocketunits.rocket_units.create_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">create_category</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_name</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">def_units</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.create_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Units Category and define the default units</p>
 </dd></dl>
 
 <dl class="py function">
@@ -169,7 +182,7 @@ along with this program.  If not, see &lt;<a class="reference external" href="ht
         <li class="right" >
           <a href="downloadexe.html" title="Windows EXE Download"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.5 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

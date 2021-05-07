@@ -7,6 +7,9 @@ Using RocketUnits GUI
 The motivation behind **RocketUnits** is to allow for the quick copy and paste
 of conversions for physical unit values in the desired number format.
 
+Because the values are listed in ascending order, **RocketUnits** also gives
+at-a-glance intuition as to the relative size of different units.
+
 Category
 --------
 
