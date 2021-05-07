@@ -1,9 +1,11 @@
 
+============= DONE ==============   
+
+*) Update images on ReadTheDocs for Refactored Code
+
 *) make some direct-call examples
 
 *) add tests
-   
-============= DONE ==============   
    
 *) change _version.py approach
 
