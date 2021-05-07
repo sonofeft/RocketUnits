@@ -98,7 +98,7 @@ class _tk_rocket_units:
             
         def_unit_val = (inp_val-offsetD[inp_units]) / conv_factD[inp_units]
         
-        for units in categoryD[cat]:
+        for units in display_unitsD[cat]:
             val = def_unit_val* conv_factD[units] + offsetD[units]
             
             if fmt == 'd':
@@ -196,7 +196,7 @@ class _tk_rocket_units:
         self.Combobox_2.configure(textvariable=self.Combobox_2_StringVar)
         self.Combobox_2_StringVar.set( "ft" )
         self.Combobox_2['height'] = 20
-        self.Combobox_2['values'] = categoryD[ self.Combobox_1_StringVar.get() ]
+        self.Combobox_2['values'] = display_unitsD[ self.Combobox_1_StringVar.get() ]
 
         self.Combobox_2_StringVar_traceName = self.Combobox_2_StringVar.trace_variable("w", self.Combobox_2_StringVar_Callback)
 
@@ -289,8 +289,9 @@ class _tk_rocket_units:
 
         # >>>>>>insert any user code below this comment for section "Combobox_1_StringVar_traceName"
         # replace, delete, or comment-out the following
-        self.Combobox_2['values'] = categoryD[ self.Combobox_1_StringVar.get() ]
-        self.Combobox_2.current(0)
+        self.Combobox_2['values'] = display_unitsD[ self.Combobox_1_StringVar.get() ]
+        self.Combobox_2_StringVar.set( display_def_unitsD[self.Combobox_1_StringVar.get()] )
+        #self.Combobox_2.current(0)
         
         self.show_all_units()
 
@@ -325,7 +326,7 @@ class _tk_rocket_units:
 
         # >>>>>>insert any user code below this comment for section "Entry_1_StringVar_traceName"
         # replace, delete, or comment-out the following
-        self.Combobox_2['values'] = categoryD[ self.Combobox_1_StringVar.get() ]
+        self.Combobox_2['values'] = display_unitsD[ self.Combobox_1_StringVar.get() ]
         #self.Combobox_2.current(0)
         self.show_all_units()
 

@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.4'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.5'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -61,936 +61,392 @@ offsetD = {}      # index=units name, value=float offset value (e.g. 'cm':0.0)
 # N = 1 kg-m/sec**2,  g = 9.80665 m/sec**2
 # (NOTE: time=='s',  Isp=='sec')
 
-
-# Read As: 1 default unit = conv_factD target units
-# === Acceleration ===
-categoryD["Acceleration"] = ['ft/s**2', 'm/s**2', 'cm/s**2', 'gee', 'mile/hr/s']
-cat_defaultD["Acceleration"] = 'ft/s**2'
-unit_catD["ft/s**2"]  = "Acceleration"
-conv_factD["ft/s**2"] = float(1)
-offsetD["ft/s**2"]    = float(0)
-unit_catD["m/s**2"]  = "Acceleration"
-conv_factD["m/s**2"] = float(0.3048)
-offsetD["m/s**2"]    = float(0)
-unit_catD["cm/s**2"]  = "Acceleration"
-conv_factD["cm/s**2"] = float(30.48)
-offsetD["cm/s**2"]    = float(0)
-unit_catD["gee"]  = "Acceleration"
-conv_factD["gee"] = float(0.031080948777)
-offsetD["gee"]    = float(0)
-unit_catD["mile/hr/s"]  = "Acceleration"
-conv_factD["mile/hr/s"] = float(0.681818181818)
-offsetD["mile/hr/s"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Angle ===
-categoryD["Angle"] = ['deg', 'rad', 'grad', 'circle', 'revolution', 'arcmin', 'arcsec']
-cat_defaultD["Angle"] = 'deg'
-unit_catD["deg"]  = "Angle"
-conv_factD["deg"] = float(1)
-offsetD["deg"]    = float(0)
-unit_catD["rad"]  = "Angle"
-conv_factD["rad"] = float(0.0174532925199)
-offsetD["rad"]    = float(0)
-unit_catD["grad"]  = "Angle"
-conv_factD["grad"] = float(1.11111111111)
-offsetD["grad"]    = float(0)
-unit_catD["circle"]  = "Angle"
-conv_factD["circle"] = float(0.00277777777778)
-offsetD["circle"]    = float(0)
-unit_catD["revolution"]  = "Angle"
-conv_factD["revolution"] = float(0.00277777777778)
-offsetD["revolution"]    = float(0)
-unit_catD["arcmin"]  = "Angle"
-conv_factD["arcmin"] = float(60)
-offsetD["arcmin"]    = float(0)
-unit_catD["arcsec"]  = "Angle"
-conv_factD["arcsec"] = float(3600)
-offsetD["arcsec"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === AngVelocity ===
-categoryD["AngVelocity"] = ['rpm', 'deg/s', 'rad/s', 'deg/min', 'rad/min']
-cat_defaultD["AngVelocity"] = 'rpm'
-unit_catD["rpm"]  = "AngVelocity"
-conv_factD["rpm"] = float(1)
-offsetD["rpm"]    = float(0)
-unit_catD["deg/s"]  = "AngVelocity"
-conv_factD["deg/s"] = float(6)
-offsetD["deg/s"]    = float(0)
-unit_catD["rad/s"]  = "AngVelocity"
-conv_factD["rad/s"] = float(0.10471975512)
-offsetD["rad/s"]    = float(0)
-unit_catD["deg/min"]  = "AngVelocity"
-conv_factD["deg/min"] = float(360)
-offsetD["deg/min"]    = float(0)
-unit_catD["rad/min"]  = "AngVelocity"
-conv_factD["rad/min"] = float(6.28318530718)
-offsetD["rad/min"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Area ===
-categoryD["Area"] = ['inch**2', 'in**2', 'ft**2', 'cm**2', 'm**2', 'mile**2', 'acre']
-cat_defaultD["Area"] = 'inch**2'
-unit_catD["inch**2"]  = "Area"
-conv_factD["inch**2"] = float(1)
-offsetD["inch**2"]    = float(0)
-
-unit_catD["in**2"]  = "Area"
-conv_factD["in**2"] = float(1.0)
-offsetD["in**2"]    = float(0)
-
-unit_catD["ft**2"]  = "Area"
-conv_factD["ft**2"] = float(0.00694444444444)
-offsetD["ft**2"]    = float(0)
-
-unit_catD["cm**2"]  = "Area"
-conv_factD["cm**2"] = float(6.4516)
-offsetD["cm**2"]    = float(0)
-unit_catD["m**2"]  = "Area"
-conv_factD["m**2"] = float(0.00064516)
-offsetD["m**2"]    = float(0)
-unit_catD["mile**2"]  = "Area"
-conv_factD["mile**2"] = float(2.49097668605e-10)
-offsetD["mile**2"]    = float(0)
-unit_catD["acre"]  = "Area"
-conv_factD["acre"] = float(1.59422507907e-07)
-offsetD["acre"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === DeltaT ===
-categoryD["DeltaT"] = ['delF', 'delC', 'delR', 'delK']
-cat_defaultD["DeltaT"] = 'delF'
-unit_catD["delF"]  = "DeltaT"
-conv_factD["delF"] = float(1)
-offsetD["delF"]    = float(0)
-unit_catD["delC"]  = "DeltaT"
-conv_factD["delC"] = float(5.0/9.0)
-offsetD["delC"]    = float(0)
-unit_catD["delR"]  = "DeltaT"
-conv_factD["delR"] = float(1)
-offsetD["delR"]    = float(0)
-unit_catD["delK"]  = "DeltaT"
-conv_factD["delK"] = float(5.0/9.0)
-offsetD["delK"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Density ===
-categoryD["Density"] = ['lbm/inch**3', "lbm/in**3", 'lbm/ft**3', 'slug/ft**3', 'g/ml', 'SG', 'specific_gravity', 'kg/m**3', 'lbm/galUS', 'ounce/galUS']
-cat_defaultD["Density"] = 'lbm/inch**3'
-unit_catD["lbm/inch**3"]  = "Density"
-conv_factD["lbm/inch**3"] = float(1)
-offsetD["lbm/inch**3"]    = float(0)
-unit_catD["lbm/in**3"]  = "Density"
-conv_factD["lbm/in**3"] = float(1)
-offsetD["lbm/in**3"]    = float(0)
-unit_catD["lbm/ft**3"]  = "Density"
-conv_factD["lbm/ft**3"] = float(1728)
-offsetD["lbm/ft**3"]    = float(0)
-unit_catD["slug/ft**3"]  = "Density"
-conv_factD["slug/ft**3"] = float(53.7078794867)
-offsetD["slug/ft**3"]    = float(0)
-unit_catD["g/ml"]  = "Density"
-conv_factD["g/ml"] = float(27.6799047102)
-offsetD["g/ml"]    = float(0)
-unit_catD["specific_gravity"]  = "Density"
-conv_factD["specific_gravity"] = float(27.6799047102)
-offsetD["specific_gravity"]    = float(0)
-unit_catD["kg/m**3"]  = "Density"
-conv_factD["kg/m**3"] = float(27679.9047102)
-offsetD["kg/m**3"]    = float(0)
-unit_catD["lbm/galUS"]  = "Density"
-conv_factD["lbm/galUS"] = float(231)
-offsetD["lbm/galUS"]    = float(0)
-unit_catD["ounce/galUS"]  = "Density"
-conv_factD["ounce/galUS"] = float(3696)
-offsetD["ounce/galUS"]    = float(0)
-unit_catD["SG"]  = "Density"
-conv_factD["SG"] = float(27.6799047102)
-offsetD["SG"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === ElementDensity ===
-categoryD["ElementDensity"] = ['elem/in**2', 'elem/cm**2']
-cat_defaultD["ElementDensity"] = 'elem/in**2'
-unit_catD["elem/in**2"]  = "ElementDensity"
-conv_factD["elem/in**2"] = float(1)
-offsetD["elem/in**2"]    = float(0)
-
-cat_defaultD["ElementDensity"] = 'elem/cm**2'
-unit_catD["elem/cm**2"]  = "ElementDensity"
-conv_factD["elem/cm**2"] = float(1.0/2.54**2)
-offsetD["elem/cm**2"]    = float(0)
-
-
-# Read As: 1 default unit = conv_factD target units
-# === Energy ===
-categoryD["Energy"] = ['BTU', 'ft*lbf', 'W*hr', 'kW*hr', 'cal', 'kcal', 'J', 'kJ', 'erg']
-cat_defaultD["Energy"] = 'BTU'
-unit_catD["BTU"]  = "Energy"
-conv_factD["BTU"] = float(1)
-offsetD["BTU"]    = float(0)
-unit_catD["ft*lbf"]  = "Energy"
-conv_factD["ft*lbf"] = float(778.169262266)
-offsetD["ft*lbf"]    = float(0)
-unit_catD["W*hr"]  = "Energy"
-conv_factD["W*hr"] = float(0.293071070172)
-offsetD["W*hr"]    = float(0)
-unit_catD["kW*hr"]  = "Energy"
-conv_factD["kW*hr"] = float(0.000293071070172)
-offsetD["kW*hr"]    = float(0)
-unit_catD["cal"]  = "Energy"
-conv_factD["cal"] = float(252.164400722)
-offsetD["cal"]    = float(0)
-unit_catD["kcal"]  = "Energy"
-conv_factD["kcal"] = float(0.252164400722)
-offsetD["kcal"]    = float(0)
-unit_catD["J"]  = "Energy"
-conv_factD["J"] = float(1055.05585262)
-offsetD["J"]    = float(0)
-unit_catD["kJ"]  = "Energy"
-conv_factD["kJ"] = float(1.05505585262)
-offsetD["kJ"]    = float(0)
-unit_catD["erg"]  = "Energy"
-conv_factD["erg"] = float(10550558526.2)
-offsetD["erg"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === EnergySpec ===
-categoryD["EnergySpec"] = ['BTU/lbm', 'cal/g', 'kcal/g', 'kcal/kg', 'J/g', 'kJ/kg', 'J/kg', 'kW*hr/kg']
-cat_defaultD["EnergySpec"] = 'BTU/lbm'
-unit_catD["BTU/lbm"]  = "EnergySpec"
-conv_factD["BTU/lbm"] = float(1)
-offsetD["BTU/lbm"]    = float(0)
-unit_catD["cal/g"]  = "EnergySpec"
-conv_factD["cal/g"] = float(0.555927342256)
-offsetD["cal/g"]    = float(0)
-unit_catD["kcal/g"]  = "EnergySpec"
-conv_factD["kcal/g"] = float(0.000555927342256)
-offsetD["kcal/g"]    = float(0)
-unit_catD["kcal/kg"]  = "EnergySpec"
-conv_factD["kcal/kg"] = float(0.555927342256)
-offsetD["kcal/kg"]    = float(0)
-unit_catD["J/g"]  = "EnergySpec"
-conv_factD["J/g"] = float(2.326)
-offsetD["J/g"]    = float(0)
-unit_catD["kJ/kg"]  = "EnergySpec"
-conv_factD["kJ/kg"] = float(2.326)
-offsetD["kJ/kg"]    = float(0)
-
-unit_catD["J/kg"]  = "EnergySpec"
-conv_factD["J/kg"] = float(2326)
-offsetD["J/kg"]    = float(0)
-
-unit_catD["kW*hr/kg"]  = "EnergySpec"
-conv_factD["kW*hr/kg"] = float(0.000646111111111)
-offsetD["kW*hr/kg"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Force ===
-categoryD["Force"] = ['lbf', 'N', 'kN', 'dyn'] # N = 1 kg-m/sec**2
-cat_defaultD["Force"] = 'lbf'
-unit_catD["lbf"]  = "Force"
-conv_factD["lbf"] = float(1)
-offsetD["lbf"]    = float(0)
-unit_catD["N"]  = "Force"
-conv_factD["N"] = float(4.44822161526)
-offsetD["N"]    = float(0)
-unit_catD["kN"]  = "Force"
-conv_factD["kN"] = float(0.00444822161526)
-offsetD["kN"]    = float(0)
-unit_catD["dyn"]  = "Force"
-conv_factD["dyn"] = float(444822.161526)
-offsetD["dyn"]    = float(0)
-
-
-# Read As: 1 default unit = conv_factD target units
-# === Frequency ===
-categoryD["Frequency"] = ['Hz', 'kHz', 'MHz', 'GHz']
-cat_defaultD["Frequency"] = 'lbf'
-unit_catD['Hz']  = "Frequency"
-conv_factD['Hz'] = float(1)
-offsetD['Hz']    = float(0)
-unit_catD['kHz']  = "Frequency"
-conv_factD['kHz'] = float(1.0E-3)
-offsetD['kHz']    = float(0)
-unit_catD['MHz']  = "Frequency"
-conv_factD['MHz'] = float(1.0E-6)
-offsetD['MHz']    = float(0)
-unit_catD['GHz']  = "Frequency"
-conv_factD['GHz'] = float(1.0E-9)
-offsetD['GHz']    = float(0)
-
-
-
-# Read As: 1 default unit = conv_factD target units
-# === HeatCapacity ===
-categoryD["HeatCapacity"] = ['BTU/lbm/delF', 'cal/g/delC', 'kcal/g/delC', 'J/kg/delK', 'kJ/kg/delK']
-cat_defaultD["HeatCapacity"] = 'BTU/lbm/delF'
-unit_catD["BTU/lbm/delF"]  = "HeatCapacity"
-conv_factD["BTU/lbm/delF"] = float(1)
-offsetD["BTU/lbm/delF"]    = float(0)
-unit_catD["cal/g/delC"]  = "HeatCapacity"
-conv_factD["cal/g/delC"] = float(1.00066921606)
-offsetD["cal/g/delC"]    = float(0)
-unit_catD["kcal/g/delC"]  = "HeatCapacity"
-conv_factD["kcal/g/delC"] = float(0.00100066921606)
-offsetD["kcal/g/delC"]    = float(0)
-unit_catD["J/kg/delK"]  = "HeatCapacity"
-conv_factD["J/kg/delK"] = float(4186.8)
-offsetD["J/kg/delK"]    = float(0)
-unit_catD["kJ/kg/delK"]  = "HeatCapacity"
-conv_factD["kJ/kg/delK"] = float(4.1868)
-offsetD["kJ/kg/delK"]    = float(0)
-
-unit_catD["BTU/lbm/degF"]  = "HeatCapacity"
-conv_factD["BTU/lbm/degF"] = float(1)
-offsetD["BTU/lbm/degF"]    = float(0)
-unit_catD["cal/g/degC"]  = "HeatCapacity"
-conv_factD["cal/g/degC"] = float(1.00066921606)
-offsetD["cal/g/degC"]    = float(0)
-unit_catD["kcal/g/degC"]  = "HeatCapacity"
-conv_factD["kcal/g/degC"] = float(0.00100066921606)
-offsetD["kcal/g/degC"]    = float(0)
-unit_catD["J/kg/degK"]  = "HeatCapacity"
-conv_factD["J/kg/degK"] = float(4186.8)
-offsetD["J/kg/degK"]    = float(0)
-unit_catD["kJ/kg/degK"]  = "HeatCapacity"
-conv_factD["kJ/kg/degK"] = float(4.1868)
-offsetD["kJ/kg/degK"]    = float(0)
-
-unit_catD["BTU/lbm/F"]  = "HeatCapacity"
-conv_factD["BTU/lbm/F"] = float(1)
-offsetD["BTU/lbm/F"]    = float(0)
-unit_catD["cal/g/C"]  = "HeatCapacity"
-conv_factD["cal/g/C"] = float(1.00066921606)
-offsetD["cal/g/C"]    = float(0)
-unit_catD["kcal/g/C"]  = "HeatCapacity"
-conv_factD["kcal/g/C"] = float(0.00100066921606)
-offsetD["kcal/g/C"]    = float(0)
-unit_catD["J/kg/K"]  = "HeatCapacity"
-conv_factD["J/kg/K"] = float(4186.8)
-offsetD["J/kg/K"]    = float(0)
-unit_catD["kJ/kg/K"]  = "HeatCapacity"
-conv_factD["kJ/kg/K"] = float(4.1868)
-offsetD["kJ/kg/K"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === HxCoeff ===
-categoryD["HxCoeff"] = ['BTU/inch**2/s/delF', 'BTU/ft**2/hr/delF', 'cal/cm**2/s/delC', 'kcal/m**2/hr/delC', 'W/m**2/delC']
-cat_defaultD["HxCoeff"] = 'BTU/inch**2/s/delF'
-unit_catD["BTU/inch**2/s/delF"]  = "HxCoeff"
-conv_factD["BTU/inch**2/s/delF"] = float(1)
-offsetD["BTU/inch**2/s/delF"]    = float(0)
-unit_catD["BTU/ft**2/hr/delF"]  = "HxCoeff"
-conv_factD["BTU/ft**2/hr/delF"] = float(518400)
-offsetD["BTU/ft**2/hr/delF"]    = float(0)
-unit_catD["cal/cm**2/s/delC"]  = "HxCoeff"
-conv_factD["cal/cm**2/s/delC"] = float(70.3540085094)
-offsetD["cal/cm**2/s/delC"]    = float(0)
-unit_catD["kcal/m**2/hr/delC"]  = "HxCoeff"
-conv_factD["kcal/m**2/hr/delC"] = float(2532744.30634)
-offsetD["kcal/m**2/hr/delC"]    = float(0)
-unit_catD["W/m**2/delC"]  = "HxCoeff"
-conv_factD["W/m**2/delC"] = float(2943611.71603)
-offsetD["W/m**2/delC"]    = float(0)
-
-unit_catD["BTU/inch**2/s/degF"]  = "HxCoeff"
-conv_factD["BTU/inch**2/s/degF"] = float(1)
-offsetD["BTU/inch**2/s/degF"]    = float(0)
-unit_catD["BTU/ft**2/hr/degF"]  = "HxCoeff"
-conv_factD["BTU/ft**2/hr/degF"] = float(518400)
-offsetD["BTU/ft**2/hr/degF"]    = float(0)
-unit_catD["cal/cm**2/s/degC"]  = "HxCoeff"
-conv_factD["cal/cm**2/s/degC"] = float(70.3540085094)
-offsetD["cal/cm**2/s/degC"]    = float(0)
-unit_catD["kcal/m**2/hr/degC"]  = "HxCoeff"
-conv_factD["kcal/m**2/hr/degC"] = float(2532744.30634)
-offsetD["kcal/m**2/hr/degC"]    = float(0)
-unit_catD["W/m**2/degC"]  = "HxCoeff"
-conv_factD["W/m**2/degC"] = float(2943611.71603)
-offsetD["W/m**2/degC"]    = float(0)
-
-unit_catD["BTU/inch**2/s/F"]  = "HxCoeff"
-conv_factD["BTU/inch**2/s/F"] = float(1)
-offsetD["BTU/inch**2/s/F"]    = float(0)
-unit_catD["BTU/ft**2/hr/F"]  = "HxCoeff"
-conv_factD["BTU/ft**2/hr/F"] = float(518400)
-offsetD["BTU/ft**2/hr/F"]    = float(0)
-unit_catD["cal/cm**2/s/C"]  = "HxCoeff"
-conv_factD["cal/cm**2/s/C"] = float(70.3540085094)
-offsetD["cal/cm**2/s/C"]    = float(0)
-unit_catD["kcal/m**2/hr/C"]  = "HxCoeff"
-conv_factD["kcal/m**2/hr/C"] = float(2532744.30634)
-offsetD["kcal/m**2/hr/C"]    = float(0)
-unit_catD["W/m**2/C"]  = "HxCoeff"
-conv_factD["W/m**2/C"] = float(2943611.71603)
-offsetD["W/m**2/C"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Isp ===(NOTE: time=='s',  Isp=='sec')
-categoryD["Isp"] = ['sec', 'lbf-sec/lbm', 'm/sec', 'km/sec', 'N-sec/kg']
-cat_defaultD["Isp"] = 'sec'
-
-unit_catD["sec"]  = "Isp"
-conv_factD["sec"] = float(1)
-offsetD["sec"]    = float(0)
-
-unit_catD["lbf-sec/lbm"]  = "Isp"
-conv_factD["lbf-sec/lbm"] = float(1)
-offsetD["lbf-sec/lbm"]    = float(0)
-
-unit_catD["m/sec"]  = "Isp"
-conv_factD["m/sec"] = float(9.80665)
-offsetD["m/sec"]    = float(0)
-
-unit_catD["N-sec/kg"]  = "Isp"
-conv_factD["N-sec/kg"] = float(9.80665)
-offsetD["N-sec/kg"]    = float(0)
-
-unit_catD["km/sec"]  = "Isp"
-conv_factD["km/sec"] = float(9.80665/1000.0)
-offsetD["km/sec"]    = float(0)
-
-
-
-# Read As: 1 default unit = conv_factD target units
-# === Length ===
-categoryD["Length"] = ['inch', 'in', 'mil', 'ft', 'yd', 'micron', 'mm', 'cm', 'm', 'km', 'mile', 'nautical_mile', 'angstrom', 'astronomical_unit', 'light_year']
-cat_defaultD["Length"] = 'inch'
-
-unit_catD["inch"]  = "Length"
-conv_factD["inch"] = float(1)
-offsetD["inch"]    = float(0)
-unit_catD["in"]  = "Length"
-conv_factD["in"] = float(1)
-offsetD["in"]    = float(0)
-
-unit_catD["mil"]  = "Length"
-conv_factD["mil"] = float(1000)
-offsetD["mil"]    = float(0)
-unit_catD["ft"]  = "Length"
-conv_factD["ft"] = float(0.0833333333333)
-offsetD["ft"]    = float(0)
-unit_catD["yd"]  = "Length"
-conv_factD["yd"] = float(0.0277777777778)
-offsetD["yd"]    = float(0)
-
-unit_catD["mm"]  = "Length"
-conv_factD["mm"] = float(25.4)
-offsetD["mm"]    = float(0)
-
-unit_catD["micron"]  = "Length"
-conv_factD["micron"] = float(25400.0)
-offsetD["micron"]    = float(0)
-
-unit_catD["cm"]  = "Length"
-conv_factD["cm"] = float(2.54)
-offsetD["cm"]    = float(0)
-unit_catD["m"]  = "Length"
-conv_factD["m"] = float(0.0254)
-offsetD["m"]    = float(0)
-unit_catD["km"]  = "Length"
-conv_factD["km"] = float(2.54e-05)
-offsetD["km"]    = float(0)
-unit_catD["mile"]  = "Length"
-conv_factD["mile"] = float(1.57828282828e-05)
-offsetD["mile"]    = float(0)
-unit_catD["nautical_mile"]  = "Length"
-conv_factD["nautical_mile"] = float(1.37149377616e-05)
-offsetD["nautical_mile"]    = float(0)
-unit_catD["angstrom"]  = "Length"
-conv_factD["angstrom"] = float(254000000)
-offsetD["angstrom"]    = float(0)
-unit_catD["astronomical_unit"]  = "Length"
-conv_factD["astronomical_unit"] = float(1.69788512916e-13)
-offsetD["astronomical_unit"]    = float(0)
-unit_catD["light_year"]  = "Length"
-conv_factD["light_year"] = float(2.6847819948e-18)
-offsetD["light_year"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Mass ===
-categoryD["Mass"] = ['lbm', 'slug', 'g', 'kg', 'metric_ton', 'short_ton', 'long_ton', 'gal_H2O']
-cat_defaultD["Mass"] = 'lbm'
-unit_catD["lbm"]  = "Mass"
-conv_factD["lbm"] = float(1)
-offsetD["lbm"]    = float(0)
-unit_catD["slug"]  = "Mass"
-conv_factD["slug"] = float(0.031080948777)
-offsetD["slug"]    = float(0)
-unit_catD["g"]  = "Mass"
-conv_factD["g"] = float(453.59237)
-offsetD["g"]    = float(0)
-unit_catD["kg"]  = "Mass"
-conv_factD["kg"] = float(0.45359237)
-offsetD["kg"]    = float(0)
-unit_catD["metric_ton"]  = "Mass"
-conv_factD["metric_ton"] = float(0.00045359237)
-offsetD["metric_ton"]    = float(0)
-unit_catD["short_ton"]  = "Mass"
-conv_factD["short_ton"] = float(0.0005)
-offsetD["short_ton"]    = float(0)
-unit_catD["long_ton"]  = "Mass"
-conv_factD["long_ton"] = float(0.000446428571429)
-offsetD["long_ton"]    = float(0)
-unit_catD["gal_H2O"]  = "Mass"
-conv_factD["gal_H2O"] = float(0.120048019208)
-offsetD["gal_H2O"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === MassFlow ===
-categoryD["MassFlow"] = ['lbm/s', 'kg/s', 'g/s', 'lbm/min', 'kg/min', 'g/min', 'lbm/hr', 'kg/hr', 'g/hr']
-cat_defaultD["MassFlow"] = 'lbm/s'
-unit_catD["lbm/s"]  = "MassFlow"
-conv_factD["lbm/s"] = float(1)
-offsetD["lbm/s"]    = float(0)
-unit_catD["kg/s"]  = "MassFlow"
-conv_factD["kg/s"] = float(0.45359237)
-offsetD["kg/s"]    = float(0)
-unit_catD["g/s"]  = "MassFlow"
-conv_factD["g/s"] = float(453.59237)
-offsetD["g/s"]    = float(0)
-unit_catD["lbm/min"]  = "MassFlow"
-conv_factD["lbm/min"] = float(60)
-offsetD["lbm/min"]    = float(0)
-unit_catD["kg/min"]  = "MassFlow"
-conv_factD["kg/min"] = float(27.2155422)
-offsetD["kg/min"]    = float(0)
-unit_catD["g/min"]  = "MassFlow"
-conv_factD["g/min"] = float(27215.5422)
-offsetD["g/min"]    = float(0)
-unit_catD["lbm/hr"]  = "MassFlow"
-conv_factD["lbm/hr"] = float(3600)
-offsetD["lbm/hr"]    = float(0)
-unit_catD["kg/hr"]  = "MassFlow"
-conv_factD["kg/hr"] = float(1632.932532)
-offsetD["kg/hr"]    = float(0)
-unit_catD["g/hr"]  = "MassFlow"
-conv_factD["g/hr"] = float(1632932.532)
-offsetD["g/hr"]    = float(0)
-
-
-# Read As: 1 default unit = conv_factD target units
-# === MolecularWt ===
-categoryD["MolecularWt"] = ['g/gmole', 'lbm/lbmole']
-cat_defaultD["MolecularWt"] = 'g/gmole'
-
-unit_catD["g/gmole"]  = "MolecularWt"
-conv_factD["g/gmole"] = float(1)
-offsetD["g/gmole"]    = float(0)
-
-unit_catD["lbm/lbmole"]  = "MolecularWt"
-conv_factD["lbm/lbmole"] = float(1.0)
-offsetD["lbm/lbmole"]    = float(0)
-
-
-# Read As: 1 default unit = conv_factD target units
-# === Power ===
-categoryD["Power"] = ['hp', 'Btu/s', 'Btu/hr', 'cal/s', 'W', 'kW', 'MW', 'ft*lbf/s']
-cat_defaultD["Power"] = 'hp'
-unit_catD["hp"]  = "Power"
-conv_factD["hp"] = float(1)
-offsetD["hp"]    = float(0)
-unit_catD["Btu/s"]  = "Power"
-conv_factD["Btu/s"] = float(0.706787226618)
-offsetD["Btu/s"]    = float(0)
-unit_catD["Btu/hr"]  = "Power"
-conv_factD["Btu/hr"] = float(2544.43401582)
-offsetD["Btu/hr"]    = float(0)
-unit_catD["cal/s"]  = "Power"
-conv_factD["cal/s"] = float(178.226577438)
-offsetD["cal/s"]    = float(0)
-unit_catD["W"]  = "Power"
-conv_factD["W"] = float(745.7)
-offsetD["W"]    = float(0)
-unit_catD["kW"]  = "Power"
-conv_factD["kW"] = float(0.7457)
-offsetD["kW"]    = float(0)
-unit_catD["MW"]  = "Power"
-conv_factD["MW"] = float(0.0007457)
-offsetD["MW"]    = float(0)
-unit_catD["ft*lbf/s"]  = "Power"
-conv_factD["ft*lbf/s"] = float(550.000094716)
-offsetD["ft*lbf/s"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Pressure ===
-categoryD["Pressure"] = ['psia', 'psid', 'atm', 'MPa', 'kPa', 'Pa', 'psf', 'bar', 'torr', 'inHg', 'mmHg', 'lbf/inch**2', 'lbf/ft**2', 'N/cm**2', 'N/m**2']
-cat_defaultD["Pressure"] = 'psia'
-unit_catD["psia"]  = "Pressure"
-conv_factD["psia"] = float(1)
-offsetD["psia"]    = float(0)
-unit_catD["psid"]  = "Pressure"
-conv_factD["psid"] = float(1)
-offsetD["psid"]    = float(0)
-unit_catD["atm"]  = "Pressure"
-conv_factD["atm"] = float(0.0680459639099)
-offsetD["atm"]    = float(0)
-unit_catD["MPa"]  = "Pressure"
-conv_factD["MPa"] = float(0.00689475729317)
-offsetD["MPa"]    = float(0)
-unit_catD["kPa"]  = "Pressure"
-conv_factD["kPa"] = float(6.89475729317)
-offsetD["kPa"]    = float(0)
-unit_catD["Pa"]  = "Pressure"
-conv_factD["Pa"] = float(6894.75729317)
-offsetD["Pa"]    = float(0)
-unit_catD["psf"]  = "Pressure"
-conv_factD["psf"] = float(144)
-offsetD["psf"]    = float(0)
-unit_catD["bar"]  = "Pressure"
-conv_factD["bar"] = float(0.0689475729317)
-offsetD["bar"]    = float(0)
-unit_catD["torr"]  = "Pressure"
-conv_factD["torr"] = float(51.7149325715)
-offsetD["torr"]    = float(0)
-unit_catD["inHg"]  = "Pressure"
-conv_factD["inHg"] = float(2.036021)
-offsetD["inHg"]    = float(0)
-unit_catD["mmHg"]  = "Pressure"
-conv_factD["mmHg"] = float(51.71493)
-offsetD["mmHg"]    = float(0)
-unit_catD["lbf/inch**2"]  = "Pressure"
-conv_factD["lbf/inch**2"] = float(1)
-offsetD["lbf/inch**2"]    = float(0)
-unit_catD["lbf/ft**2"]  = "Pressure"
-conv_factD["lbf/ft**2"] = float(144)
-offsetD["lbf/ft**2"]    = float(0)
-unit_catD["N/cm**2"]  = "Pressure"
-conv_factD["N/cm**2"] = float(0.689475729317)
-offsetD["N/cm**2"]    = float(0)
-unit_catD["N/m**2"]  = "Pressure"
-conv_factD["N/m**2"] = float(6894.75729317)
-offsetD["N/m**2"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Surface Tension ===
-categoryD["SurfaceTension"] = ['lbf/in', 'N/m', 'mN/m', 'dyne/cm']
-cat_defaultD["SurfaceTension"] = 'lbf/in'
-unit_catD["lbf/in"]  = "SurfaceTension"
-conv_factD["lbf/in"] = float(1)
-offsetD["lbf/in"]    = float(0)
-unit_catD["N/m"]  = "SurfaceTension"
-conv_factD["N/m"] = float(175.126836986)
-offsetD["N/m"]    = float(0)
-unit_catD["mN/m"]  = "SurfaceTension"
-conv_factD["mN/m"] = 1000.0 * float(175.126836986)
-offsetD["mN/m"]    = float(0)
-unit_catD["dyne/cm"]  = "SurfaceTension"
-conv_factD["dyne/cm"] = float(175126.83698643)
-offsetD["dyne/cm"]    = float(0)
-unit_catD["lbf/ft"]  = "SurfaceTension"
-conv_factD["lbf/ft"] = float(12)
-offsetD["lbf/ft"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Temperature ===
-# conv_factD["degK"](5.0/9.0) * 'degR' = 'degK'
-categoryD["Temperature"] = ['degR', 'degF', 'degK', 'degC']
-cat_defaultD["Temperature"] = 'degR'
-unit_catD["degR"]  = "Temperature"
-conv_factD["degR"] = float(1)
-offsetD["degR"]    = float(0)
-unit_catD["degF"]  = "Temperature"
-conv_factD["degF"] = float(1)
-offsetD["degF"]    = float(-459.67)
-unit_catD["degK"]  = "Temperature"
-conv_factD["degK"] = float(5.0/9.0)
-offsetD["degK"]    = float(0)
-unit_catD["degC"]  = "Temperature"
-conv_factD["degC"] = float(5.0/9.0)
-offsetD["degC"]    = float(-273.15)
-
-# Read As: 1 default unit = conv_factD target units
-# === ThermalCond ===
-categoryD["ThermalCond"] = ['BTU/hr/ft/delF', 'BTU/s/inch/delF', 'cal/s/cm/delC', 'cal/s/m/delC', 'W/cm/delC']
-cat_defaultD["ThermalCond"] = 'BTU/hr/ft/delF'
-unit_catD["BTU/hr/ft/delF"]  = "ThermalCond"
-conv_factD["BTU/hr/ft/delF"] = float(1)
-offsetD["BTU/hr/ft/delF"]    = float(0)
-unit_catD["BTU/s/inch/delF"]  = "ThermalCond"
-conv_factD["BTU/s/inch/delF"] = float(2.31481481481e-05)
-offsetD["BTU/s/inch/delF"]    = float(0)
-unit_catD["cal/s/cm/delC"]  = "ThermalCond"
-conv_factD["cal/s/cm/delC"] = float(0.00413655512995)
-offsetD["cal/s/cm/delC"]    = float(0)
-unit_catD["cal/s/m/delC"]  = "ThermalCond"
-conv_factD["cal/s/m/delC"] = float(0.413655512995)
-offsetD["cal/s/m/delC"]    = float(0)
-unit_catD["W/cm/delC"]  = "ThermalCond"
-conv_factD["W/cm/delC"] = float(0.0173073466637)
-offsetD["W/cm/delC"]    = float(0)
-unit_catD["W/m/K"]  = "ThermalCond"
-conv_factD["W/m/K"] = float(1.73073466637)
-offsetD["W/m/K"]    = float(0)
-
-unit_catD["BTU/hr/ft/degF"]  = "ThermalCond"
-conv_factD["BTU/hr/ft/degF"] = float(1)
-offsetD["BTU/hr/ft/degF"]    = float(0)
-unit_catD["BTU/s/inch/degF"]  = "ThermalCond"
-conv_factD["BTU/s/inch/degF"] = float(2.31481481481e-05)
-offsetD["BTU/s/inch/degF"]    = float(0)
-unit_catD["cal/s/cm/degC"]  = "ThermalCond"
-conv_factD["cal/s/cm/degC"] = float(0.00413655512995)
-offsetD["cal/s/cm/degC"]    = float(0)
-unit_catD["cal/s/m/degC"]  = "ThermalCond"
-conv_factD["cal/s/m/degC"] = float(0.413655512995)
-offsetD["cal/s/m/degC"]    = float(0)
-unit_catD["W/cm/degC"]  = "ThermalCond"
-conv_factD["W/cm/degC"] = float(0.0173073466637)
-offsetD["W/cm/degC"]    = float(0)
-
-unit_catD["BTU/hr/ft/F"]  = "ThermalCond"
-conv_factD["BTU/hr/ft/F"] = float(1)
-offsetD["BTU/hr/ft/F"]    = float(0)
-unit_catD["BTU/s/inch/F"]  = "ThermalCond"
-conv_factD["BTU/s/inch/F"] = float(2.31481481481e-05)
-offsetD["BTU/s/inch/F"]    = float(0)
-unit_catD["cal/s/cm/C"]  = "ThermalCond"
-conv_factD["cal/s/cm/C"] = float(0.00413655512995)
-offsetD["cal/s/cm/C"]    = float(0)
-unit_catD["cal/s/m/C"]  = "ThermalCond"
-conv_factD["cal/s/m/C"] = float(0.413655512995)
-offsetD["cal/s/m/C"]    = float(0)
-unit_catD["W/cm/C"]  = "ThermalCond"
-conv_factD["W/cm/C"] = float(0.0173073466637)
-offsetD["W/cm/C"]    = float(0)
-
-
-unit_catD["BTU/s/ft/delF"]  = "ThermalCond"
-conv_factD["BTU/s/ft/delF"] = float(1/3600.0)
-offsetD["BTU/s/ft/delF"]    = float(0)
-unit_catD["BTU/s/ft/degF"]  = "ThermalCond"
-conv_factD["BTU/s/ft/degF"] = float(1/3600.0)
-offsetD["BTU/s/ft/degF"]    = float(0)
-unit_catD["BTU/s/ft/F"]  = "ThermalCond"
-conv_factD["BTU/s/ft/F"] = float(1/3600.0)
-offsetD["BTU/s/ft/F"]    = float(0)
-
-
-# Read As: 1 default unit = conv_factD target units
-# === Time === (NOTE: time=='s',  Isp=='sec')
-categoryD["Time"] = ['s', 'ms', 'min', 'hr', 'day', 'year', 'millisec', 'microsec', 'nanosec']
-cat_defaultD["Time"] = 's'
-unit_catD["s"]  = "Time"
-conv_factD["s"] = float(1)
-offsetD["s"]    = float(0)
-unit_catD["ms"]  = "Time"
-conv_factD["ms"] = float(1000)
-offsetD["ms"]    = float(0)
-unit_catD["min"]  = "Time"
-conv_factD["min"] = float(0.0166666666667)
-offsetD["min"]    = float(0)
-unit_catD["hr"]  = "Time"
-conv_factD["hr"] = float(0.000277777777778)
-offsetD["hr"]    = float(0)
-unit_catD["day"]  = "Time"
-conv_factD["day"] = float(1.15740740741e-05)
-offsetD["day"]    = float(0)
-unit_catD["year"]  = "Time"
-conv_factD["year"] = float(3.16887646408e-08)
-offsetD["year"]    = float(0)
-unit_catD["millisec"]  = "Time"
-conv_factD["millisec"] = float(1000)
-offsetD["millisec"]    = float(0)
-unit_catD["microsec"]  = "Time"
-conv_factD["microsec"] = float(1000000)
-offsetD["microsec"]    = float(0)
-unit_catD["nanosec"]  = "Time"
-conv_factD["nanosec"] = float(1000000000)
-offsetD["nanosec"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Velocity ===
-categoryD["Velocity"] = ['ft/s', 'inch/s', 'cm/s', 'm/s', 'km/hr', 'mile/hr']
-cat_defaultD["Velocity"] = 'ft/s'
-unit_catD["ft/s"]  = "Velocity"
-conv_factD["ft/s"] = float(1)
-offsetD["ft/s"]    = float(0)
-unit_catD["inch/s"]  = "Velocity"
-conv_factD["inch/s"] = float(12)
-offsetD["inch/s"]    = float(0)
-unit_catD["cm/s"]  = "Velocity"
-conv_factD["cm/s"] = float(30.48)
-offsetD["cm/s"]    = float(0)
-unit_catD["m/s"]  = "Velocity"
-conv_factD["m/s"] = float(0.3048)
-offsetD["m/s"]    = float(0)
-unit_catD["km/hr"]  = "Velocity"
-conv_factD["km/hr"] = float(1.09728)
-offsetD["km/hr"]    = float(0)
-unit_catD["mile/hr"]  = "Velocity"
-conv_factD["mile/hr"] = float(0.681818181818)
-offsetD["mile/hr"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Viscosity_Dynamic ===
-categoryD["Viscosity_Dynamic"] = ['poise', 'cpoise', 'Pa*s', 'lbm/s/inch', 'lbm/hr/inch', 'lbm/s/ft', 'lbm/hr/ft', 'kg/s/m', 'kg/hr/m', 'kg/s/cm', 'kg/hr/cm']
-cat_defaultD["Viscosity_Dynamic"] = 'poise'
-unit_catD["poise"]  = "Viscosity_Dynamic"
-conv_factD["poise"] = float(1)
-offsetD["poise"]    = float(0)
-unit_catD["cpoise"]  = "Viscosity_Dynamic"
-conv_factD["cpoise"] = float(100)
-offsetD["cpoise"]    = float(0)
-unit_catD["cp"]  = "Viscosity_Dynamic"
-conv_factD["cp"] = float(100)
-offsetD["cp"]    = float(0)
-unit_catD["Pa*s"]  = "Viscosity_Dynamic"
-conv_factD["Pa*s"] = float(0.1)
-offsetD["Pa*s"]    = float(0)
-unit_catD["cp"]  = "Viscosity_Dynamic"
-conv_factD["cp"] = float(100)
-offsetD["cpoise"]    = float(0)
-unit_catD["lbm/s/inch"]  = "Viscosity_Dynamic"
-conv_factD["lbm/s/inch"] = float(0.0055997414595)
-offsetD["lbm/s/inch"]    = float(0)
-unit_catD["lbm/hr/inch"]  = "Viscosity_Dynamic"
-conv_factD["lbm/hr/inch"] = float(20.1590692542)
-offsetD["lbm/hr/inch"]    = float(0)
-unit_catD["lbm/s/ft"]  = "Viscosity_Dynamic"
-conv_factD["lbm/s/ft"] = float(0.067196897514)
-offsetD["lbm/s/ft"]    = float(0)
-unit_catD["lbm/hr/ft"]  = "Viscosity_Dynamic"
-conv_factD["lbm/hr/ft"] = float(241.90883105)
-offsetD["lbm/hr/ft"]    = float(0)
-unit_catD["kg/s/m"]  = "Viscosity_Dynamic"
-conv_factD["kg/s/m"] = float(0.1)
-offsetD["kg/s/m"]    = float(0)
-unit_catD["kg/hr/m"]  = "Viscosity_Dynamic"
-conv_factD["kg/hr/m"] = float(360)
-offsetD["kg/hr/m"]    = float(0)
-unit_catD["kg/s/cm"]  = "Viscosity_Dynamic"
-conv_factD["kg/s/cm"] = float(0.001)
-offsetD["kg/s/cm"]    = float(0)
-unit_catD["kg/hr/cm"]  = "Viscosity_Dynamic"
-conv_factD["kg/hr/cm"] = float(3.6)
-offsetD["kg/hr/cm"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Viscosity_Kinematic ===
-categoryD["Viscosity_Kinematic"] = ['ft**2/s', 'ft**2/hr', 'stokes', 'centistokes', 'm**2/s']
-cat_defaultD["Viscosity_Kinematic"] = 'ft**2/s'
-unit_catD["ft**2/s"]  = "Viscosity_Kinematic"
-conv_factD["ft**2/s"] = float(1)
-offsetD["ft**2/s"]    = float(0)
-unit_catD["ft**2/hr"]  = "Viscosity_Kinematic"
-conv_factD["ft**2/hr"] = float(3600)
-offsetD["ft**2/hr"]    = float(0)
-unit_catD["stokes"]  = "Viscosity_Kinematic"
-conv_factD["stokes"] = float(929.0304)
-offsetD["stokes"]    = float(0)
-unit_catD["centistokes"]  = "Viscosity_Kinematic"
-conv_factD["centistokes"] = float(92903.04)
-offsetD["centistokes"]    = float(0)
-unit_catD["m**2/s"]  = "Viscosity_Kinematic"
-conv_factD["m**2/s"] = float(0.09290304)
-offsetD["m**2/s"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === Volume ===
-categoryD["Volume"] = ['inch**3', 'in**3', 'ft**3', 'cm**3', 'liter', 'm**3', 'yd**3', 'barOil', 'cup', 'pint', 'quart', 'galUS', 'galUK']
-cat_defaultD["Volume"] = 'inch**3'
-unit_catD["inch**3"]  = "Volume"
-conv_factD["inch**3"] = float(1)
-offsetD["inch**3"]    = float(0)
-
-unit_catD["in**3"]  = "Volume"
-conv_factD["in**3"] = float(1.0)
-offsetD["in**3"]    = float(0)
-
-unit_catD["ft**3"]  = "Volume"
-conv_factD["ft**3"] = float(0.000578703703704)
-offsetD["ft**3"]    = float(0)
-
-unit_catD["cm**3"]  = "Volume"
-conv_factD["cm**3"] = float(16.387064)
-offsetD["cm**3"]    = float(0)
-unit_catD["liter"]  = "Volume"
-conv_factD["liter"] = float(0.016387064)
-offsetD["liter"]    = float(0)
-unit_catD["m**3"]  = "Volume"
-conv_factD["m**3"] = float(1.6387064e-05)
-offsetD["m**3"]    = float(0)
-unit_catD["yd**3"]  = "Volume"
-conv_factD["yd**3"] = float(2.14334705075e-05)
-offsetD["yd**3"]    = float(0)
-unit_catD["barOil"]  = "Volume"
-conv_factD["barOil"] = float(0.000103071531643)
-offsetD["barOil"]    = float(0)
-unit_catD["cup"]  = "Volume"
-conv_factD["cup"] = float(0.0692640692641)
-offsetD["cup"]    = float(0)
-unit_catD["pint"]  = "Volume"
-conv_factD["pint"] = float(0.034632034632)
-offsetD["pint"]    = float(0)
-unit_catD["quart"]  = "Volume"
-conv_factD["quart"] = float(0.017316017316)
-offsetD["quart"]    = float(0)
-unit_catD["galUS"]  = "Volume"
-conv_factD["galUS"] = float(0.004329004329)
-offsetD["galUS"]    = float(0)
-unit_catD["galUK"]  = "Volume"
-conv_factD["galUK"] = float(0.00360465014991)
-offsetD["galUK"]    = float(0)
-
-# Read As: 1 default unit = conv_factD target units
-# === VolumeFlow ===
-categoryD["VolumeFlow"] = ['inch**3/s', 'inch**3/min', 'inch**3/hr', 'ft**3/s', 'ft**3/min', 'ft**3/hr', 'ml/s', 'ml/min', 'ml/hr', 'm**3/s', 'l/s', 'galUS/s', 'galUS/min', 'galUS/hr', 'galUS/day']
-cat_defaultD["VolumeFlow"] = 'inch**3/s'
-unit_catD["inch**3/s"]  = "VolumeFlow"
-conv_factD["inch**3/s"] = float(1)
-offsetD["inch**3/s"]    = float(0)
-unit_catD["inch**3/min"]  = "VolumeFlow"
-conv_factD["inch**3/min"] = float(60)
-offsetD["inch**3/min"]    = float(0)
-unit_catD["inch**3/hr"]  = "VolumeFlow"
-conv_factD["inch**3/hr"] = float(3600)
-offsetD["inch**3/hr"]    = float(0)
-unit_catD["ft**3/s"]  = "VolumeFlow"
-conv_factD["ft**3/s"] = float(0.000578703703704)
-offsetD["ft**3/s"]    = float(0)
-unit_catD["ft**3/min"]  = "VolumeFlow"
-conv_factD["ft**3/min"] = float(0.0347222222222)
-offsetD["ft**3/min"]    = float(0)
-unit_catD["ft**3/hr"]  = "VolumeFlow"
-conv_factD["ft**3/hr"] = float(2.08333333333)
-offsetD["ft**3/hr"]    = float(0)
-unit_catD["ml/s"]  = "VolumeFlow"
-conv_factD["ml/s"] = float(16.387064)
-offsetD["ml/s"]    = float(0)
-unit_catD["ml/min"]  = "VolumeFlow"
-conv_factD["ml/min"] = float(983.22384)
-offsetD["ml/min"]    = float(0)
-unit_catD["ml/hr"]  = "VolumeFlow"
-conv_factD["ml/hr"] = float(58993.4304)
-offsetD["ml/hr"]    = float(0)
-unit_catD["m**3/s"]  = "VolumeFlow"
-conv_factD["m**3/s"] = float(1.6387064e-05)
-offsetD["m**3/s"]    = float(0)
-unit_catD["m**3/hr"]  = "VolumeFlow"
-conv_factD["m**3/hr"] = float(3600*1.6387064e-05)
-offsetD["m**3/hr"]    = float(0)
-unit_catD["l/s"]  = "VolumeFlow"
-conv_factD["l/s"] = float(0.016387064)
-offsetD["l/s"]    = float(0)
-unit_catD["galUS/s"]  = "VolumeFlow"
-conv_factD["galUS/s"] = float(0.004329004329)
-offsetD["galUS/s"]    = float(0)
-unit_catD["gpm"]  = "VolumeFlow"
-conv_factD["gpm"] = float(0.25974025974)
-offsetD["gpm"]    = float(0)
-unit_catD["galUS/min"]  = "VolumeFlow"
-conv_factD["galUS/min"] = float(0.25974025974)
-offsetD["galUS/min"]    = float(0)
-unit_catD["galUS/hr"]  = "VolumeFlow"
-conv_factD["galUS/hr"] = float(15.5844155844)
-offsetD["galUS/hr"]    = float(0)
-unit_catD["galUS/day"]  = "VolumeFlow"
-conv_factD["galUS/day"] = float(374.025974026)
-offsetD["galUS/day"]    = float(0)
-
+def create_category( c_name='', def_units='' ):
+    """Create a Units Category and define the default units"""
+    cat_defaultD[c_name]  = def_units
+    unit_catD[def_units]  = c_name
+    conv_factD[def_units] = float(1.0)
+    offsetD[def_units]    = float(0.0)
+    
+# Read As: 1 default unit = conv_factor u_name units
+def add_units_to_category( c_name="", u_name="", conv_factor=1.0, offset=0.0 ):
+    """
+    Add conversion factor and offset for Units(u_name) to Category(c_name)
+    Read As: 1 default unit = conv_factor u_name units
+    """
+    unit_catD[u_name]  = c_name
+    conv_factD[u_name] = float(conv_factor)
+    offsetD[u_name]    = float(offset)
+    
+    if c_name in categoryD:
+        categoryD[ c_name ].append( u_name )
+    else:
+        categoryD[ c_name ] = [u_name]
+
+
+
+# Creating Unit Category for "Acceleration"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Acceleration", def_units="ft/s**2" )
+add_units_to_category( c_name="Acceleration", u_name="cm/s**2"  , conv_factor=30.48, offset=0.0 )
+add_units_to_category( c_name="Acceleration", u_name="ft/s**2"  , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Acceleration", u_name="gee"      , conv_factor=0.031080948777, offset=0.0 )
+add_units_to_category( c_name="Acceleration", u_name="m/s**2"   , conv_factor=0.3048, offset=0.0 )
+add_units_to_category( c_name="Acceleration", u_name="mile/hr/s", conv_factor=0.681818181818, offset=0.0 )
+
+# Creating Unit Category for "Angle"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Angle", def_units="deg" )
+add_units_to_category( c_name="Angle", u_name="arcmin"    , conv_factor=60.0, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="arcsec"    , conv_factor=3600.0, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="circle"    , conv_factor=0.00277777777778, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="deg"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="grad"      , conv_factor=1.11111111111, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="rad"       , conv_factor=0.0174532925199, offset=0.0 )
+add_units_to_category( c_name="Angle", u_name="revolution", conv_factor=0.00277777777778, offset=0.0 )
+
+# Creating Unit Category for "AngVelocity"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="AngVelocity", def_units="rpm" )
+add_units_to_category( c_name="AngVelocity", u_name="deg/min", conv_factor=360.0, offset=0.0 )
+add_units_to_category( c_name="AngVelocity", u_name="deg/s"  , conv_factor=6.0, offset=0.0 )
+add_units_to_category( c_name="AngVelocity", u_name="rad/min", conv_factor=6.28318530718, offset=0.0 )
+add_units_to_category( c_name="AngVelocity", u_name="rad/s"  , conv_factor=0.10471975512, offset=0.0 )
+add_units_to_category( c_name="AngVelocity", u_name="rpm"    , conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Area"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Area", def_units="inch**2" )
+add_units_to_category( c_name="Area", u_name="acre"   , conv_factor=1.59422507907e-07, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="cm**2"  , conv_factor=6.4516, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="ft**2"  , conv_factor=0.00694444444444, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="in**2"  , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="inch**2", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="m**2"   , conv_factor=0.00064516, offset=0.0 )
+add_units_to_category( c_name="Area", u_name="mile**2", conv_factor=2.49097668605e-10, offset=0.0 )
+
+# Creating Unit Category for "DeltaT"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="DeltaT", def_units="delF" )
+add_units_to_category( c_name="DeltaT", u_name="delC", conv_factor=0.5555555555555556, offset=0.0 )
+add_units_to_category( c_name="DeltaT", u_name="delF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="DeltaT", u_name="delK", conv_factor=0.5555555555555556, offset=0.0 )
+add_units_to_category( c_name="DeltaT", u_name="delR", conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Density"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Density", def_units="lbm/inch**3" )
+add_units_to_category( c_name="Density", u_name="g/ml"            , conv_factor=27.6799047102, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="kg/m**3"         , conv_factor=27679.9047102, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="lbm/ft**3"       , conv_factor=1728.0, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="lbm/galUS"       , conv_factor=231.0, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="lbm/in**3"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="lbm/inch**3"     , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="ounce/galUS"     , conv_factor=3696.0, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="SG"              , conv_factor=27.6799047102, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="slug/ft**3"      , conv_factor=53.7078794867, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="specific_gravity", conv_factor=27.6799047102, offset=0.0 )
+
+# Creating Unit Category for "ElementDensity"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="ElementDensity", def_units="elem/cm**2" )
+add_units_to_category( c_name="ElementDensity", u_name="elem/cm**2", conv_factor=0.15500031000062, offset=0.0 )
+add_units_to_category( c_name="ElementDensity", u_name="elem/in**2", conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Energy"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Energy", def_units="BTU" )
+add_units_to_category( c_name="Energy", u_name="BTU"   , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="cal"   , conv_factor=252.164400722, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="erg"   , conv_factor=10550558526.2, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="ft*lbf", conv_factor=778.169262266, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="J"     , conv_factor=1055.05585262, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="kcal"  , conv_factor=0.252164400722, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="kJ"    , conv_factor=1.05505585262, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="kW*hr" , conv_factor=0.000293071070172, offset=0.0 )
+add_units_to_category( c_name="Energy", u_name="W*hr"  , conv_factor=0.293071070172, offset=0.0 )
+
+# Creating Unit Category for "EnergySpec"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="EnergySpec", def_units="BTU/lbm" )
+add_units_to_category( c_name="EnergySpec", u_name="BTU/lbm" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="cal/g"   , conv_factor=0.555927342256, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="J/g"     , conv_factor=2.326, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="J/kg"    , conv_factor=2326.0, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="kcal/g"  , conv_factor=0.000555927342256, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="kcal/kg" , conv_factor=0.555927342256, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="kJ/kg"   , conv_factor=2.326, offset=0.0 )
+add_units_to_category( c_name="EnergySpec", u_name="kW*hr/kg", conv_factor=0.000646111111111, offset=0.0 )
+
+# Creating Unit Category for "Force"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Force", def_units="lbf" )
+add_units_to_category( c_name="Force", u_name="dyn", conv_factor=444822.161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="kN" , conv_factor=0.00444822161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="lbf", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="N"  , conv_factor=4.44822161526, offset=0.0 )
+
+# Creating Unit Category for "Frequency"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Frequency", def_units="Hz" )
+add_units_to_category( c_name="Frequency", u_name="GHz", conv_factor=1e-09, offset=0.0 )
+add_units_to_category( c_name="Frequency", u_name="Hz" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Frequency", u_name="kHz", conv_factor=0.001, offset=0.0 )
+add_units_to_category( c_name="Frequency", u_name="MHz", conv_factor=1e-06, offset=0.0 )
+
+# Creating Unit Category for "HeatCapacity"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="HeatCapacity", def_units="BTU/lbm/delF" )
+add_units_to_category( c_name="HeatCapacity", u_name="BTU/lbm/degF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="BTU/lbm/delF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="BTU/lbm/F"   , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="cal/g/C"     , conv_factor=1.00066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="cal/g/degC"  , conv_factor=1.00066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="cal/g/delC"  , conv_factor=1.00066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="J/kg/degK"   , conv_factor=4186.8, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="J/kg/delK"   , conv_factor=4186.8, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="J/kg/K"      , conv_factor=4186.8, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kcal/g/C"    , conv_factor=0.00100066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kcal/g/degC" , conv_factor=0.00100066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kcal/g/delC" , conv_factor=0.00100066921606, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/degK"  , conv_factor=4.1868, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/delK"  , conv_factor=4.1868, offset=0.0 )
+add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/K"     , conv_factor=4.1868, offset=0.0 )
+
+# Creating Unit Category for "HxCoeff"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="HxCoeff", def_units="BTU/inch**2/s/delF" )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/ft**2/hr/degF" , conv_factor=518400.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/ft**2/hr/delF" , conv_factor=518400.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/ft**2/hr/F"    , conv_factor=518400.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/inch**2/s/degF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/inch**2/s/delF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="BTU/inch**2/s/F"   , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="cal/cm**2/s/C"     , conv_factor=70.3540085094, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="cal/cm**2/s/degC"  , conv_factor=70.3540085094, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="cal/cm**2/s/delC"  , conv_factor=70.3540085094, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="kcal/m**2/hr/C"    , conv_factor=2532744.30634, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="kcal/m**2/hr/degC" , conv_factor=2532744.30634, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="kcal/m**2/hr/delC" , conv_factor=2532744.30634, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="W/m**2/C"          , conv_factor=2943611.71603, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="W/m**2/degC"       , conv_factor=2943611.71603, offset=0.0 )
+add_units_to_category( c_name="HxCoeff", u_name="W/m**2/delC"       , conv_factor=2943611.71603, offset=0.0 )
+
+# Creating Unit Category for "Isp"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Isp", def_units="sec" )
+add_units_to_category( c_name="Isp", u_name="km/sec"     , conv_factor=0.00980665, offset=0.0 )
+add_units_to_category( c_name="Isp", u_name="lbf-sec/lbm", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Isp", u_name="m/sec"      , conv_factor=9.80665, offset=0.0 )
+add_units_to_category( c_name="Isp", u_name="N-sec/kg"   , conv_factor=9.80665, offset=0.0 )
+add_units_to_category( c_name="Isp", u_name="sec"        , conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Length"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Length", def_units="inch" )
+add_units_to_category( c_name="Length", u_name="angstrom"         , conv_factor=254000000.0, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="astronomical_unit", conv_factor=1.69788512916e-13, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="cm"               , conv_factor=2.54, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="ft"               , conv_factor=0.0833333333333, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="in"               , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="inch"             , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="km"               , conv_factor=2.54e-05, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="light_year"       , conv_factor=2.6847819948e-18, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="m"                , conv_factor=0.0254, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="micron"           , conv_factor=25400.0, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="mil"              , conv_factor=1000.0, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="mile"             , conv_factor=1.57828282828e-05, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="mm"               , conv_factor=25.4, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="nautical_mile"    , conv_factor=1.37149377616e-05, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="yd"               , conv_factor=0.0277777777778, offset=0.0 )
+
+# Creating Unit Category for "Mass"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Mass", def_units="lbm" )
+add_units_to_category( c_name="Mass", u_name="g"         , conv_factor=453.59237, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="gal_H2O"   , conv_factor=0.120048019208, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="kg"        , conv_factor=0.45359237, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="lbm"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="long_ton"  , conv_factor=0.000446428571429, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="metric_ton", conv_factor=0.00045359237, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="short_ton" , conv_factor=0.0005, offset=0.0 )
+add_units_to_category( c_name="Mass", u_name="slug"      , conv_factor=0.031080948777, offset=0.0 )
+
+# Creating Unit Category for "MassFlow"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="MassFlow", def_units="lbm/s" )
+add_units_to_category( c_name="MassFlow", u_name="g/hr"   , conv_factor=1632932.532, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="g/min"  , conv_factor=27215.5422, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="g/s"    , conv_factor=453.59237, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="kg/hr"  , conv_factor=1632.932532, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="kg/min" , conv_factor=27.2155422, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="kg/s"   , conv_factor=0.45359237, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="lbm/hr" , conv_factor=3600.0, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="lbm/min", conv_factor=60.0, offset=0.0 )
+add_units_to_category( c_name="MassFlow", u_name="lbm/s"  , conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "MolecularWt"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="MolecularWt", def_units="g/gmole" )
+add_units_to_category( c_name="MolecularWt", u_name="g/gmole"   , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="MolecularWt", u_name="lbm/lbmole", conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Power"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Power", def_units="hp" )
+add_units_to_category( c_name="Power", u_name="Btu/hr"  , conv_factor=2544.43401582, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="Btu/s"   , conv_factor=0.706787226618, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="cal/s"   , conv_factor=178.226577438, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="ft*lbf/s", conv_factor=550.000094716, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="hp"      , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kW"      , conv_factor=0.7457, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="MW"      , conv_factor=0.0007457, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="W"       , conv_factor=745.7, offset=0.0 )
+
+# Creating Unit Category for "Pressure"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Pressure", def_units="psia" )
+add_units_to_category( c_name="Pressure", u_name="atm"        , conv_factor=0.0680459639099, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="bar"        , conv_factor=0.0689475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="inHg"       , conv_factor=2.036021, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="kPa"        , conv_factor=6.89475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="lbf/ft**2"  , conv_factor=144.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="lbf/inch**2", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="mmHg"       , conv_factor=51.71493, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="MPa"        , conv_factor=0.00689475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="N/cm**2"    , conv_factor=0.689475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="N/m**2"     , conv_factor=6894.75729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="Pa"         , conv_factor=6894.75729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="psf"        , conv_factor=144.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="psia"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="psid"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="torr"       , conv_factor=51.7149325715, offset=0.0 )
+
+# Creating Unit Category for "SurfaceTension"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="SurfaceTension", def_units="lbf/in" )
+add_units_to_category( c_name="SurfaceTension", u_name="dyne/cm", conv_factor=175126.83698643, offset=0.0 )
+add_units_to_category( c_name="SurfaceTension", u_name="lbf/ft" , conv_factor=12.0, offset=0.0 )
+add_units_to_category( c_name="SurfaceTension", u_name="lbf/in" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="SurfaceTension", u_name="mN/m"   , conv_factor=175126.836986, offset=0.0 )
+add_units_to_category( c_name="SurfaceTension", u_name="N/m"    , conv_factor=175.126836986, offset=0.0 )
+
+# Creating Unit Category for "Temperature"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Temperature", def_units="degR" )
+add_units_to_category( c_name="Temperature", u_name="degC", conv_factor=0.5555555555555556, offset=-273.15 )
+add_units_to_category( c_name="Temperature", u_name="degF", conv_factor=1.0, offset=-459.67 )
+add_units_to_category( c_name="Temperature", u_name="degK", conv_factor=0.5555555555555556, offset=0.0 )
+add_units_to_category( c_name="Temperature", u_name="degR", conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "ThermalCond"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="ThermalCond", def_units="BTU/hr/ft/delF" )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/hr/ft/degF" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/hr/ft/delF" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/hr/ft/F"    , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/ft/degF"  , conv_factor=0.0002777777777777778, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/ft/delF"  , conv_factor=0.0002777777777777778, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/ft/F"     , conv_factor=0.0002777777777777778, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/inch/degF", conv_factor=2.31481481481e-05, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/inch/delF", conv_factor=2.31481481481e-05, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="BTU/s/inch/F"   , conv_factor=2.31481481481e-05, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/cm/C"     , conv_factor=0.00413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/cm/degC"  , conv_factor=0.00413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/cm/delC"  , conv_factor=0.00413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/m/C"      , conv_factor=0.413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/m/degC"   , conv_factor=0.413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="cal/s/m/delC"   , conv_factor=0.413655512995, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="W/cm/C"         , conv_factor=0.0173073466637, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="W/cm/degC"      , conv_factor=0.0173073466637, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="W/cm/delC"      , conv_factor=0.0173073466637, offset=0.0 )
+add_units_to_category( c_name="ThermalCond", u_name="W/m/K"          , conv_factor=1.73073466637, offset=0.0 )
+
+# Creating Unit Category for "Time"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Time", def_units="s" )
+add_units_to_category( c_name="Time", u_name="day"     , conv_factor=1.15740740741e-05, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="hr"      , conv_factor=0.000277777777778, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="microsec", conv_factor=1000000.0, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="millisec", conv_factor=1000.0, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="min"     , conv_factor=0.0166666666667, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="ms"      , conv_factor=1000.0, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="nanosec" , conv_factor=1000000000.0, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="s"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Time", u_name="year"    , conv_factor=3.16887646408e-08, offset=0.0 )
+
+# Creating Unit Category for "Velocity"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Velocity", def_units="ft/s" )
+add_units_to_category( c_name="Velocity", u_name="cm/s"   , conv_factor=30.48, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="ft/s"   , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="inch/s" , conv_factor=12.0, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="km/hr"  , conv_factor=1.09728, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="m/s"    , conv_factor=0.3048, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="mile/hr", conv_factor=0.681818181818, offset=0.0 )
+
+# Creating Unit Category for "Viscosity_Dynamic"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Viscosity_Dynamic", def_units="poise" )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="cp"         , conv_factor=100.0, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="cpoise"     , conv_factor=100.0, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="kg/hr/cm"   , conv_factor=3.6, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="kg/hr/m"    , conv_factor=360.0, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="kg/s/cm"    , conv_factor=0.001, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="kg/s/m"     , conv_factor=0.1, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="lbm/hr/ft"  , conv_factor=241.90883105, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="lbm/hr/inch", conv_factor=20.1590692542, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="lbm/s/ft"   , conv_factor=0.067196897514, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="lbm/s/inch" , conv_factor=0.0055997414595, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="Pa*s"       , conv_factor=0.1, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Dynamic", u_name="poise"      , conv_factor=1.0, offset=0.0 )
+
+# Creating Unit Category for "Viscosity_Kinematic"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Viscosity_Kinematic", def_units="ft**2/s" )
+add_units_to_category( c_name="Viscosity_Kinematic", u_name="centistokes", conv_factor=92903.04, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Kinematic", u_name="ft**2/hr"   , conv_factor=3600.0, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Kinematic", u_name="ft**2/s"    , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Kinematic", u_name="m**2/s"     , conv_factor=0.09290304, offset=0.0 )
+add_units_to_category( c_name="Viscosity_Kinematic", u_name="stokes"     , conv_factor=929.0304, offset=0.0 )
+
+# Creating Unit Category for "Volume"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="Volume", def_units="inch**3" )
+add_units_to_category( c_name="Volume", u_name="barOil" , conv_factor=0.000103071531643, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="cm**3"  , conv_factor=16.387064, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="cup"    , conv_factor=0.0692640692641, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="ft**3"  , conv_factor=0.000578703703704, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="galUK"  , conv_factor=0.00360465014991, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="galUS"  , conv_factor=0.004329004329, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="in**3"  , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="inch**3", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="liter"  , conv_factor=0.016387064, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="m**3"   , conv_factor=1.6387064e-05, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="pint"   , conv_factor=0.034632034632, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="quart"  , conv_factor=0.017316017316, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="yd**3"  , conv_factor=2.14334705075e-05, offset=0.0 )
+
+# Creating Unit Category for "VolumeFlow"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="VolumeFlow", def_units="inch**3/s" )
+add_units_to_category( c_name="VolumeFlow", u_name="ft**3/hr"   , conv_factor=2.08333333333, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="ft**3/min"  , conv_factor=0.0347222222222, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="ft**3/s"    , conv_factor=0.000578703703704, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="galUS/day"  , conv_factor=374.025974026, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="galUS/hr"   , conv_factor=15.5844155844, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="galUS/min"  , conv_factor=0.25974025974, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="galUS/s"    , conv_factor=0.004329004329, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="gpm"        , conv_factor=0.25974025974, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="inch**3/hr" , conv_factor=3600.0, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="inch**3/min", conv_factor=60.0, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="inch**3/s"  , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="l/s"        , conv_factor=0.016387064, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="m**3/hr"    , conv_factor=0.0589934304, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="m**3/s"     , conv_factor=1.6387064e-05, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="ml/hr"      , conv_factor=58993.4304, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="ml/min"     , conv_factor=983.22384, offset=0.0 )
+add_units_to_category( c_name="VolumeFlow", u_name="ml/s"       , conv_factor=16.387064, offset=0.0 )
 
 def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
     """Convert inp_val from inp_units to out_units and return.
@@ -1001,7 +457,7 @@ def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
         :type inp_units : str
         :type out_units : str
         :return: value converted from inp_units to out_units
-        :rtype: float
+        :retype: float
     """
     # convert inp_val to default units
     def_unit_val = (inp_val - offsetD[inp_units]) / conv_factD[inp_units]
@@ -1015,16 +471,9 @@ def get_value_str( inp_val=20.0, inp_units='degC', out_units='degK', fmt='%g'):
 
 def get_category( units ):
     """return the category that units belongs to."""
-    catL = []
-    for cat, uL in categoryD.items():
-        if units in uL:
-            catL.append( cat )
-    if len(catL)==1:
-        return catL[0]
-    elif len(catL)==0:
-        return ''
-    else:
-        return catL
+    if units in unit_catD:
+        return unit_catD[ units ]
+    return ''
         
 
 # ============== some common conversions ===================
@@ -1043,6 +492,73 @@ MAX_UNIT_CHARS = 0
 for unit in conv_factD.keys():
     MAX_UNIT_CHARS = max( MAX_UNIT_CHARS, len(unit) )
 UNIT_FMT_STR = '%%%is'%MAX_UNIT_CHARS
+
+# === to simplify output in GUI, use display_unitsD to pick units to display
+# === Note that redundant units are hand-deleted
+
+display_def_unitsD = {} # index=category, value=default units
+display_def_unitsD["Acceleration"] = "ft/s**2"
+display_def_unitsD["Angle"] = "deg"
+display_def_unitsD["AngVelocity"] = "rpm"
+display_def_unitsD["Area"] = "inch**2"
+display_def_unitsD["DeltaT"] = "delF"
+display_def_unitsD["Density"] = "lbm/in**3"
+display_def_unitsD["ElementDensity"] = "elem/cm**2"
+display_def_unitsD["Energy"] = "BTU"
+display_def_unitsD["EnergySpec"] = "BTU/lbm"
+display_def_unitsD["Force"] = "lbf"
+display_def_unitsD["Frequency"] = "Hz"
+display_def_unitsD["HeatCapacity"] = "BTU/lbm/F"
+display_def_unitsD["HxCoeff"] = "BTU/inch**2/s/F"
+display_def_unitsD["Isp"] = "sec"
+display_def_unitsD["Length"] = "inch"
+display_def_unitsD["Mass"] = "lbm"
+display_def_unitsD["MassFlow"] = "lbm/s"
+display_def_unitsD["MolecularWt"] = "g/gmole"
+display_def_unitsD["Power"] = "hp"
+display_def_unitsD["Pressure"] = "psia"
+display_def_unitsD["SurfaceTension"] = "lbf/in"
+display_def_unitsD["Temperature"] = "degF"
+display_def_unitsD["ThermalCond"] = "BTU/hr/ft/F"
+display_def_unitsD["Time"] = "s"
+display_def_unitsD["Velocity"] = "ft/s"
+display_def_unitsD["Viscosity_Dynamic"] = "poise"
+display_def_unitsD["Viscosity_Kinematic"] = "ft**2/s"
+display_def_unitsD["Volume"] = "inch**3"
+display_def_unitsD["VolumeFlow"] = "inch**3/s"
+
+
+display_unitsD = {} # index=category, value = unit list in show order (small to large)
+display_unitsD['Acceleration'] =  ['gee', 'm/s**2', 'mile/hr/s', 'ft/s**2', 'cm/s**2']
+display_unitsD['Angle'] =  ['circle', 'revolution', 'rad', 'deg', 'grad', 'arcmin', 'arcsec']
+display_unitsD['AngVelocity'] =  ['rad/s', 'rpm', 'deg/s', 'rad/min', 'deg/min']
+display_unitsD['Area'] =  ['mile**2', 'acre', 'm**2', 'ft**2', 'in**2', 'inch**2', 'cm**2']
+display_unitsD['DeltaT'] =  ['delC', 'delK', 'delF', 'delR']
+display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
+display_unitsD['ElementDensity'] =  ['elem/cm**2', 'elem/in**2']
+display_unitsD['Energy'] =  ['kW*hr', 'kcal', 'W*hr', 'BTU', 'kJ', 'cal', 'ft*lbf', 'J', 'erg']
+display_unitsD['EnergySpec'] =  ['kcal/g', 'kW*hr/kg', 'cal/g', 'kcal/kg', 'BTU/lbm', 'J/g', 'kJ/kg', 'J/kg']
+display_unitsD['Force'] =  ['kN', 'lbf', 'N', 'dyn']
+display_unitsD['Frequency'] =  ['GHz', 'MHz', 'kHz', 'Hz']
+display_unitsD['HeatCapacity'] =  ['kcal/g/C', 'BTU/lbm/F', 'cal/g/C',  'kJ/kg/K', 'J/kg/K']
+display_unitsD['HxCoeff'] =  [ 'BTU/inch**2/s/F', 'cal/cm**2/s/C', 'BTU/ft**2/hr/F', 'kcal/m**2/hr/C',  'W/m**2/C']
+display_unitsD['Isp'] =  ['km/sec', 'lbf-sec/lbm', 'sec', 'm/sec', 'N-sec/kg']
+display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
+display_unitsD['Mass'] =  ['long_ton', 'metric_ton', 'short_ton', 'slug', 'gal_H2O', 'kg', 'lbm', 'g']
+display_unitsD['MassFlow'] =  ['kg/s', 'lbm/s', 'kg/min', 'lbm/min', 'g/s', 'kg/hr', 'lbm/hr', 'g/min', 'g/hr']
+display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
+display_unitsD['Power'] =  ['MW', 'Btu/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'W', 'Btu/hr']
+display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
+display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
+display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
+display_unitsD['ThermalCond'] =  [ 'BTU/s/inch/F', 'BTU/s/ft/F', 'cal/s/cm/C', 'W/cm/C', 'cal/s/m/C',  'BTU/hr/ft/F', 'W/m/K']
+display_unitsD['Time'] =  ['year', 'day', 'hr', 'min', 's', 'millisec', 'ms', 'microsec', 'nanosec']
+display_unitsD['Velocity'] =  ['m/s', 'mile/hr', 'ft/s', 'km/hr', 'inch/s', 'cm/s']
+display_unitsD['Viscosity_Dynamic'] =  ['kg/s/cm', 'lbm/s/inch', 'lbm/s/ft', 'kg/s/m', 'Pa*s', 'poise', 'kg/hr/cm', 'lbm/hr/inch', 'cp', 'cpoise', 'lbm/hr/ft', 'kg/hr/m']
+display_unitsD['Viscosity_Kinematic'] =  ['m**2/s', 'ft**2/s', 'stokes', 'ft**2/hr', 'centistokes']
+display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3']
+display_unitsD['VolumeFlow'] =  ['m**3/s', 'ft**3/s', 'galUS/s', 'l/s', 'ft**3/min', 'm**3/hr', 'galUS/min', 'gpm', 'inch**3/s', 'ft**3/hr', 'galUS/hr', 'ml/s', 'inch**3/min', 'galUS/day', 'ml/min', 'inch**3/hr', 'ml/hr']
+
 
 if __name__ == "__main__":
 
