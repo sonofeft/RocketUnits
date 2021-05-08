@@ -73,6 +73,8 @@ class _tk_rocket_units:
 
         # >>>>>>insert any user code below this comment for section "top_of_init"
         
+        self.master.title("RocketUnits v%s"%get_version() )
+        
         self.show_all_units()
 
 

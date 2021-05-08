@@ -55,10 +55,6 @@ Right Click
 
 **Right-Click** on *tk_rocket_units.exe*, and the option to **Copy** the file should be presented.
 
-.. NOTE::
-
-    On a 32 bit system, Right-Click on the file **tk_rocket_units_32bit.exe**.
-
 
 .. image:: ./_static/right_click.jpg
     :alt: Right Click
