@@ -1,4 +1,6 @@
 
+*) Remove references to 32 bit Windows Version
+
 ============= DONE ==============   
 
 *) Update images on ReadTheDocs for Refactored Code

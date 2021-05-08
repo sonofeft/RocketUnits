@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.5'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.6'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -60,6 +60,9 @@ offsetD = {}      # index=units name, value=float offset value (e.g. 'cm':0.0)
 
 # N = 1 kg-m/sec**2,  g = 9.80665 m/sec**2
 # (NOTE: time=='s',  Isp=='sec')
+
+def get_version():
+    return __version__
 
 def create_category( c_name='', def_units='' ):
     """Create a Units Category and define the default units"""

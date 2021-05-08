@@ -83,8 +83,7 @@ This is made possible though the use of the
 
 The Windows EXE file  on the 
 `RocketUnits Github page <https://github.com/sonofeft/RocketUnits>`_ 
-was created with python 3.7 64 bit version. If you have a 32 bit system,
-you will need to download the 32 bit EXE, tk_rocket_units_32bit.exe.
+was created with python 3.7 64 bit version. 
 
 You can place the executable anywhere in your system PATH or 
 `create a desktop shortcut <https://www.computerhope.com/issues/ch000739.htm>`__ .
