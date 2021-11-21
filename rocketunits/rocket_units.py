@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.6'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.7'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -63,6 +63,23 @@ offsetD = {}      # index=units name, value=float offset value (e.g. 'cm':0.0)
 
 def get_version():
     return __version__
+
+def convert_string( sinp="1 atm", rtn_units="psia" ):
+    """
+    Given a string input, parse into float of desired units.
+    String must be of format "number units" (at least one space)
+    NOTE: if input is NOT a string, simply return it.
+    """
+    if not type(sinp) == type("string"):
+        return sinp
+
+    sL = sinp.split()
+    if len(sL) != 2:
+        raise("In convert_string: String must be of format \"number units\" (at least one space)")
+
+    val = float(sL[0])
+    units = sL[1]
+    return convert_value(val, units, rtn_units)
 
 def create_category( c_name='', def_units='' ):
     """Create a Units Category and define the default units"""
@@ -595,4 +612,8 @@ if __name__ == "__main__":
     
     print( 'Check Frequency:', convert_value(5555.0, 'Hz', 'kHz'), convert_value(6.666, 'kHz', 'MHz') )
     
+
+    print( "String input Check: 1 atm =", convert_string( sinp="1 atm", rtn_units="psia" ), 'psia' )
+    print( "String input Check: 1 atm =", convert_string( sinp=14.7, rtn_units="psia" ), 'psia' )
+    print( "String input Check: 1 atm =", convert_string( sinp=" 1   atm ", rtn_units="psia" ), 'psia' )
 
