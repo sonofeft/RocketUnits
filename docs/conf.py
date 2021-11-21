@@ -46,7 +46,12 @@ extensions = [
     'fulltoc'
 ]
 
-#if os.environ.get('READTHEDOCS') != 'True':
+if os.environ.get('READTHEDOCS') == 'True':
+    try:
+        import rocketunits
+    except:
+        print("WARNING: READTHEDOCS failed to import rocketunits.")
+    
 try:
     import sphinxcontrib.spelling # if it fails on RTD or local, all is good.
     spelling_ignore_pypi_package_names=True
