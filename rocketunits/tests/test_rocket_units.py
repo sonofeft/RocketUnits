@@ -68,8 +68,8 @@ class MyTest(unittest.TestCase):
     def test__main__(self):
         main()
 
-if __name__ == '__main__':
-    # Can test just this file from command prompt
-    #  or it can be part of test discovery from nose, unittest, pytest, etc.
-    unittest.main()
+# if __name__ == '__main__':
+#     # Can test just this file from command prompt
+#     #  or it can be part of test discovery from nose, unittest, pytest, etc.
+#     unittest.main()
 
