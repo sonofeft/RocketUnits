@@ -213,6 +213,7 @@ class Units(object):
 
     def u_print(self, name, desc="", primary_units="", added_units="", fmt="%g"):
         """
+        Print the string returned by u_string.
         Use output template to print variable "name" in desired units.
         if primary_units is input, it will be listed first in the output line.
         if added_units is input, it will be listed 2nd in the output line.
@@ -224,7 +225,8 @@ class Units(object):
 
     def u_string(self, name, desc="", primary_units="", added_units="", fmt="%g"):
         """
-        Use output template to create print string of variable "name" in desired units.
+        Return a string created by using the output template.
+        The template shows variable "name" in desired units.
         if primary_units is input, it will be listed first in the output line.
         if added_units is input, it will be listed 2nd in the output line.
         If SI or English is different from primary_units or added_units they will be added.
@@ -292,6 +294,11 @@ class Units(object):
 
         if not name:
             raise Exception('In set_units, "name" can NOT be blank.')
+
+        # allow name to be specified as having no units
+        if units=='':
+            self.default_unitsD[name] = units
+            return
 
         category = get_category( units )
         # It's an error if units are not in RocketUnits

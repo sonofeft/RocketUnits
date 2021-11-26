@@ -79,6 +79,11 @@ class MyTest(unittest.TestCase):
         """Should always pass cleanly."""
         pass
 
+    def test_set_unitless_self_var(self):
+        """test set_unitless_self_var"""
+        b = Bar( 32.2, z="1 gee", y="3 hr", x=6 )
+        b.my_io.set_units('j', '')
+
     def test_bad_assign_units_in_u_string(self):
         """test bad assign units in u_string"""
         b = Bar( 32.2, z="1 gee", y="3 hr", x=6 )

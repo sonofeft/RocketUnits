@@ -1,7 +1,12 @@
 nosetests
 statusbars
 pyinstaller
+conv
+io
+psia
+degF
 inp
+nd
 param
 rtype
 degC
