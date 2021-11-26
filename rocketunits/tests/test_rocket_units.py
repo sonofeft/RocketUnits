@@ -10,19 +10,53 @@ if here not in sys.path[:2]:
 if up_one not in sys.path[:2]:
     sys.path.insert(0, up_one)
     
-from rocketunits.rocket_units import convert_value
+from rocketunits.rocket_units import convert_value, main, convert_string, \
+                                     chk_units_in_category, get_category
 
 class MyTest(unittest.TestCase):
 
-    def setUp(self):
-        unittest.TestCase.setUp(self)
+    # def setUp(self):
+    #     unittest.TestCase.setUp(self)
 
-    def tearDown(self):
-        unittest.TestCase.tearDown(self)
+    # def tearDown(self):
+    #     unittest.TestCase.tearDown(self)
 
     def test_should_always_pass_cleanly(self):
         """Should always pass cleanly."""
         pass
+
+    def test_get_units_category(self):
+        """test get units category"""
+        a = get_category("degF")
+        self.assertEqual(a, "Temperature")
+
+        a = get_category("psia")
+        self.assertEqual(a, "Pressure")
+
+        a = get_category("nuttin")
+        self.assertEqual(a, "")
+
+
+    def test_bad_convert_string(self):
+        """test bad convert_string"""
+        
+        with self.assertRaises(Exception):
+            result = convert_string( sinp="1 atm ft", rtn_units="psia" )
+
+    def test_exercise_chk_units_in_category(self):
+        """test exercise chk_units_in_category"""
+
+        a = chk_units_in_category("degF", "Temperature")
+        self.assertEqual(a, True)
+
+        with self.assertRaises(Exception):
+            a = chk_units_in_category("psia", "Temperature")
+
+        with self.assertRaises(Exception):
+            a = chk_units_in_category("psia", "Press")
+
+        with self.assertRaises(Exception):
+            a = chk_units_in_category("F", "Temperature")
 
     def test_myclass_existence(self):
         """Check that function returns result"""
@@ -31,8 +65,11 @@ class MyTest(unittest.TestCase):
         # Function should return None
         self.assertAlmostEqual(result, 453.59237, places=3)  # a within 3 decimal places of b
 
-if __name__ == '__main__':
-    # Can test just this file from command prompt
-    #  or it can be part of test discovery from nose, unittest, pytest, etc.
-    unittest.main()
+    def test__main__(self):
+        main()
+
+# if __name__ == '__main__':
+#     # Can test just this file from command prompt
+#     #  or it can be part of test discovery from nose, unittest, pytest, etc.
+#     unittest.main()
 

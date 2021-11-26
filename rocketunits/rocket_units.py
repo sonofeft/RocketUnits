@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.7'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.8'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -75,7 +75,7 @@ def convert_string( sinp="1 atm", rtn_units="psia" ):
 
     sL = sinp.split()
     if len(sL) != 2:
-        raise("In convert_string: String must be of format \"number units\" (at least one space)")
+        raise('In convert_string: String must be of format "number units" (at least one space)')
 
     val = float(sL[0])
     units = sL[1]
@@ -103,7 +103,25 @@ def add_units_to_category( c_name="", u_name="", conv_factor=1.0, offset=0.0 ):
     else:
         categoryD[ c_name ] = [u_name]
 
+def units_in_category( u_name="", c_name=""):
+    """Return True if units are in category."""
+    return unit_catD[u_name] == c_name
+    
+def chk_units_in_category( units, category ):
+    """Raise an error if units are not in category"""
+    if category not in categoryD:
+        s = '\nCategories = ' + ', '.join( sorted( list( categoryD.keys() ) ) )
+        raise Exception('ERROR: category "%s" is not recognized.'%(category, ) + s)
+    
+    if not unit_catD.get(units, ''):
+        s = '\nCategory "%s" = '%category + ', '.join( categoryD[category] )
+        raise Exception('ERROR: units "%s" are not recognized.'%(units, ) + s)
 
+    if not units_in_category(u_name=units, c_name=category):
+        s = '\nCategory "%s" = '%category + ', '.join( categoryD[category] )
+
+        raise Exception('ERROR: units "%s" are not in category "%s"'%(units, category) + s)
+    return True
 
 # Creating Unit Category for "Acceleration"
 # Read As: 1 default unit = conv_factor u_name units
@@ -579,9 +597,40 @@ display_unitsD['Viscosity_Kinematic'] =  ['m**2/s', 'ft**2/s', 'stokes', 'ft**2/
 display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3']
 display_unitsD['VolumeFlow'] =  ['m**3/s', 'ft**3/s', 'galUS/s', 'l/s', 'ft**3/min', 'm**3/hr', 'galUS/min', 'gpm', 'inch**3/s', 'ft**3/hr', 'galUS/hr', 'ml/s', 'inch**3/min', 'galUS/day', 'ml/min', 'inch**3/hr', 'ml/hr']
 
+# English units are held in display_def_unitsD
+SI_unitsD = {} # index=category, value = SI units for UnitsIO
+SI_unitsD['Acceleration'] =  'm/s**2'
+SI_unitsD['Angle'] =  'deg'
+SI_unitsD['AngVelocity'] =  'deg/s'
+SI_unitsD['Area'] =   'm**2'
+SI_unitsD['DeltaT'] =  'delK'
+SI_unitsD['Density'] =  'kg/m**3'
+SI_unitsD['ElementDensity'] =  'elem/cm**2'
+SI_unitsD['Energy'] =  'J'
+SI_unitsD['EnergySpec'] =  'J/kg'
+SI_unitsD['Force'] =  'N'
+SI_unitsD['Frequency'] =  'Hz'
+SI_unitsD['HeatCapacity'] =  'J/kg/K'
+SI_unitsD['HxCoeff'] =  'cal/cm**2/s/C'
+SI_unitsD['Isp'] =  'm/sec'
+SI_unitsD['Length'] =  'm'
+SI_unitsD['Mass'] =  'kg'
+SI_unitsD['MassFlow'] =  'kg/s'
+SI_unitsD['MolecularWt'] =  'g/gmole'
+SI_unitsD['Power'] =  'cal/s'
+SI_unitsD['Pressure'] =  'Pa'
+SI_unitsD['SurfaceTension'] =  'N/m'
+SI_unitsD['Temperature'] =  'degK'
+SI_unitsD['ThermalCond'] =  'W/m/K'
+SI_unitsD['Time'] =  's'
+SI_unitsD['Velocity'] =  'm/s'
+SI_unitsD['Viscosity_Dynamic'] =  'kg/s/m'
+SI_unitsD['Viscosity_Kinematic'] =  'm**2/s'
+SI_unitsD['Volume'] =  'm**3'
+SI_unitsD['VolumeFlow'] =  'm**3/s'
 
-if __name__ == "__main__":
-
+def main():
+    print("version:", get_version())
     print( categoryL )
     print()
     
@@ -617,3 +666,8 @@ if __name__ == "__main__":
     print( "String input Check: 1 atm =", convert_string( sinp=14.7, rtn_units="psia" ), 'psia' )
     print( "String input Check: 1 atm =", convert_string( sinp=" 1   atm ", rtn_units="psia" ), 'psia' )
 
+    print("Check degF in Temperature =", units_in_category( u_name="degF", c_name="Temperature"))
+
+
+if __name__ == "__main__":
+    main()

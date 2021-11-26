@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.7 documentation</title>
+    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
     
@@ -19,7 +19,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
     <link rel="next" title="Copyright" href="copyright.html" />
-    <link rel="prev" title="Windows EXE Download" href="downloadexe.html" />
+    <link rel="prev" title="Units for IO" href="units_io.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -38,9 +38,9 @@
           <a href="copyright.html" title="Copyright"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="downloadexe.html" title="Windows EXE Download"
+          <a href="units_io.html" title="Units for IO"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">RocketUnits Code Functions</a></li> 
       </ul>
     </div>  
@@ -50,8 +50,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-rocketunits.rocket_units">
-<span id="rocketunits-code-functions"></span><h1>RocketUnits Code Functions<a class="headerlink" href="#module-rocketunits.rocket_units" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="rocketunits-code-functions">
+<h1>RocketUnits Code Functions<a class="headerlink" href="#rocketunits-code-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-rocketunits.rocket_units">
+<span id="rocket-units"></span><h2>rocket_units<a class="headerlink" href="#module-rocketunits.rocket_units" title="Permalink to this headline">¶</a></h2>
 <p>RocketUnits provides a graphic user interface (GUI) for engineering units conversion.</p>
 <p>RocketUnits provides units conversion for a number of engineering categories.
 Included units categories include: Acceleration, Angle, AngVelocity, 
@@ -79,6 +81,12 @@ along with this program.  If not, see &lt;<a class="reference external" href="ht
 <span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">add_units_to_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.add_units_to_category" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add conversion factor and offset for Units(u_name) to Category(c_name)
 Read As: 1 default unit = conv_factor u_name units</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rocketunits.rocket_units.chk_units_in_category">
+<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">chk_units_in_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.chk_units_in_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an error if units are not in category</p>
 </dd></dl>
 
 <dl class="py function">
@@ -127,6 +135,79 @@ NOTE: if input is NOT a string, simply return it.</p>
 <dd><p>val uses input units... e.g. 25, 'degC'</p>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="rocketunits.rocket_units.units_in_category">
+<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">units_in_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.units_in_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if units are in category.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rocketunits.units_io">
+<span id="units-io"></span><h2>units_io<a class="headerlink" href="#module-rocketunits.units_io" title="Permalink to this headline">¶</a></h2>
+<p>For code using fixed internal physical units, units_io facilitates the use of 
+different units for program input and output.</p>
+<p>units_io requires all unit input parameters to be strings of the form &quot;value units&quot;.
+For example &quot;14.7 psia&quot; or &quot;98.6 degF&quot;.
+units_io assumes that the parameter default strings hold the internal units of the parameters.
+Output parameters can be specified either by name, or generically as &quot;SI&quot;, &quot;English&quot; or &quot;Both&quot;.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocketunits.units_io.</span></span><span class="sig-name descname"><span class="pre">Units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_varsD</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units" title="Permalink to this definition">¶</a></dt>
+<dd><p>For code using fixed internal physical units, units_io facilitates 
+the use of different units for program input and output.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.get_input_value">
+<span class="sig-name descname"><span class="pre">get_input_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">def_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.get_input_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>For inputs defined by default strings, return value in internal units</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_print_template">
+<span class="sig-name descname"><span class="pre">set_print_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%12s</span> <span class="pre">=</span> <span class="pre">%-45s</span> <span class="pre">|</span> <span class="pre">%s'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_print_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output string formatting template used by u_print</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_units">
+<span class="sig-name descname"><span class="pre">set_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the units of an internal parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_units_same_as">
+<span class="sig-name descname"><span class="pre">set_units_same_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the units of an internal parameter to the same as an existing parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_vars_dict">
+<span class="sig-name descname"><span class="pre">set_vars_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varsD</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_vars_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calling function or class instance will set its current locals()/vars()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.u_print">
+<span class="sig-name descname"><span class="pre">u_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%g'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the string returned by u_string.
+Use output template to print variable &quot;name&quot; in desired units.
+if primary_units is input, it will be listed first in the output line.
+if added_units is input, it will be listed 2nd in the output line.
+If SI or English is different from primary_units or added_units they will be added.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocketunits.units_io.Units.u_string">
+<span class="sig-name descname"><span class="pre">u_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%g'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string created by using the output template.
+The template shows variable &quot;name&quot; in desired units.
+if primary_units is input, it will be listed first in the output line.
+if added_units is input, it will be listed 2nd in the output line.
+If SI or English is different from primary_units or added_units they will be added.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -144,15 +225,20 @@ NOTE: if input is NOT a string, simply return it.</p>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Using RocketUnits GUI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="downloadexe.html">Windows EXE Download</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">RocketUnits Code Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units_io.html">Units for IO</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RocketUnits Code Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocketunits.rocket_units">rocket_units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocketunits.units_io">units_io</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="downloadexe.html"
-                        title="previous chapter">Windows EXE Download</a></p>
+  <p class="topless"><a href="units_io.html"
+                        title="previous chapter">Units for IO</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="copyright.html"
                         title="next chapter">Copyright</a></p>
@@ -190,9 +276,9 @@ NOTE: if input is NOT a string, simply return it.</p>
           <a href="copyright.html" title="Copyright"
              >next</a> |</li>
         <li class="right" >
-          <a href="downloadexe.html" title="Windows EXE Download"
+          <a href="units_io.html" title="Units for IO"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">RocketUnits Code Functions</a></li> 
       </ul>
     </div>
