@@ -187,7 +187,16 @@ class MyTest(unittest.TestCase):
         self.assertEqual(s, 'z = 1 gee (32.1741 ft/s**2, 9.80665 m/s**2) acceleration')
 
     def test_unitsio__main__(self):
-        main()
+        """test the __main__ section of units_io"""
+        if sys.version_info[0] == 3 and sys.version_info[1] >= 5:
+            import importlib.util
+            file_path = os.path.join( up_one, 'units_io.py' )
+            spec = importlib.util.spec_from_file_location( '__main__', file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+        # else:
+        #     main()
+
 
 # if __name__ == '__main__':
 #     # Can test just this file from command prompt

@@ -66,7 +66,15 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(result, 453.59237, places=3)  # a within 3 decimal places of b
 
     def test__main__(self):
-        main()
+        """test the __main__ section of rocket_units"""
+        if sys.version_info[0] == 3 and sys.version_info[1] >= 5:
+            import importlib.util
+            file_path = os.path.join( up_one, 'rocket_units.py' )
+            spec = importlib.util.spec_from_file_location( '__main__', file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+        # else:
+        #     main()
 
 # if __name__ == '__main__':
 #     # Can test just this file from command prompt
