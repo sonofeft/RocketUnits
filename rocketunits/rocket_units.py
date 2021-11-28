@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.8'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.9'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -77,7 +77,10 @@ def convert_string( sinp="1 atm", rtn_units="psia" ):
     if len(sL) != 2:
         raise('In convert_string: String must be of format "number units" (at least one space)')
 
-    val = float(sL[0])
+    if sL[0] == "None":
+        return None
+    else:
+        val = float(sL[0])
     units = sL[1]
     return convert_value(val, units, rtn_units)
 

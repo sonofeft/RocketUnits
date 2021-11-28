@@ -72,12 +72,30 @@ class Bar:
         self.my_io.set_print_template( template="%s = %s %s")
 
 
-class MyTest(unittest.TestCase):
+class BarNone:
+    def __init__(self, x="4 ft**2", y="None psia"):
+        self.my_io = Units( self.__class__, locals() )
 
+        self.x = self.my_io.get_input_value("x")
+        self.y = self.my_io.get_input_value("y")
+
+
+
+class MyTest(unittest.TestCase):
 
     def test_should_always_pass_cleanly(self):
         """Should always pass cleanly."""
         pass
+
+    def test_none_input_var(self):
+        """test none_input_var"""
+        b = BarNone( x="5 in**2" )
+        self.assertEqual(None, b.y)
+
+    def test_none_default_w_input_var(self):
+        """test none_input_var"""
+        b = BarNone( x="5 in**2", y="1 atm" )
+        self.assertAlmostEqual(14.6959488, b.y, places=5)
 
     def test_set_unitless_self_var(self):
         """test set_unitless_self_var"""
@@ -187,7 +205,16 @@ class MyTest(unittest.TestCase):
         self.assertEqual(s, 'z = 1 gee (32.1741 ft/s**2, 9.80665 m/s**2) acceleration')
 
     def test_unitsio__main__(self):
-        main()
+        """test the __main__ section of units_io"""
+        if sys.version_info[0] == 3 and sys.version_info[1] >= 5:
+            import importlib.util
+            file_path = os.path.join( up_one, 'units_io.py' )
+            spec = importlib.util.spec_from_file_location( '__main__', file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+        # else:
+        #     main()
+
 
 # if __name__ == '__main__':
 #     # Can test just this file from command prompt

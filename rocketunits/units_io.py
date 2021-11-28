@@ -54,7 +54,7 @@ class Units(object):
             if type(p.default) == type("string"):
                 try:
                     sL = p.default.split()
-                    val, units = sL
+                    _, units = sL # value can be number or None
                     if len(sL) == 2 and get_category(units) != '':
                         self.default_unitsD[name] = units
                 except:
