@@ -8,7 +8,7 @@ RocketUnits provides units conversion for a number of engineering categories.
 Included units categories include: Acceleration, Angle, AngVelocity, 
 Area, DeltaT, Density, ElementDensity, Energy, EnergySpec, Force, Frequency, 
 HeatCapacity, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
-Pressure, SurfaceTension, Temperature, ThermalCond, Time, Velocity, 
+Pressure, SurfaceTension, Tank_PV/W, Temperature, ThermalCond, Time, Velocity, 
 Viscosity_Dynamic, Viscosity_Kinematic, Volume, and VolumeFlow.
 Unit conversion can be performed either with the included GUI, or directly
 from python by importing the units conversion data file.
@@ -44,7 +44,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.9'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.10'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -372,6 +372,16 @@ add_units_to_category( c_name="SurfaceTension", u_name="lbf/in" , conv_factor=1.
 add_units_to_category( c_name="SurfaceTension", u_name="mN/m"   , conv_factor=175126.836986, offset=0.0 )
 add_units_to_category( c_name="SurfaceTension", u_name="N/m"    , conv_factor=175.126836986, offset=0.0 )
 
+
+# Creating Unit Category for "Tank_PV/W"
+# Read As: 1 default unit = conv_factor u_name units
+create_category( c_name="Tank_PV/W", def_units="psia-in**3/lbm" )
+add_units_to_category( c_name="Tank_PV/W", u_name="psia-in**3/lbm", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="psia-ft**3/lbm", conv_factor=1.0/1728.0, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="MPa-liter/kg"  , conv_factor=0.00024908891, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="bar-liter/kg"  , conv_factor=0.0024908891, offset=0.0 )
+
+
 # Creating Unit Category for "Temperature"
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="Temperature", def_units="degR" )
@@ -559,6 +569,7 @@ display_def_unitsD["MolecularWt"] = "g/gmole"
 display_def_unitsD["Power"] = "hp"
 display_def_unitsD["Pressure"] = "psia"
 display_def_unitsD["SurfaceTension"] = "lbf/in"
+display_def_unitsD["Tank_PV/W"] = "psia-in**3/lbm"
 display_def_unitsD["Temperature"] = "degF"
 display_def_unitsD["ThermalCond"] = "BTU/hr/ft/F"
 display_def_unitsD["Time"] = "s"
@@ -591,6 +602,7 @@ display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
 display_unitsD['Power'] =  ['MW', 'Btu/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'W', 'Btu/hr']
 display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
 display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
+display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg", "psia-in**3/lbm"]
 display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
 display_unitsD['ThermalCond'] =  [ 'BTU/s/inch/F', 'BTU/s/ft/F', 'cal/s/cm/C', 'W/cm/C', 'cal/s/m/C',  'BTU/hr/ft/F', 'W/m/K']
 display_unitsD['Time'] =  ['year', 'day', 'hr', 'min', 's', 'millisec', 'ms', 'microsec', 'nanosec']
@@ -623,6 +635,7 @@ SI_unitsD['MolecularWt'] =  'g/gmole'
 SI_unitsD['Power'] =  'cal/s'
 SI_unitsD['Pressure'] =  'Pa'
 SI_unitsD['SurfaceTension'] =  'N/m'
+SI_unitsD['Tank_PV/W'] = "bar-liter/kg"
 SI_unitsD['Temperature'] =  'degK'
 SI_unitsD['ThermalCond'] =  'W/m/K'
 SI_unitsD['Time'] =  's'
@@ -671,6 +684,14 @@ def main():
 
     print("Check degF in Temperature =", units_in_category( u_name="degF", c_name="Temperature"))
 
+
+    def show_convert( sinp, out_units):
+        val = convert_string(sinp, out_units)
+        print( sinp, " -->", val, out_units )
+    show_convert("500000 psia-in**3/lbm", "MPa-liter/kg")
+    show_convert("500000 psia-in**3/lbm", "psia-ft**3/lbm")
+    show_convert("500000 psia-in**3/lbm", "bar-liter/kg")
+    show_convert("240 bar-liter/kg", "MPa-liter/kg")
 
 if __name__ == "__main__":
     main()

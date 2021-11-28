@@ -3,7 +3,12 @@
         "conv",
         "disp",
         "downloadexe",
+        "gmole",
+        "lbmole",
+        "millisec",
+        "nanosec",
         "pcent",
+        "sinp",
         "unitless",
         "unitsio",
         "vinit"
