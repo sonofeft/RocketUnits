@@ -424,6 +424,7 @@ add_units_to_category( c_name="Time", u_name="min"     , conv_factor=0.016666666
 add_units_to_category( c_name="Time", u_name="ms"      , conv_factor=1000.0, offset=0.0 )
 add_units_to_category( c_name="Time", u_name="nanosec" , conv_factor=1000000000.0, offset=0.0 )
 add_units_to_category( c_name="Time", u_name="s"       , conv_factor=1.0, offset=0.0 )
+#                                             this is an average year, not a 365 day year.
 add_units_to_category( c_name="Time", u_name="year"    , conv_factor=3.16887646408e-08, offset=0.0 )
 
 # Creating Unit Category for "Velocity"
