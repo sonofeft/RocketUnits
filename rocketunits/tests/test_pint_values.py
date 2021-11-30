@@ -207,13 +207,13 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 0.999999 / convert_value(inp_val=1.0, inp_units="g/gmole", out_units="lbm/lbmole"), places=5)
         #  Power  Using SI ref of 1.0 cal/s == cal/s
         self.assertAlmostEqual(1.0, 4.184e-06 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="MW"), places=5)
-        self.assertAlmostEqual(1.0, 0.00396567 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="Btu/s"), places=5)
+        self.assertAlmostEqual(1.0, 0.00396567 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="BTU/s"), places=5)
         self.assertAlmostEqual(1.0, 0.004184 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="kW"), places=5)
         self.assertAlmostEqual(1.0, 0.00561084 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="hp"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="cal/s"), places=5)
         self.assertAlmostEqual(1.0, 3.08596 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="ft*lbf/s"), places=5)
         self.assertAlmostEqual(1.0, 4.184 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="W"), places=5)
-        self.assertAlmostEqual(1.0, 14.2764 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="Btu/hr"), places=5)
+        self.assertAlmostEqual(1.0, 14.2764 / convert_value(inp_val=1.0, inp_units="cal/s", out_units="BTU/hr"), places=5)
         #  Pressure  Using SI ref of 1.0 Pa == Pa
         self.assertAlmostEqual(1.0, 1e-06 / convert_value(inp_val=1.0, inp_units="Pa", out_units="MPa"), places=5)
         self.assertAlmostEqual(1.0, 9.86923e-06 / convert_value(inp_val=1.0, inp_units="Pa", out_units="atm"), places=5)
@@ -462,13 +462,13 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 0.999999 / convert_value(inp_val=1.0, inp_units="g/gmole", out_units="lbm/lbmole"), places=5)
         #  Power  Using English ref of 1.0 hp == hp
         self.assertAlmostEqual(1.0, 0.0007457 / convert_value(inp_val=1.0, inp_units="hp", out_units="MW"), places=5)
-        self.assertAlmostEqual(1.0, 0.706787 / convert_value(inp_val=1.0, inp_units="hp", out_units="Btu/s"), places=5)
+        self.assertAlmostEqual(1.0, 0.706787 / convert_value(inp_val=1.0, inp_units="hp", out_units="BTU/s"), places=5)
         self.assertAlmostEqual(1.0, 0.7457 / convert_value(inp_val=1.0, inp_units="hp", out_units="kW"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="hp", out_units="hp"), places=5)
         self.assertAlmostEqual(1.0, 178.227 / convert_value(inp_val=1.0, inp_units="hp", out_units="cal/s"), places=5)
         self.assertAlmostEqual(1.0, 550 / convert_value(inp_val=1.0, inp_units="hp", out_units="ft*lbf/s"), places=5)
         self.assertAlmostEqual(1.0, 745.7 / convert_value(inp_val=1.0, inp_units="hp", out_units="W"), places=5)
-        self.assertAlmostEqual(1.0, 2544.43 / convert_value(inp_val=1.0, inp_units="hp", out_units="Btu/hr"), places=5)
+        self.assertAlmostEqual(1.0, 2544.43 / convert_value(inp_val=1.0, inp_units="hp", out_units="BTU/hr"), places=5)
         #  Pressure  Using English ref of 1.0 psia == psia
         self.assertAlmostEqual(1.0, 0.00689476 / convert_value(inp_val=1.0, inp_units="psia", out_units="MPa"), places=5)
         self.assertAlmostEqual(1.0, 0.068046 / convert_value(inp_val=1.0, inp_units="psia", out_units="atm"), places=5)

@@ -7,7 +7,7 @@ RocketUnits provides a graphic user interface (GUI) for engineering units conver
 RocketUnits provides units conversion for a number of engineering categories.
 Included units categories include: Acceleration, Angle, AngVelocity, 
 Area, DeltaT, Density, ElementDensity, Energy, EnergySpec, Force, Frequency, 
-HeatCapacity, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
+HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
 Pressure, SurfaceTension, Tank_PV/W, Temperature, ThermalCond, Time, Velocity, 
 Viscosity_Dynamic, Viscosity_Kinematic, Volume, and VolumeFlow.
 Unit conversion can be performed either with the included GUI, or directly
@@ -254,6 +254,21 @@ add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/degK"  , conv_factor
 add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/delK"  , conv_factor=4.1868, offset=0.0 )
 add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/K"     , conv_factor=4.1868, offset=0.0 )
 
+# Creating Unit Category for "HeatFlux"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="HeatFlux", def_units="BTU/in**2/s" ) 
+add_units_to_category( c_name="HeatFlux", u_name="BTU/in**2/s" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="cal/cm**2/s" , conv_factor=39.08556574283321, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="BTU/ft**2/s" , conv_factor=144.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/cm**2"     , conv_factor=163.53400706801415, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="kcal/m**2/s" , conv_factor=390.8556574283321, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/in**2"     , conv_factor=1055.056, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="cal/cm**2/hr", conv_factor=140708.03667419957, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="BTU/ft**2/hr", conv_factor=518400.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="kcal/m**2/hr", conv_factor=1407080.3667419956, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="J/s/m**2"    , conv_factor=1635340.0706801414, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/m**2"      , conv_factor=1635340.0706801414, offset=0.0 )
+
 # Creating Unit Category for "HxCoeff"
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="HxCoeff", def_units="BTU/inch**2/s/delF" )
@@ -334,15 +349,23 @@ add_units_to_category( c_name="MolecularWt", u_name="lbm/lbmole", conv_factor=1.
 
 # Creating Unit Category for "Power"
 # Read As: 1 default unit = conv_factor u_name units
-create_category(       c_name="Power", def_units="hp" )
-add_units_to_category( c_name="Power", u_name="Btu/hr"  , conv_factor=2544.43401582, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="Btu/s"   , conv_factor=0.706787226618, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="cal/s"   , conv_factor=178.226577438, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="ft*lbf/s", conv_factor=550.000094716, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="hp"      , conv_factor=1.0, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="kW"      , conv_factor=0.7457, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="MW"      , conv_factor=0.0007457, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="W"       , conv_factor=745.7, offset=0.0 )
+create_category(       c_name="Power", def_units="hp" ) 
+add_units_to_category( c_name="Power", u_name="MW"       , conv_factor=0.0007456998715822702, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kcal/s"   , conv_factor=0.17822654674528446, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="BTU/s"    , conv_factor=0.7067870061705446, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kJ/s"     , conv_factor=0.7456998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kW"       , conv_factor=0.7456998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="hp"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="cal/s"    , conv_factor=178.22654674528442, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="ft*lbf/s" , conv_factor=549.9999999999999, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kcal/hr"  , conv_factor=641.615568283024, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="J/s"      , conv_factor=745.6998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="W"        , conv_factor=745.6998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="BTU/hr"   , conv_factor=2544.43322221396, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kJ/hr"    , conv_factor=2684.519537696173, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="cal/hr"   , conv_factor=641615.5682830239, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="ft*lbf/hr", conv_factor=1979999.9999999995, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="J/hr"     , conv_factor=2684519.5376961725, offset=0.0 )
 
 # Creating Unit Category for "Pressure"
 # Read As: 1 default unit = conv_factor u_name units
@@ -561,6 +584,7 @@ display_def_unitsD["EnergySpec"] = "BTU/lbm"
 display_def_unitsD["Force"] = "lbf"
 display_def_unitsD["Frequency"] = "Hz"
 display_def_unitsD["HeatCapacity"] = "BTU/lbm/F"
+display_def_unitsD["HeatFlux"] = "BTU/in**2/s"
 display_def_unitsD["HxCoeff"] = "BTU/inch**2/s/F"
 display_def_unitsD["Isp"] = "sec"
 display_def_unitsD["Length"] = "inch"
@@ -594,13 +618,14 @@ display_unitsD['EnergySpec'] =  ['kcal/g', 'kW*hr/kg', 'cal/g', 'kcal/kg', 'BTU/
 display_unitsD['Force'] =  ['kN', 'lbf', 'N', 'dyn']
 display_unitsD['Frequency'] =  ['GHz', 'MHz', 'kHz', 'Hz']
 display_unitsD['HeatCapacity'] =  ['kcal/g/C', 'BTU/lbm/F', 'cal/g/C',  'kJ/kg/K', 'J/kg/K']
+display_unitsD["HeatFlux"] = ['BTU/in**2/s', 'cal/cm**2/s', 'BTU/ft**2/s', 'W/cm**2', 'kcal/m**2/s', 'W/in**2', 'cal/cm**2/hr', 'BTU/ft**2/hr', 'kcal/m**2/hr', 'J/s/m**2', 'W/m**2']
 display_unitsD['HxCoeff'] =  [ 'BTU/inch**2/s/F', 'cal/cm**2/s/C', 'BTU/ft**2/hr/F', 'kcal/m**2/hr/C',  'W/m**2/C']
 display_unitsD['Isp'] =  ['km/sec', 'lbf-sec/lbm', 'sec', 'm/sec', 'N-sec/kg']
 display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
 display_unitsD['Mass'] =  ['long_ton', 'metric_ton', 'short_ton', 'slug', 'gal_H2O', 'kg', 'lbm', 'g']
 display_unitsD['MassFlow'] =  ['kg/s', 'lbm/s', 'kg/min', 'lbm/min', 'g/s', 'kg/hr', 'lbm/hr', 'g/min', 'g/hr']
 display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
-display_unitsD['Power'] =  ['MW', 'Btu/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'W', 'Btu/hr']
+display_unitsD["Power"] = ['MW', 'kcal/s', 'BTU/s', 'kJ/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'kcal/hr', 'J/s', 'W', 'BTU/hr', 'kJ/hr', 'cal/hr', 'ft*lbf/hr', 'J/hr']
 display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
 display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
 display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg", "psia-in**3/lbm"]
@@ -627,6 +652,7 @@ SI_unitsD['EnergySpec'] =  'J/kg'
 SI_unitsD['Force'] =  'N'
 SI_unitsD['Frequency'] =  'Hz'
 SI_unitsD['HeatCapacity'] =  'J/kg/K'
+SI_unitsD["HeatFlux"] = "kcal/m**2/s"
 SI_unitsD['HxCoeff'] =  'cal/cm**2/s/C'
 SI_unitsD['Isp'] =  'm/sec'
 SI_unitsD['Length'] =  'm'
