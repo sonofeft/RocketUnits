@@ -64,18 +64,37 @@ offsetD = {}      # index=units name, value=float offset value (e.g. 'cm':0.0)
 def get_version():
     return __version__
 
+def parse_float_string( sinp="1 atm" ):
+    """
+    Given a string input, parse into float and units string.
+    String must be of format "<number> <units>" (at least one space)
+    
+    Return tuple of (float, units string)
+    NOTE: if input is NOT a string, return None, None
+    """
+    if type(sinp) != type("string"):
+        return None, None
+        
+    sL = sinp.split()
+    if len(sL) != 2:
+        raise('sinp="%s" String must be of format "<number> <units>"'%sinp)
+        
+    fstr, ustr = sL
+    return float(fstr), ustr # (float, units string)
+    
+
 def convert_string( sinp="1 atm", rtn_units="psia" ):
     """
     Given a string input, parse into float of desired units.
-    String must be of format "number units" (at least one space)
+    String must be of format "<number> <units>" (at least one space)
     NOTE: if input is NOT a string, simply return it.
     """
-    if not type(sinp) == type("string"):
+    if type(sinp) != type("string"):
         return sinp
 
     sL = sinp.split()
     if len(sL) != 2:
-        raise('In convert_string: String must be of format "number units" (at least one space)')
+        raise('sinp="%s" String must be of format "<number> <units>"'%sinp)
 
     if sL[0] == "None":
         return None
@@ -125,6 +144,33 @@ def chk_units_in_category( units, category ):
 
         raise Exception('ERROR: units "%s" are not in category "%s"'%(units, category) + s)
     return True
+
+def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
+    """Convert inp_val from inp_units to out_units and return.
+        :param inp_val   : input value to be converted
+        :param inp_units : units of inp_val
+        :param out_units : desired output units
+        :type inp_val   : float
+        :type inp_units : str
+        :type out_units : str
+        :return: value converted from inp_units to out_units
+        :retype: float
+    """
+    # convert inp_val to default units
+    def_unit_val = (inp_val - offsetD[inp_units]) / conv_factD[inp_units]
+    # convert from default units to requested output units
+    return def_unit_val * conv_factD[out_units] + offsetD[out_units]
+    
+# Read As: 1 default unit = conv_factD target units
+def get_value_str( inp_val=20.0, inp_units='degC', out_units='degK', fmt='%g'):
+    val = convert_value(inp_val=inp_val, inp_units=inp_units, out_units=out_units)
+    return fmt%val + ' %s'%out_units
+
+def get_category( units ):
+    """return the category that units belongs to."""
+    if units in unit_catD:
+        return unit_catD[ units ]
+    return ''
 
 # Creating Unit Category for "Acceleration"
 # Read As: 1 default unit = conv_factor u_name units
@@ -522,33 +568,6 @@ add_units_to_category( c_name="VolumeFlow", u_name="m**3/s"     , conv_factor=1.
 add_units_to_category( c_name="VolumeFlow", u_name="ml/hr"      , conv_factor=58993.4304, offset=0.0 )
 add_units_to_category( c_name="VolumeFlow", u_name="ml/min"     , conv_factor=983.22384, offset=0.0 )
 add_units_to_category( c_name="VolumeFlow", u_name="ml/s"       , conv_factor=16.387064, offset=0.0 )
-
-def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
-    """Convert inp_val from inp_units to out_units and return.
-        :param inp_val   : input value to be converted
-        :param inp_units : units of inp_val
-        :param out_units : desired output units
-        :type inp_val   : float
-        :type inp_units : str
-        :type out_units : str
-        :return: value converted from inp_units to out_units
-        :retype: float
-    """
-    # convert inp_val to default units
-    def_unit_val = (inp_val - offsetD[inp_units]) / conv_factD[inp_units]
-    # convert from default units to requested output units
-    return def_unit_val * conv_factD[out_units] + offsetD[out_units]
-    
-# Read As: 1 default unit = conv_factD target units
-def get_value_str( inp_val=20.0, inp_units='degC', out_units='degK', fmt='%g'):
-    val = convert_value(inp_val=inp_val, inp_units=inp_units, out_units=out_units)
-    return fmt%val + ' %s'%out_units
-
-def get_category( units ):
-    """return the category that units belongs to."""
-    if units in unit_catD:
-        return unit_catD[ units ]
-    return ''
         
 
 # ============== some common conversions ===================

@@ -101,6 +101,18 @@ class MyTest(unittest.TestCase):
         """test set_unitless_self_var"""
         b = Bar( 32.2, z="1 gee", y="3 hr", x=6 )
         b.my_io.set_units('j', '')
+        
+    def test_set_user_units(self):
+        """test set_user_units"""
+        b = Bar( 32.2, z="1 gee", y="3 hr", x=6 )
+        b.my_io.set_user_units( name='y', user_units='min')
+        
+        with self.assertRaises(Exception):
+            b.my_io.set_user_units( name='y', user_units='non-units')
+
+        with self.assertRaises(Exception):
+            b.my_io.set_user_units( name='', user_units='min')
+        
 
     def test_bad_assign_units_in_u_string(self):
         """test bad assign units in u_string"""

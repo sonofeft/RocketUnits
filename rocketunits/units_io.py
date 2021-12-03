@@ -306,6 +306,19 @@ class Units(object):
             raise Exception('In set_units, units="%s" is NOT recognized.'%units)
 
         self.default_unitsD[name] = units
+        
+    def set_user_units(self, name='', user_units=''):
+        """Set units input by the user"""
+
+        if not name:
+            raise Exception('In set_units, "name" can NOT be blank.')
+
+        category = get_category( user_units )
+        # It's an error if units are not in RocketUnits
+        if not category:
+            raise Exception('In set_units, user_units="%s" is NOT recognized.'%user_units)
+        
+        self.user_input_unitsD[name] = user_units        
 
 def main():        
 

@@ -11,7 +11,8 @@ if up_one not in sys.path[:2]:
     sys.path.insert(0, up_one)
     
 from rocketunits.rocket_units import convert_value, main, convert_string, \
-                                     chk_units_in_category, get_category
+                                     chk_units_in_category, get_category, \
+                                     parse_float_string
 
 class MyTest(unittest.TestCase):
 
@@ -36,6 +37,22 @@ class MyTest(unittest.TestCase):
         a = get_category("nuttin")
         self.assertEqual(a, "")
 
+    def test_parse_float_string(self):
+        """test parse_float_string"""
+        
+        f,u = parse_float_string( "1.2 inch" )
+        self.assertEqual(u, "inch")
+        self.assertAlmostEqual(1.2, f, places=7)
+
+        with self.assertRaises(Exception):
+            f,u = parse_float_string( "xxx inch" )
+
+        with self.assertRaises(Exception):
+            f,u = parse_float_string( "85 inches of metal" )
+            
+        f,u = parse_float_string( 9.0 )
+        self.assertEqual(u, None)
+        
 
     def test_bad_convert_string(self):
         """test bad convert_string"""
