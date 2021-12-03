@@ -123,6 +123,17 @@ class Units(object):
         val = convert_string( sinp=input_str, rtn_units=internal_units )
         return val
 
+    def force_inch(self, unit):
+        '''Regulates the different forms of inch units that are output.'''
+        if unit == 'in':
+            return 'inch'
+        elif unit == 'inch**2':
+            return 'in**2'
+        elif unit == 'inch**3':
+            return 'in**3'
+        else:
+            return unit
+
     def __get_output_str(self, inp_val=0.0, inp_units="", 
                        out_units="", default_units="", user_inp_units="",
                        fmt="%g"):
@@ -132,6 +143,12 @@ class Units(object):
         If different primary units are desired, specify them with "out_units".
         At the end, if default_units are not included, include them.
         """
+
+        inp_units = self.force_inch(inp_units)
+        out_units = self.force_inch(out_units)
+        default_units = self.force_inch(default_units)
+        user_inp_units = self.force_inch(user_inp_units)
+
         category = get_category( inp_units )
         if not category:
             s = fmt%inp_val
@@ -179,7 +196,7 @@ class Units(object):
                 sL.append(s)
                 used_set.add( si_units )
         elif self.output_units == "English":
-            eng_units = display_def_unitsD[category]
+            eng_units = self.force_inch( display_def_unitsD[category] )
             if eng_units not in used_set:
                 val = convert_value(inp_val, inp_units, eng_units)
                 s = fmt%val + " %s"%eng_units
@@ -187,7 +204,7 @@ class Units(object):
                 used_set.add( eng_units )
         else:
             # add both SI and English
-            eng_units = display_def_unitsD[category]
+            eng_units = self.force_inch( display_def_unitsD[category] )
             if eng_units  not in used_set:
                 val = convert_value(inp_val, inp_units, eng_units)
                 s1 = fmt%val + " %s"%eng_units
