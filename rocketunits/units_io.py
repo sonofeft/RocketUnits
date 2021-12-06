@@ -151,7 +151,13 @@ class Units(object):
 
         category = get_category( inp_units )
         if not category:
-            s = fmt%inp_val
+            try:
+                if type(inp_val) == bool:
+                    s = '%s'%inp_val
+                else:
+                    s = fmt%inp_val
+            except:
+                s = '%s'%inp_val
             return s
 
 
@@ -340,7 +346,8 @@ class Units(object):
 def main():        
 
     def bar(my_pi, a="14.7 psia",b="1.0 gee",c="55.0 mile/hr", 
-            i=42, output_units="English"): 
+            i=42, output_units="English", my_flag=True,
+            my_list=[1,2,3]): 
 
         # set the internal values of all the input variables with units.
         my_units = Units( bar, vars() )
@@ -374,6 +381,8 @@ def main():
         u_print("x_out", "10 times c")
 
         u_print("i", primary_units="J", desc="Some random energy")
+        u_print("my_flag", primary_units="", desc="An important flag")
+        u_print("my_list", primary_units="", desc="An important list")
         
         # print()
         # print("varsD =", vars())

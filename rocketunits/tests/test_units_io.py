@@ -57,7 +57,7 @@ from rocketunits.units_io import Units, main
 
 class Bar:
     def __init__(self, xxx, x="4 ft**2", y="5 s", z="6 ft/s**2", j=66, k=99,
-                 output_units="Both"):
+                 output_units="Both", my_flag=True):
         self.my_io = Units( self.__class__, locals() )
 
         self.x = self.my_io.get_input_value("x")
@@ -71,6 +71,22 @@ class Bar:
 
         self.my_io.set_print_template( template="%s = %s %s")
 
+class SomeInches:
+    def __init__(self, d1="1 in", d2="2 inch", a1="1 in**2", a2="2 in**2",
+                 v1="1 in**3", v2="2 inch**3", output_units="English"):
+        self.my_io = Units( self.__class__, locals() )
+
+        self.d1 = self.my_io.get_input_value("d1")
+        self.d2 = self.my_io.get_input_value("d2")
+
+        self.a1 = self.my_io.get_input_value("a1")
+        self.a2 = self.my_io.get_input_value("a2")
+
+        self.v1 = self.my_io.get_input_value("v1")
+        self.v2 = self.my_io.get_input_value("v2")
+
+        self.my_io.set_vars_dict( vars(self) )
+        self.my_io.set_print_template( template="%s = %s %s")
 
 class BarNone:
     def __init__(self, x="4 ft**2", y="None psia"):
@@ -86,6 +102,23 @@ class MyTest(unittest.TestCase):
     def test_should_always_pass_cleanly(self):
         """Should always pass cleanly."""
         pass
+
+    def test_inch_u_string_values(self):
+        """test u_string values"""
+
+        b = SomeInches()
+        def get_s(name):
+            s = b.my_io.u_string( name, "" )
+            return s.strip()
+
+        self.assertEqual(get_s('d1'), 'd1 = 1 inch')
+        self.assertEqual(get_s('d2'), 'd2 = 2 inch')
+
+        self.assertEqual(get_s('a1'), 'a1 = 1 in**2')
+        self.assertEqual(get_s('a2'), 'a2 = 2 in**2')
+
+        self.assertEqual(get_s('v1'), 'v1 = 1 in**3')
+        self.assertEqual(get_s('v2'), 'v2 = 2 in**3')
 
     def test_none_input_var(self):
         """test none_input_var"""
