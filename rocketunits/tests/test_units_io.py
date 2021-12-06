@@ -89,11 +89,15 @@ class SomeInches:
         self.my_io.set_print_template( template="%s = %s %s")
 
 class BarNone:
-    def __init__(self, x="4 ft**2", y="None psia"):
+    def __init__(self, x="4 ft**2", y="None psia", pdiff="10 psid"):
         self.my_io = Units( self.__class__, locals() )
 
         self.x = self.my_io.get_input_value("x")
         self.y = self.my_io.get_input_value("y")
+
+        self.pdiff = self.my_io.get_input_value("pdiff")
+        self.my_io.set_vars_dict( vars(self) )
+        self.my_io.set_print_template( template="%s = %s %s")
 
 
 
@@ -129,6 +133,10 @@ class MyTest(unittest.TestCase):
         """test none_input_var"""
         b = BarNone( x="5 in**2", y="1 atm" )
         self.assertAlmostEqual(14.6959488, b.y, places=5)
+
+        s = b.my_io.u_string( 'pdiff', "" )
+        self.assertEqual(s.strip(), 'pdiff = 10 psid (68947.6 Pa)')
+
 
     def test_set_unitless_self_var(self):
         """test set_unitless_self_var"""

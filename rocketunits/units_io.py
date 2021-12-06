@@ -223,6 +223,10 @@ class Units(object):
                 sL.append(s2)
                 used_set.add( si_units )
 
+        # fix cases where pressure "difference" (i.e. psid) is default 
+        if default_units == 'psid':
+            sL = [s for s in sL if s.split()[-1] != 'psia']
+
         s = sL[0]
         if len(sL) > 1:
             #s = s1 + " (%s)"% s2
