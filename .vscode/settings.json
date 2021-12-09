@@ -3,15 +3,18 @@
         "conv",
         "disp",
         "downloadexe",
+        "fstr",
         "gmole",
         "lbmole",
         "millisec",
+        "myclass",
         "nanosec",
         "pcent",
         "pdiff",
         "sinp",
         "unitless",
         "unitsio",
+        "ustr",
         "vinit"
     ],
     "restructuredtext.confPath": "D:\\21_py_proj\\RocketUnits\\docs"

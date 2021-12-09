@@ -103,6 +103,13 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 1550 / convert_value(inp_val=1.0, inp_units="m**2", out_units="in**2"), places=5)
         self.assertAlmostEqual(1.0, 1550 / convert_value(inp_val=1.0, inp_units="m**2", out_units="inch**2"), places=5)
         self.assertAlmostEqual(1.0, 10000 / convert_value(inp_val=1.0, inp_units="m**2", out_units="cm**2"), places=5)
+
+        #  CoeffThermExp(CTE)  Using SI ref of 1.0 1/degC == 1/degC
+        self.assertAlmostEqual(1.0, 1.0 / convert_value(inp_val=1.0, inp_units="1/degC", out_units="1/degC"), places=5)
+        self.assertAlmostEqual(1.0, 1.0 / convert_value(inp_val=1.0, inp_units="1/degC", out_units="1/degK"), places=5)
+        self.assertAlmostEqual(1.0, (1.0/1.8) / convert_value(inp_val=1.0, inp_units="1/degC", out_units="1/degF"), places=5)
+        self.assertAlmostEqual(1.0, (1.0/1.8) / convert_value(inp_val=1.0, inp_units="1/degC", out_units="1/degR"), places=5)
+
         #  DeltaT  Using SI ref of 1.0 delK == delK
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="delK", out_units="delC"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="delK", out_units="delK"), places=5)
@@ -358,6 +365,13 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="inch**2", out_units="in**2"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="inch**2", out_units="inch**2"), places=5)
         self.assertAlmostEqual(1.0, 6.4516 / convert_value(inp_val=1.0, inp_units="inch**2", out_units="cm**2"), places=5)
+
+        #  CoeffThermExp(CTE)  Using English ref of 1.0 1/degF == 1/degF
+        self.assertAlmostEqual(1.0, 1.8 / convert_value(inp_val=1.0, inp_units="1/degF", out_units="1/degC"), places=5)
+        self.assertAlmostEqual(1.0, 1.8 / convert_value(inp_val=1.0, inp_units="1/degF", out_units="1/degK"), places=5)
+        self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="1/degF", out_units="1/degF"), places=5)
+        self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="1/degF", out_units="1/degR"), places=5)
+
         #  DeltaT  Using English ref of 1.0 delF == delF
         self.assertAlmostEqual(1.0, 0.555556 / convert_value(inp_val=1.0, inp_units="delF", out_units="delC"), places=5)
         self.assertAlmostEqual(1.0, 0.555556 / convert_value(inp_val=1.0, inp_units="delF", out_units="delK"), places=5)

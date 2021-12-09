@@ -6,10 +6,11 @@ RocketUnits provides a graphic user interface (GUI) for engineering units conver
 
 RocketUnits provides units conversion for a number of engineering categories.
 Included units categories include: Acceleration, Angle, AngVelocity, 
-Area, DeltaT, Density, ElementDensity, Energy, EnergySpec, Force, Frequency, 
-HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
-Pressure, SurfaceTension, Tank_PV/W, Temperature, ThermalCond, Time, Velocity, 
-Viscosity_Dynamic, Viscosity_Kinematic, Volume, and VolumeFlow.
+Area, CoeffThermExp(CTE), DeltaT, Density, ElementDensity, Energy, EnergySpec, 
+Force, Frequency, HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, 
+MolecularWt, Power, Pressure, SurfaceTension, Tank_PV/W, Temperature, 
+ThermalCond, Time, Velocity, Viscosity_Dynamic, Viscosity_Kinematic, Volume, 
+and VolumeFlow.
 Unit conversion can be performed either with the included GUI, or directly
 from python by importing the units conversion data file.
 
@@ -211,6 +212,14 @@ add_units_to_category( c_name="Area", u_name="in**2"  , conv_factor=1.0, offset=
 add_units_to_category( c_name="Area", u_name="inch**2", conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Area", u_name="m**2"   , conv_factor=0.00064516, offset=0.0 )
 add_units_to_category( c_name="Area", u_name="mile**2", conv_factor=2.49097668605e-10, offset=0.0 )
+
+# Creating Unit Category for "CoeffThermExp(CTE)"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="CoeffThermExp(CTE)", def_units="1/degF" )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degC", conv_factor=1.8, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degK", conv_factor=1.8, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degR", conv_factor=1.0, offset=0.0 )
 
 # Creating Unit Category for "DeltaT"
 # Read As: 1 default unit = conv_factor u_name units
@@ -595,6 +604,7 @@ display_def_unitsD["Acceleration"] = "ft/s**2"
 display_def_unitsD["Angle"] = "deg"
 display_def_unitsD["AngVelocity"] = "rpm"
 display_def_unitsD["Area"] = "inch**2"
+display_def_unitsD["CoeffThermExp(CTE)"] = "1/degF"
 display_def_unitsD["DeltaT"] = "delF"
 display_def_unitsD["Density"] = "lbm/in**3"
 display_def_unitsD["ElementDensity"] = "elem/cm**2"
@@ -629,6 +639,7 @@ display_unitsD['Acceleration'] =  ['gee', 'm/s**2', 'mile/hr/s', 'ft/s**2', 'cm/
 display_unitsD['Angle'] =  ['circle', 'revolution', 'rad', 'deg', 'grad', 'arcmin', 'arcsec']
 display_unitsD['AngVelocity'] =  ['rad/s', 'rpm', 'deg/s', 'rad/min', 'deg/min']
 display_unitsD['Area'] =  ['mile**2', 'acre', 'm**2', 'ft**2', 'in**2', 'inch**2', 'cm**2']
+display_unitsD['CoeffThermExp(CTE)'] = ['1/degF', '1/degR', '1/degC', '1/degK']
 display_unitsD['DeltaT'] =  ['delC', 'delK', 'delF', 'delR']
 display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
 display_unitsD['ElementDensity'] =  ['elem/cm**2', 'elem/in**2']
@@ -663,6 +674,7 @@ SI_unitsD['Acceleration'] =  'm/s**2'
 SI_unitsD['Angle'] =  'deg'
 SI_unitsD['AngVelocity'] =  'deg/s'
 SI_unitsD['Area'] =   'm**2'
+SI_unitsD['CoeffThermExp(CTE)'] = '1/degC'
 SI_unitsD['DeltaT'] =  'delK'
 SI_unitsD['Density'] =  'kg/m**3'
 SI_unitsD['ElementDensity'] =  'elem/cm**2'
