@@ -134,7 +134,7 @@ class Units(object):
         else:
             return unit
 
-    def __get_output_str(self, inp_val=0.0, inp_units="", 
+    def get_output_str(self, inp_val=0.0, inp_units="", 
                        out_units="", default_units="", user_inp_units="",
                        fmt="%g"):
         """
@@ -293,7 +293,7 @@ class Units(object):
                 #print('Found internal units = "%s"'%added_units)
 
         # inp_val=0.0, added_units="", primary_units="", fmt="%g")
-        s = self.__get_output_str( inp_val=val, inp_units=added_units, 
+        s = self.get_output_str( inp_val=val, inp_units=added_units, 
                                  out_units=primary_units,  
                                  default_units=self.default_unitsD.get(name, ''),
                                  user_inp_units=self.user_input_unitsD.get(name, ''),

@@ -429,6 +429,7 @@ add_units_to_category( c_name="Pressure", u_name="atm"        , conv_factor=0.06
 add_units_to_category( c_name="Pressure", u_name="bar"        , conv_factor=0.0689475729317, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="inHg"       , conv_factor=2.036021, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="kPa"        , conv_factor=6.89475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="hPa"        , conv_factor=68.9475729317, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="lbf/ft**2"  , conv_factor=144.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="lbf/inch**2", conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="mmHg"       , conv_factor=51.71493, offset=0.0 )
@@ -656,7 +657,7 @@ display_unitsD['Mass'] =  ['long_ton', 'metric_ton', 'short_ton', 'slug', 'gal_H
 display_unitsD['MassFlow'] =  ['kg/s', 'lbm/s', 'kg/min', 'lbm/min', 'g/s', 'kg/hr', 'lbm/hr', 'g/min', 'g/hr']
 display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
 display_unitsD["Power"] = ['MW', 'kcal/s', 'BTU/s', 'kJ/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'kcal/hr', 'J/s', 'W', 'BTU/hr', 'kJ/hr', 'cal/hr', 'ft*lbf/hr', 'J/hr']
-display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
+display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'hPa', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
 display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
 display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg", "psia-in**3/lbm"]
 display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
