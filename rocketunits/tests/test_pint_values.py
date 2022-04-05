@@ -118,6 +118,7 @@ class MyTest(unittest.TestCase):
         #  Density  Using SI ref of 1.0 kg/m**3 == kg/m**3
         self.assertAlmostEqual(1.0, 3.61273e-05 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="lbm/in**3"), places=5)
         self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="g/ml"), places=5)
+        self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="g/cm**3"), places=5)
         self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="SG"), places=5)
         self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="specific_gravity"), places=5)
         self.assertAlmostEqual(1.0, 0.00194032 / convert_value(inp_val=1.0, inp_units="kg/m**3", out_units="slug/ft**3"), places=5)
@@ -180,6 +181,7 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 6.68459e-12 / convert_value(inp_val=1.0, inp_units="m", out_units="astronomical_unit"), places=5)
         self.assertAlmostEqual(1.0, 0.000539957 / convert_value(inp_val=1.0, inp_units="m", out_units="nautical_mile"), places=5)
         self.assertAlmostEqual(1.0, 0.000621371 / convert_value(inp_val=1.0, inp_units="m", out_units="mile"), places=5)
+        self.assertAlmostEqual(1.0, 0.000621371 / convert_value(inp_val=1.0, inp_units="m", out_units="statute_mile"), places=5)
         self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="m", out_units="km"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="m", out_units="m"), places=5)
         self.assertAlmostEqual(1.0, 1.09361 / convert_value(inp_val=1.0, inp_units="m", out_units="yd"), places=5)
@@ -380,6 +382,7 @@ class MyTest(unittest.TestCase):
         #  Density  Using English ref of 1.0 lbm/in**3 == lbm/in**3
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="lbm/in**3"), places=5)
         self.assertAlmostEqual(1.0, 27.6799 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="g/ml"), places=5)
+        self.assertAlmostEqual(1.0, 27.6799 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="g/cm**3"), places=5)
         self.assertAlmostEqual(1.0, 27.6799 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="SG"), places=5)
         self.assertAlmostEqual(1.0, 27.6799 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="specific_gravity"), places=5)
         self.assertAlmostEqual(1.0, 53.7079 / convert_value(inp_val=1.0, inp_units="lbm/in**3", out_units="slug/ft**3"), places=5)
@@ -491,6 +494,7 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="psia", out_units="lbf/inch**2"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="psia", out_units="psia"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="psia", out_units="psid"), places=5)
+        self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=0.0, inp_units="psig", out_units="atm"), places=5)
         self.assertAlmostEqual(1.0, 2.03602 / convert_value(inp_val=1.0, inp_units="psia", out_units="inHg"), places=5)
         self.assertAlmostEqual(1.0, 6.89476 / convert_value(inp_val=1.0, inp_units="psia", out_units="kPa"), places=5)
         self.assertAlmostEqual(1.0, 51.7149 / convert_value(inp_val=1.0, inp_units="psia", out_units="mmHg"), places=5)
@@ -573,6 +577,7 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="inch**3", out_units="in**3"), places=5)
         self.assertAlmostEqual(1.0, 1 / convert_value(inp_val=1.0, inp_units="inch**3", out_units="inch**3"), places=5)
         self.assertAlmostEqual(1.0, 16.3871 / convert_value(inp_val=1.0, inp_units="inch**3", out_units="cm**3"), places=5)
+        self.assertAlmostEqual(1.0, 16.3871 / convert_value(inp_val=1.0, inp_units="inch**3", out_units="ml"), places=5)
         #  VolumeFlow  Using English ref of 1.0 inch**3/s == inch**3/s
         self.assertAlmostEqual(1.0, 1.63871e-05 / convert_value(inp_val=1.0, inp_units="inch**3/s", out_units="m**3/s"), places=5)
         self.assertAlmostEqual(1.0, 0.000578704 / convert_value(inp_val=1.0, inp_units="inch**3/s", out_units="ft**3/s"), places=5)

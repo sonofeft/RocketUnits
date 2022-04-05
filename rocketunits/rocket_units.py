@@ -233,6 +233,7 @@ add_units_to_category( c_name="DeltaT", u_name="delR", conv_factor=1.0, offset=0
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="Density", def_units="lbm/inch**3" )
 add_units_to_category( c_name="Density", u_name="g/ml"            , conv_factor=27.6799047102, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="g/cm**3"         , conv_factor=27.6799047102, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="kg/m**3"         , conv_factor=27679.9047102, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="lbm/ft**3"       , conv_factor=1728.0, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="lbm/galUS"       , conv_factor=231.0, offset=0.0 )
@@ -281,6 +282,10 @@ add_units_to_category( c_name="Force", u_name="dyn", conv_factor=444822.161526, 
 add_units_to_category( c_name="Force", u_name="kN" , conv_factor=0.00444822161526, offset=0.0 )
 add_units_to_category( c_name="Force", u_name="lbf", conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Force", u_name="N"  , conv_factor=4.44822161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="kg*m/s**2"  , conv_factor=4.44822161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="slug*ft/s**2", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="ft*lbm/s**2", conv_factor=32.17405, offset=0.0 )
+
 
 # Creating Unit Category for "Frequency"
 # Read As: 1 default unit = conv_factor u_name units
@@ -367,6 +372,7 @@ add_units_to_category( c_name="Length", u_name="m"                , conv_factor=
 add_units_to_category( c_name="Length", u_name="micron"           , conv_factor=25400.0, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mil"              , conv_factor=1000.0, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mile"             , conv_factor=1.57828282828e-05, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="statute_mile"     , conv_factor=1.57828282828e-05, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mm"               , conv_factor=25.4, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="nautical_mile"    , conv_factor=1.37149377616e-05, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="yd"               , conv_factor=0.0277777777778, offset=0.0 )
@@ -440,6 +446,7 @@ add_units_to_category( c_name="Pressure", u_name="Pa"         , conv_factor=6894
 add_units_to_category( c_name="Pressure", u_name="psf"        , conv_factor=144.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="psia"       , conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="psid"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="psig"       , conv_factor=1.0, offset=-1.0/0.0680459639099 )
 add_units_to_category( c_name="Pressure", u_name="torr"       , conv_factor=51.7149325715, offset=0.0 )
 
 # Creating Unit Category for "SurfaceTension"
@@ -546,6 +553,7 @@ add_units_to_category( c_name="Viscosity_Kinematic", u_name="stokes"     , conv_
 create_category(       c_name="Volume", def_units="inch**3" )
 add_units_to_category( c_name="Volume", u_name="barOil" , conv_factor=0.000103071531643, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="cm**3"  , conv_factor=16.387064, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="ml"  , conv_factor=16.387064, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="cup"    , conv_factor=0.0692640692641, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="ft**3"  , conv_factor=0.000578703703704, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="galUK"  , conv_factor=0.00360465014991, offset=0.0 )
@@ -642,22 +650,22 @@ display_unitsD['AngVelocity'] =  ['rad/s', 'rpm', 'deg/s', 'rad/min', 'deg/min']
 display_unitsD['Area'] =  ['mile**2', 'acre', 'm**2', 'ft**2', 'in**2', 'inch**2', 'cm**2']
 display_unitsD['CoeffThermExp(CTE)'] = ['1/degF', '1/degR', '1/degC', '1/degK']
 display_unitsD['DeltaT'] =  ['delC', 'delK', 'delF', 'delR']
-display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
+display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'g/cm**3', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
 display_unitsD['ElementDensity'] =  ['elem/cm**2', 'elem/in**2']
 display_unitsD['Energy'] =  ['kW*hr', 'kcal', 'W*hr', 'BTU', 'kJ', 'cal', 'ft*lbf', 'J', 'erg']
 display_unitsD['EnergySpec'] =  ['kcal/g', 'kW*hr/kg', 'cal/g', 'kcal/kg', 'BTU/lbm', 'J/g', 'kJ/kg', 'J/kg']
-display_unitsD['Force'] =  ['kN', 'lbf', 'N', 'dyn']
+display_unitsD['Force'] =  ['kN', 'lbf', "slug*ft/s**2", 'N', "kg*m/s**2", "ft*lbm/s**2", 'dyn']
 display_unitsD['Frequency'] =  ['GHz', 'MHz', 'kHz', 'Hz']
 display_unitsD['HeatCapacity'] =  ['kcal/g/C', 'BTU/lbm/F', 'cal/g/C',  'kJ/kg/K', 'J/kg/K']
 display_unitsD["HeatFlux"] = ['BTU/in**2/s', 'cal/cm**2/s', 'BTU/ft**2/s', 'W/cm**2', 'kcal/m**2/s', 'W/in**2', 'cal/cm**2/hr', 'BTU/ft**2/hr', 'kcal/m**2/hr', 'J/s/m**2', 'W/m**2']
 display_unitsD['HxCoeff'] =  [ 'BTU/inch**2/s/F', 'cal/cm**2/s/C', 'BTU/ft**2/hr/F', 'kcal/m**2/hr/C',  'W/m**2/C']
 display_unitsD['Isp'] =  ['km/sec', 'lbf-sec/lbm', 'sec', 'm/sec', 'N-sec/kg']
-display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
+display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'statute_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
 display_unitsD['Mass'] =  ['long_ton', 'metric_ton', 'short_ton', 'slug', 'gal_H2O', 'kg', 'lbm', 'g']
 display_unitsD['MassFlow'] =  ['kg/s', 'lbm/s', 'kg/min', 'lbm/min', 'g/s', 'kg/hr', 'lbm/hr', 'g/min', 'g/hr']
 display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
 display_unitsD["Power"] = ['MW', 'kcal/s', 'BTU/s', 'kJ/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'kcal/hr', 'J/s', 'W', 'BTU/hr', 'kJ/hr', 'cal/hr', 'ft*lbf/hr', 'J/hr']
-display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'hPa', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
+display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psig', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'hPa', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
 display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
 display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg", "psia-in**3/lbm"]
 display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
@@ -666,7 +674,7 @@ display_unitsD['Time'] =  ['year', 'day', 'hr', 'min', 's', 'millisec', 'ms', 'm
 display_unitsD['Velocity'] =  ['m/s', 'mile/hr', 'ft/s', 'km/hr', 'inch/s', 'cm/s']
 display_unitsD['Viscosity_Dynamic'] =  ['kg/s/cm', 'lbm/s/inch', 'lbm/s/ft', 'kg/s/m', 'Pa*s', 'poise', 'kg/hr/cm', 'lbm/hr/inch', 'cp', 'cpoise', 'lbm/hr/ft', 'kg/hr/m']
 display_unitsD['Viscosity_Kinematic'] =  ['m**2/s', 'ft**2/s', 'stokes', 'ft**2/hr', 'centistokes']
-display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3']
+display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3', 'ml']
 display_unitsD['VolumeFlow'] =  ['m**3/s', 'ft**3/s', 'galUS/s', 'l/s', 'ft**3/min', 'm**3/hr', 'galUS/min', 'gpm', 'inch**3/s', 'ft**3/hr', 'galUS/hr', 'ml/s', 'inch**3/min', 'galUS/day', 'ml/min', 'inch**3/hr', 'ml/hr']
 
 # English units are held in display_def_unitsD
