@@ -6,10 +6,11 @@ RocketUnits provides a graphic user interface (GUI) for engineering units conver
 
 RocketUnits provides units conversion for a number of engineering categories.
 Included units categories include: Acceleration, Angle, AngVelocity, 
-Area, DeltaT, Density, ElementDensity, Energy, EnergySpec, Force, Frequency, 
-HeatCapacity, HxCoeff, Isp, Length, Mass, MassFlow, MolecularWt, Power, 
-Pressure, SurfaceTension, Temperature, ThermalCond, Time, Velocity, 
-Viscosity_Dynamic, Viscosity_Kinematic, Volume, and VolumeFlow.
+Area, CoeffThermExp(CTE), DeltaT, Density, ElementDensity, Energy, EnergySpec, 
+Force, Frequency, HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, 
+MolecularWt, Power, Pressure, SurfaceTension, Tank_PV/W, Temperature, 
+ThermalCond, Time, Velocity, Viscosity_Dynamic, Viscosity_Kinematic, Volume, 
+and VolumeFlow.
 Unit conversion can be performed either with the included GUI, or directly
 from python by importing the units conversion data file.
 
@@ -44,7 +45,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.9'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.10'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -64,18 +65,37 @@ offsetD = {}      # index=units name, value=float offset value (e.g. 'cm':0.0)
 def get_version():
     return __version__
 
+def parse_float_string( sinp="1 atm" ):
+    """
+    Given a string input, parse into float and units string.
+    String must be of format "<number> <units>" (at least one space)
+    
+    Return tuple of (float, units string)
+    NOTE: if input is NOT a string, return None, None
+    """
+    if type(sinp) != type("string"):
+        return None, None
+        
+    sL = sinp.split()
+    if len(sL) != 2:
+        raise('sinp="%s" String must be of format "<number> <units>"'%sinp)
+        
+    fstr, ustr = sL
+    return float(fstr), ustr # (float, units string)
+    
+
 def convert_string( sinp="1 atm", rtn_units="psia" ):
     """
     Given a string input, parse into float of desired units.
-    String must be of format "number units" (at least one space)
+    String must be of format "<number> <units>" (at least one space)
     NOTE: if input is NOT a string, simply return it.
     """
-    if not type(sinp) == type("string"):
+    if type(sinp) != type("string"):
         return sinp
 
     sL = sinp.split()
     if len(sL) != 2:
-        raise('In convert_string: String must be of format "number units" (at least one space)')
+        raise('sinp="%s" String must be of format "<number> <units>"'%sinp)
 
     if sL[0] == "None":
         return None
@@ -126,6 +146,33 @@ def chk_units_in_category( units, category ):
         raise Exception('ERROR: units "%s" are not in category "%s"'%(units, category) + s)
     return True
 
+def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
+    """Convert inp_val from inp_units to out_units and return.
+        :param inp_val   : input value to be converted
+        :param inp_units : units of inp_val
+        :param out_units : desired output units
+        :type inp_val   : float
+        :type inp_units : str
+        :type out_units : str
+        :return: value converted from inp_units to out_units
+        :retype: float
+    """
+    # convert inp_val to default units
+    def_unit_val = (inp_val - offsetD[inp_units]) / conv_factD[inp_units]
+    # convert from default units to requested output units
+    return def_unit_val * conv_factD[out_units] + offsetD[out_units]
+    
+# Read As: 1 default unit = conv_factD target units
+def get_value_str( inp_val=20.0, inp_units='degC', out_units='degK', fmt='%g'):
+    val = convert_value(inp_val=inp_val, inp_units=inp_units, out_units=out_units)
+    return fmt%val + ' %s'%out_units
+
+def get_category( units ):
+    """return the category that units belongs to."""
+    if units in unit_catD:
+        return unit_catD[ units ]
+    return ''
+
 # Creating Unit Category for "Acceleration"
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="Acceleration", def_units="ft/s**2" )
@@ -166,6 +213,14 @@ add_units_to_category( c_name="Area", u_name="inch**2", conv_factor=1.0, offset=
 add_units_to_category( c_name="Area", u_name="m**2"   , conv_factor=0.00064516, offset=0.0 )
 add_units_to_category( c_name="Area", u_name="mile**2", conv_factor=2.49097668605e-10, offset=0.0 )
 
+# Creating Unit Category for "CoeffThermExp(CTE)"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="CoeffThermExp(CTE)", def_units="1/degF" )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degC", conv_factor=1.8, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degF", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degK", conv_factor=1.8, offset=0.0 )
+add_units_to_category( c_name="CoeffThermExp(CTE)", u_name="1/degR", conv_factor=1.0, offset=0.0 )
+
 # Creating Unit Category for "DeltaT"
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="DeltaT", def_units="delF" )
@@ -178,6 +233,7 @@ add_units_to_category( c_name="DeltaT", u_name="delR", conv_factor=1.0, offset=0
 # Read As: 1 default unit = conv_factor u_name units
 create_category(       c_name="Density", def_units="lbm/inch**3" )
 add_units_to_category( c_name="Density", u_name="g/ml"            , conv_factor=27.6799047102, offset=0.0 )
+add_units_to_category( c_name="Density", u_name="g/cm**3"         , conv_factor=27.6799047102, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="kg/m**3"         , conv_factor=27679.9047102, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="lbm/ft**3"       , conv_factor=1728.0, offset=0.0 )
 add_units_to_category( c_name="Density", u_name="lbm/galUS"       , conv_factor=231.0, offset=0.0 )
@@ -226,6 +282,10 @@ add_units_to_category( c_name="Force", u_name="dyn", conv_factor=444822.161526, 
 add_units_to_category( c_name="Force", u_name="kN" , conv_factor=0.00444822161526, offset=0.0 )
 add_units_to_category( c_name="Force", u_name="lbf", conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Force", u_name="N"  , conv_factor=4.44822161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="kg*m/s**2"  , conv_factor=4.44822161526, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="slug*ft/s**2", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Force", u_name="ft*lbm/s**2", conv_factor=32.17405, offset=0.0 )
+
 
 # Creating Unit Category for "Frequency"
 # Read As: 1 default unit = conv_factor u_name units
@@ -253,6 +313,21 @@ add_units_to_category( c_name="HeatCapacity", u_name="kcal/g/delC" , conv_factor
 add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/degK"  , conv_factor=4.1868, offset=0.0 )
 add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/delK"  , conv_factor=4.1868, offset=0.0 )
 add_units_to_category( c_name="HeatCapacity", u_name="kJ/kg/K"     , conv_factor=4.1868, offset=0.0 )
+
+# Creating Unit Category for "HeatFlux"
+# Read As: 1 default unit = conv_factor u_name units
+create_category(       c_name="HeatFlux", def_units="BTU/in**2/s" ) 
+add_units_to_category( c_name="HeatFlux", u_name="BTU/in**2/s" , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="cal/cm**2/s" , conv_factor=39.08556574283321, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="BTU/ft**2/s" , conv_factor=144.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/cm**2"     , conv_factor=163.53400706801415, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="kcal/m**2/s" , conv_factor=390.8556574283321, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/in**2"     , conv_factor=1055.056, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="cal/cm**2/hr", conv_factor=140708.03667419957, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="BTU/ft**2/hr", conv_factor=518400.0, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="kcal/m**2/hr", conv_factor=1407080.3667419956, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="J/s/m**2"    , conv_factor=1635340.0706801414, offset=0.0 )
+add_units_to_category( c_name="HeatFlux", u_name="W/m**2"      , conv_factor=1635340.0706801414, offset=0.0 )
 
 # Creating Unit Category for "HxCoeff"
 # Read As: 1 default unit = conv_factor u_name units
@@ -297,6 +372,7 @@ add_units_to_category( c_name="Length", u_name="m"                , conv_factor=
 add_units_to_category( c_name="Length", u_name="micron"           , conv_factor=25400.0, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mil"              , conv_factor=1000.0, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mile"             , conv_factor=1.57828282828e-05, offset=0.0 )
+add_units_to_category( c_name="Length", u_name="statute_mile"     , conv_factor=1.57828282828e-05, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="mm"               , conv_factor=25.4, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="nautical_mile"    , conv_factor=1.37149377616e-05, offset=0.0 )
 add_units_to_category( c_name="Length", u_name="yd"               , conv_factor=0.0277777777778, offset=0.0 )
@@ -334,15 +410,23 @@ add_units_to_category( c_name="MolecularWt", u_name="lbm/lbmole", conv_factor=1.
 
 # Creating Unit Category for "Power"
 # Read As: 1 default unit = conv_factor u_name units
-create_category(       c_name="Power", def_units="hp" )
-add_units_to_category( c_name="Power", u_name="Btu/hr"  , conv_factor=2544.43401582, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="Btu/s"   , conv_factor=0.706787226618, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="cal/s"   , conv_factor=178.226577438, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="ft*lbf/s", conv_factor=550.000094716, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="hp"      , conv_factor=1.0, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="kW"      , conv_factor=0.7457, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="MW"      , conv_factor=0.0007457, offset=0.0 )
-add_units_to_category( c_name="Power", u_name="W"       , conv_factor=745.7, offset=0.0 )
+create_category(       c_name="Power", def_units="hp" ) 
+add_units_to_category( c_name="Power", u_name="MW"       , conv_factor=0.0007456998715822702, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kcal/s"   , conv_factor=0.17822654674528446, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="BTU/s"    , conv_factor=0.7067870061705446, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kJ/s"     , conv_factor=0.7456998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kW"       , conv_factor=0.7456998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="hp"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="cal/s"    , conv_factor=178.22654674528442, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="ft*lbf/s" , conv_factor=549.9999999999999, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kcal/hr"  , conv_factor=641.615568283024, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="J/s"      , conv_factor=745.6998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="W"        , conv_factor=745.6998715822701, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="BTU/hr"   , conv_factor=2544.43322221396, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="kJ/hr"    , conv_factor=2684.519537696173, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="cal/hr"   , conv_factor=641615.5682830239, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="ft*lbf/hr", conv_factor=1979999.9999999995, offset=0.0 )
+add_units_to_category( c_name="Power", u_name="J/hr"     , conv_factor=2684519.5376961725, offset=0.0 )
 
 # Creating Unit Category for "Pressure"
 # Read As: 1 default unit = conv_factor u_name units
@@ -351,6 +435,7 @@ add_units_to_category( c_name="Pressure", u_name="atm"        , conv_factor=0.06
 add_units_to_category( c_name="Pressure", u_name="bar"        , conv_factor=0.0689475729317, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="inHg"       , conv_factor=2.036021, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="kPa"        , conv_factor=6.89475729317, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="hPa"        , conv_factor=68.9475729317, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="lbf/ft**2"  , conv_factor=144.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="lbf/inch**2", conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="mmHg"       , conv_factor=51.71493, offset=0.0 )
@@ -361,6 +446,7 @@ add_units_to_category( c_name="Pressure", u_name="Pa"         , conv_factor=6894
 add_units_to_category( c_name="Pressure", u_name="psf"        , conv_factor=144.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="psia"       , conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="Pressure", u_name="psid"       , conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Pressure", u_name="psig"       , conv_factor=1.0, offset=-1.0/0.0680459639099 )
 add_units_to_category( c_name="Pressure", u_name="torr"       , conv_factor=51.7149325715, offset=0.0 )
 
 # Creating Unit Category for "SurfaceTension"
@@ -371,6 +457,16 @@ add_units_to_category( c_name="SurfaceTension", u_name="lbf/ft" , conv_factor=12
 add_units_to_category( c_name="SurfaceTension", u_name="lbf/in" , conv_factor=1.0, offset=0.0 )
 add_units_to_category( c_name="SurfaceTension", u_name="mN/m"   , conv_factor=175126.836986, offset=0.0 )
 add_units_to_category( c_name="SurfaceTension", u_name="N/m"    , conv_factor=175.126836986, offset=0.0 )
+
+
+# Creating Unit Category for "Tank_PV/W"
+# Read As: 1 default unit = conv_factor u_name units
+create_category( c_name="Tank_PV/W", def_units="psia-in**3/lbm" )
+add_units_to_category( c_name="Tank_PV/W", u_name="psia-in**3/lbm", conv_factor=1.0, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="psia-ft**3/lbm", conv_factor=1.0/1728.0, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="MPa-liter/kg"  , conv_factor=0.00024908891, offset=0.0 )
+add_units_to_category( c_name="Tank_PV/W", u_name="bar-liter/kg"  , conv_factor=0.0024908891, offset=0.0 )
+
 
 # Creating Unit Category for "Temperature"
 # Read As: 1 default unit = conv_factor u_name units
@@ -414,6 +510,7 @@ add_units_to_category( c_name="Time", u_name="min"     , conv_factor=0.016666666
 add_units_to_category( c_name="Time", u_name="ms"      , conv_factor=1000.0, offset=0.0 )
 add_units_to_category( c_name="Time", u_name="nanosec" , conv_factor=1000000000.0, offset=0.0 )
 add_units_to_category( c_name="Time", u_name="s"       , conv_factor=1.0, offset=0.0 )
+#                                             this is an average year, not a 365 day year.
 add_units_to_category( c_name="Time", u_name="year"    , conv_factor=3.16887646408e-08, offset=0.0 )
 
 # Creating Unit Category for "Velocity"
@@ -456,6 +553,7 @@ add_units_to_category( c_name="Viscosity_Kinematic", u_name="stokes"     , conv_
 create_category(       c_name="Volume", def_units="inch**3" )
 add_units_to_category( c_name="Volume", u_name="barOil" , conv_factor=0.000103071531643, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="cm**3"  , conv_factor=16.387064, offset=0.0 )
+add_units_to_category( c_name="Volume", u_name="ml"  , conv_factor=16.387064, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="cup"    , conv_factor=0.0692640692641, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="ft**3"  , conv_factor=0.000578703703704, offset=0.0 )
 add_units_to_category( c_name="Volume", u_name="galUK"  , conv_factor=0.00360465014991, offset=0.0 )
@@ -488,33 +586,6 @@ add_units_to_category( c_name="VolumeFlow", u_name="m**3/s"     , conv_factor=1.
 add_units_to_category( c_name="VolumeFlow", u_name="ml/hr"      , conv_factor=58993.4304, offset=0.0 )
 add_units_to_category( c_name="VolumeFlow", u_name="ml/min"     , conv_factor=983.22384, offset=0.0 )
 add_units_to_category( c_name="VolumeFlow", u_name="ml/s"       , conv_factor=16.387064, offset=0.0 )
-
-def convert_value( inp_val=20.0, inp_units='degC', out_units='degK'):
-    """Convert inp_val from inp_units to out_units and return.
-        :param inp_val   : input value to be converted
-        :param inp_units : units of inp_val
-        :param out_units : desired output units
-        :type inp_val   : float
-        :type inp_units : str
-        :type out_units : str
-        :return: value converted from inp_units to out_units
-        :retype: float
-    """
-    # convert inp_val to default units
-    def_unit_val = (inp_val - offsetD[inp_units]) / conv_factD[inp_units]
-    # convert from default units to requested output units
-    return def_unit_val * conv_factD[out_units] + offsetD[out_units]
-    
-# Read As: 1 default unit = conv_factD target units
-def get_value_str( inp_val=20.0, inp_units='degC', out_units='degK', fmt='%g'):
-    val = convert_value(inp_val=inp_val, inp_units=inp_units, out_units=out_units)
-    return fmt%val + ' %s'%out_units
-
-def get_category( units ):
-    """return the category that units belongs to."""
-    if units in unit_catD:
-        return unit_catD[ units ]
-    return ''
         
 
 # ============== some common conversions ===================
@@ -542,6 +613,7 @@ display_def_unitsD["Acceleration"] = "ft/s**2"
 display_def_unitsD["Angle"] = "deg"
 display_def_unitsD["AngVelocity"] = "rpm"
 display_def_unitsD["Area"] = "inch**2"
+display_def_unitsD["CoeffThermExp(CTE)"] = "1/degF"
 display_def_unitsD["DeltaT"] = "delF"
 display_def_unitsD["Density"] = "lbm/in**3"
 display_def_unitsD["ElementDensity"] = "elem/cm**2"
@@ -550,6 +622,7 @@ display_def_unitsD["EnergySpec"] = "BTU/lbm"
 display_def_unitsD["Force"] = "lbf"
 display_def_unitsD["Frequency"] = "Hz"
 display_def_unitsD["HeatCapacity"] = "BTU/lbm/F"
+display_def_unitsD["HeatFlux"] = "BTU/in**2/s"
 display_def_unitsD["HxCoeff"] = "BTU/inch**2/s/F"
 display_def_unitsD["Isp"] = "sec"
 display_def_unitsD["Length"] = "inch"
@@ -559,6 +632,7 @@ display_def_unitsD["MolecularWt"] = "g/gmole"
 display_def_unitsD["Power"] = "hp"
 display_def_unitsD["Pressure"] = "psia"
 display_def_unitsD["SurfaceTension"] = "lbf/in"
+display_def_unitsD["Tank_PV/W"] = "psia-in**3/lbm"
 display_def_unitsD["Temperature"] = "degF"
 display_def_unitsD["ThermalCond"] = "BTU/hr/ft/F"
 display_def_unitsD["Time"] = "s"
@@ -574,30 +648,33 @@ display_unitsD['Acceleration'] =  ['gee', 'm/s**2', 'mile/hr/s', 'ft/s**2', 'cm/
 display_unitsD['Angle'] =  ['circle', 'revolution', 'rad', 'deg', 'grad', 'arcmin', 'arcsec']
 display_unitsD['AngVelocity'] =  ['rad/s', 'rpm', 'deg/s', 'rad/min', 'deg/min']
 display_unitsD['Area'] =  ['mile**2', 'acre', 'm**2', 'ft**2', 'in**2', 'inch**2', 'cm**2']
+display_unitsD['CoeffThermExp(CTE)'] = ['1/degF', '1/degR', '1/degC', '1/degK']
 display_unitsD['DeltaT'] =  ['delC', 'delK', 'delF', 'delR']
-display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
+display_unitsD['Density'] =  ['lbm/in**3', 'g/ml', 'g/cm**3', 'SG', 'specific_gravity', 'slug/ft**3', 'lbm/galUS', 'lbm/ft**3', 'ounce/galUS', 'kg/m**3']
 display_unitsD['ElementDensity'] =  ['elem/cm**2', 'elem/in**2']
 display_unitsD['Energy'] =  ['kW*hr', 'kcal', 'W*hr', 'BTU', 'kJ', 'cal', 'ft*lbf', 'J', 'erg']
 display_unitsD['EnergySpec'] =  ['kcal/g', 'kW*hr/kg', 'cal/g', 'kcal/kg', 'BTU/lbm', 'J/g', 'kJ/kg', 'J/kg']
-display_unitsD['Force'] =  ['kN', 'lbf', 'N', 'dyn']
+display_unitsD['Force'] =  ['kN', 'lbf', "slug*ft/s**2", 'N', "kg*m/s**2", "ft*lbm/s**2", 'dyn']
 display_unitsD['Frequency'] =  ['GHz', 'MHz', 'kHz', 'Hz']
 display_unitsD['HeatCapacity'] =  ['kcal/g/C', 'BTU/lbm/F', 'cal/g/C',  'kJ/kg/K', 'J/kg/K']
+display_unitsD["HeatFlux"] = ['BTU/in**2/s', 'cal/cm**2/s', 'BTU/ft**2/s', 'W/cm**2', 'kcal/m**2/s', 'W/in**2', 'cal/cm**2/hr', 'BTU/ft**2/hr', 'kcal/m**2/hr', 'J/s/m**2', 'W/m**2']
 display_unitsD['HxCoeff'] =  [ 'BTU/inch**2/s/F', 'cal/cm**2/s/C', 'BTU/ft**2/hr/F', 'kcal/m**2/hr/C',  'W/m**2/C']
 display_unitsD['Isp'] =  ['km/sec', 'lbf-sec/lbm', 'sec', 'm/sec', 'N-sec/kg']
-display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
+display_unitsD['Length'] =  ['light_year', 'astronomical_unit', 'nautical_mile', 'statute_mile', 'mile', 'km', 'm', 'yd', 'ft', 'inch', 'cm', 'mm', 'mil', 'micron', 'angstrom']
 display_unitsD['Mass'] =  ['long_ton', 'metric_ton', 'short_ton', 'slug', 'gal_H2O', 'kg', 'lbm', 'g']
 display_unitsD['MassFlow'] =  ['kg/s', 'lbm/s', 'kg/min', 'lbm/min', 'g/s', 'kg/hr', 'lbm/hr', 'g/min', 'g/hr']
 display_unitsD['MolecularWt'] =  ['g/gmole', 'lbm/lbmole']
-display_unitsD['Power'] =  ['MW', 'Btu/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'W', 'Btu/hr']
-display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
+display_unitsD["Power"] = ['MW', 'kcal/s', 'BTU/s', 'kJ/s', 'kW', 'hp', 'cal/s', 'ft*lbf/s', 'kcal/hr', 'J/s', 'W', 'BTU/hr', 'kJ/hr', 'cal/hr', 'ft*lbf/hr', 'J/hr']
+display_unitsD['Pressure'] =  ['MPa', 'atm', 'bar', 'N/cm**2', 'lbf/inch**2', 'psig', 'psia', 'psid', 'inHg', 'kPa', 'mmHg', 'torr', 'hPa', 'lbf/ft**2', 'psf', 'N/m**2', 'Pa']
 display_unitsD['SurfaceTension'] =  ['lbf/in', 'lbf/ft', 'N/m', 'mN/m', 'dyne/cm']
+display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg", "psia-in**3/lbm"]
 display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
 display_unitsD['ThermalCond'] =  [ 'BTU/s/inch/F', 'BTU/s/ft/F', 'cal/s/cm/C', 'W/cm/C', 'cal/s/m/C',  'BTU/hr/ft/F', 'W/m/K']
 display_unitsD['Time'] =  ['year', 'day', 'hr', 'min', 's', 'millisec', 'ms', 'microsec', 'nanosec']
 display_unitsD['Velocity'] =  ['m/s', 'mile/hr', 'ft/s', 'km/hr', 'inch/s', 'cm/s']
 display_unitsD['Viscosity_Dynamic'] =  ['kg/s/cm', 'lbm/s/inch', 'lbm/s/ft', 'kg/s/m', 'Pa*s', 'poise', 'kg/hr/cm', 'lbm/hr/inch', 'cp', 'cpoise', 'lbm/hr/ft', 'kg/hr/m']
 display_unitsD['Viscosity_Kinematic'] =  ['m**2/s', 'ft**2/s', 'stokes', 'ft**2/hr', 'centistokes']
-display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3']
+display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3', 'ml']
 display_unitsD['VolumeFlow'] =  ['m**3/s', 'ft**3/s', 'galUS/s', 'l/s', 'ft**3/min', 'm**3/hr', 'galUS/min', 'gpm', 'inch**3/s', 'ft**3/hr', 'galUS/hr', 'ml/s', 'inch**3/min', 'galUS/day', 'ml/min', 'inch**3/hr', 'ml/hr']
 
 # English units are held in display_def_unitsD
@@ -606,6 +683,7 @@ SI_unitsD['Acceleration'] =  'm/s**2'
 SI_unitsD['Angle'] =  'deg'
 SI_unitsD['AngVelocity'] =  'deg/s'
 SI_unitsD['Area'] =   'm**2'
+SI_unitsD['CoeffThermExp(CTE)'] = '1/degC'
 SI_unitsD['DeltaT'] =  'delK'
 SI_unitsD['Density'] =  'kg/m**3'
 SI_unitsD['ElementDensity'] =  'elem/cm**2'
@@ -614,6 +692,7 @@ SI_unitsD['EnergySpec'] =  'J/kg'
 SI_unitsD['Force'] =  'N'
 SI_unitsD['Frequency'] =  'Hz'
 SI_unitsD['HeatCapacity'] =  'J/kg/K'
+SI_unitsD["HeatFlux"] = "kcal/m**2/s"
 SI_unitsD['HxCoeff'] =  'cal/cm**2/s/C'
 SI_unitsD['Isp'] =  'm/sec'
 SI_unitsD['Length'] =  'm'
@@ -623,6 +702,7 @@ SI_unitsD['MolecularWt'] =  'g/gmole'
 SI_unitsD['Power'] =  'cal/s'
 SI_unitsD['Pressure'] =  'Pa'
 SI_unitsD['SurfaceTension'] =  'N/m'
+SI_unitsD['Tank_PV/W'] = "bar-liter/kg"
 SI_unitsD['Temperature'] =  'degK'
 SI_unitsD['ThermalCond'] =  'W/m/K'
 SI_unitsD['Time'] =  's'
@@ -671,6 +751,14 @@ def main():
 
     print("Check degF in Temperature =", units_in_category( u_name="degF", c_name="Temperature"))
 
+
+    def show_convert( sinp, out_units):
+        val = convert_string(sinp, out_units)
+        print( sinp, " -->", val, out_units )
+    show_convert("500000 psia-in**3/lbm", "MPa-liter/kg")
+    show_convert("500000 psia-in**3/lbm", "psia-ft**3/lbm")
+    show_convert("500000 psia-in**3/lbm", "bar-liter/kg")
+    show_convert("240 bar-liter/kg", "MPa-liter/kg")
 
 if __name__ == "__main__":
     main()

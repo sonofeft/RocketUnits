@@ -19,9 +19,10 @@ def distance( vinit="10.0 m/s", acc="9.80665 m/s**2", time="30 s"):
     """
     # let Units inspect the distance interface and get locals() values
     my_units = Units( distance, vars() )
+    GETVAL = my_units.get_input_value # a convenience method
     
     # let Units convert inputs into internal units
-    vinit = my_units.get_input_value("vinit")
+    vinit = GETVAL("vinit")
     acc = my_units.get_input_value("acc")
     time = my_units.get_input_value("time")
 

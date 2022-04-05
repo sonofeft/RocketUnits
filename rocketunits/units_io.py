@@ -123,7 +123,18 @@ class Units(object):
         val = convert_string( sinp=input_str, rtn_units=internal_units )
         return val
 
-    def __get_output_str(self, inp_val=0.0, inp_units="", 
+    def force_inch(self, unit):
+        '''Regulates the different forms of inch units that are output.'''
+        if unit == 'in':
+            return 'inch'
+        elif unit == 'inch**2':
+            return 'in**2'
+        elif unit == 'inch**3':
+            return 'in**3'
+        else:
+            return unit
+
+    def get_output_str(self, inp_val=0.0, inp_units="", 
                        out_units="", default_units="", user_inp_units="",
                        fmt="%g"):
         """
@@ -132,9 +143,21 @@ class Units(object):
         If different primary units are desired, specify them with "out_units".
         At the end, if default_units are not included, include them.
         """
+
+        inp_units = self.force_inch(inp_units)
+        out_units = self.force_inch(out_units)
+        default_units = self.force_inch(default_units)
+        user_inp_units = self.force_inch(user_inp_units)
+
         category = get_category( inp_units )
         if not category:
-            s = fmt%inp_val
+            try:
+                if type(inp_val) == bool:
+                    s = '%s'%inp_val
+                else:
+                    s = fmt%inp_val
+            except:
+                s = '%s'%inp_val
             return s
 
 
@@ -179,7 +202,7 @@ class Units(object):
                 sL.append(s)
                 used_set.add( si_units )
         elif self.output_units == "English":
-            eng_units = display_def_unitsD[category]
+            eng_units = self.force_inch( display_def_unitsD[category] )
             if eng_units not in used_set:
                 val = convert_value(inp_val, inp_units, eng_units)
                 s = fmt%val + " %s"%eng_units
@@ -187,7 +210,7 @@ class Units(object):
                 used_set.add( eng_units )
         else:
             # add both SI and English
-            eng_units = display_def_unitsD[category]
+            eng_units = self.force_inch( display_def_unitsD[category] )
             if eng_units  not in used_set:
                 val = convert_value(inp_val, inp_units, eng_units)
                 s1 = fmt%val + " %s"%eng_units
@@ -199,6 +222,10 @@ class Units(object):
                 s2 = fmt%val + " %s"%si_units
                 sL.append(s2)
                 used_set.add( si_units )
+
+        # fix cases where pressure "difference" (i.e. psid) is default 
+        if default_units == 'psid':
+            sL = [s for s in sL if s.split()[-1] != 'psia']
 
         s = sL[0]
         if len(sL) > 1:
@@ -266,7 +293,7 @@ class Units(object):
                 #print('Found internal units = "%s"'%added_units)
 
         # inp_val=0.0, added_units="", primary_units="", fmt="%g")
-        s = self.__get_output_str( inp_val=val, inp_units=added_units, 
+        s = self.get_output_str( inp_val=val, inp_units=added_units, 
                                  out_units=primary_units,  
                                  default_units=self.default_unitsD.get(name, ''),
                                  user_inp_units=self.user_input_unitsD.get(name, ''),
@@ -306,11 +333,25 @@ class Units(object):
             raise Exception('In set_units, units="%s" is NOT recognized.'%units)
 
         self.default_unitsD[name] = units
+        
+    def set_user_units(self, name='', user_units=''):
+        """Set units input by the user"""
+
+        if not name:
+            raise Exception('In set_units, "name" can NOT be blank.')
+
+        category = get_category( user_units )
+        # It's an error if units are not in RocketUnits
+        if not category:
+            raise Exception('In set_units, user_units="%s" is NOT recognized.'%user_units)
+        
+        self.user_input_unitsD[name] = user_units        
 
 def main():        
 
     def bar(my_pi, a="14.7 psia",b="1.0 gee",c="55.0 mile/hr", 
-            i=42, output_units="English"): 
+            i=42, output_units="English", my_flag=True,
+            my_list=[1,2,3]): 
 
         # set the internal values of all the input variables with units.
         my_units = Units( bar, vars() )
@@ -344,6 +385,8 @@ def main():
         u_print("x_out", "10 times c")
 
         u_print("i", primary_units="J", desc="Some random energy")
+        u_print("my_flag", primary_units="", desc="An important flag")
+        u_print("my_list", primary_units="", desc="An important list")
         
         # print()
         # print("varsD =", vars())
