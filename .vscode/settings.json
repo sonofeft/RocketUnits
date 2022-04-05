@@ -1,10 +1,13 @@
 {
     "cSpell.words": [
         "conv",
+        "Cstar",
         "disp",
         "downloadexe",
         "fstr",
         "gmole",
+        "importlib",
+        "JANNAF",
         "lbmole",
         "millisec",
         "myclass",
@@ -12,10 +15,13 @@
         "pcent",
         "pdiff",
         "sinp",
+        "sonofeft",
+        "Tcham",
         "unitless",
         "unitsio",
         "ustr",
         "vinit"
     ],
-    "restructuredtext.confPath": "D:\\21_py_proj\\RocketUnits\\docs"
+    "restructuredtext.confPath": "D:\\21_py_proj\\RocketUnits\\docs",
+    "esbonio.sphinx.confDir": "D:\\21_py_proj\\RocketUnits\\docs"
 }

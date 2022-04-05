@@ -1,6 +1,9 @@
 nosetests
 statusbars
 pyinstaller
+Isp
+psid
+hPa
 conv
 io
 psia
