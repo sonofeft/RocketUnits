@@ -45,7 +45,7 @@ __copyright__ = 'Copyright (c) 2020 Charlie Taylor'
 __license__ = 'GPL-3'
 
 # run metadata_reset.py to update version number
-__version__ = '0.1.10'  # METADATA_RESET:__version__ = '<<version>>'
+__version__ = '0.1.11'  # METADATA_RESET:__version__ = '<<version>>'
 __email__ = "cet@appliedpython.com"
 __status__ = "4 - Beta" # "3 - Alpha", "4 - Beta", "5 - Production/Stable"
 
@@ -522,6 +522,8 @@ add_units_to_category( c_name="Velocity", u_name="inch/s" , conv_factor=12.0, of
 add_units_to_category( c_name="Velocity", u_name="km/hr"  , conv_factor=1.09728, offset=0.0 )
 add_units_to_category( c_name="Velocity", u_name="m/s"    , conv_factor=0.3048, offset=0.0 )
 add_units_to_category( c_name="Velocity", u_name="mile/hr", conv_factor=0.681818181818, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="knot", conv_factor=0.5924838012959, offset=0.0 )
+add_units_to_category( c_name="Velocity", u_name="NM/hr", conv_factor=0.5924838012959, offset=0.0 )
 
 # Creating Unit Category for "Viscosity_Dynamic"
 # Read As: 1 default unit = conv_factor u_name units
@@ -671,7 +673,7 @@ display_unitsD["Tank_PV/W"] = ["MPa-liter/kg", "psia-ft**3/lbm" ,"bar-liter/kg",
 display_unitsD['Temperature'] =  ['degC', 'degK', 'degF', 'degR']
 display_unitsD['ThermalCond'] =  [ 'BTU/s/inch/F', 'BTU/s/ft/F', 'cal/s/cm/C', 'W/cm/C', 'cal/s/m/C',  'BTU/hr/ft/F', 'W/m/K']
 display_unitsD['Time'] =  ['year', 'day', 'hr', 'min', 's', 'millisec', 'ms', 'microsec', 'nanosec']
-display_unitsD['Velocity'] =  ['m/s', 'mile/hr', 'ft/s', 'km/hr', 'inch/s', 'cm/s']
+display_unitsD['Velocity'] =  ['m/s', 'knot', 'NM/hr', 'mile/hr', 'ft/s', 'km/hr', 'inch/s', 'cm/s']
 display_unitsD['Viscosity_Dynamic'] =  ['kg/s/cm', 'lbm/s/inch', 'lbm/s/ft', 'kg/s/m', 'Pa*s', 'poise', 'kg/hr/cm', 'lbm/hr/inch', 'cp', 'cpoise', 'lbm/hr/ft', 'kg/hr/m']
 display_unitsD['Viscosity_Kinematic'] =  ['m**2/s', 'ft**2/s', 'stokes', 'ft**2/hr', 'centistokes']
 display_unitsD['Volume'] =  ['m**3', 'yd**3', 'barOil', 'ft**3', 'galUK', 'galUS', 'liter', 'quart', 'pint', 'cup', 'in**3', 'inch**3', 'cm**3', 'ml']
