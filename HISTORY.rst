@@ -32,6 +32,7 @@ GitHub Log
 * Apr 11, 2022
     - (by: Charlie)
         - version 0.1.11 includes more William True suggestions
+        - doc updates
 
 * Apr 4, 2022
     - (by: Charlie)
