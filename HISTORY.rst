@@ -29,6 +29,9 @@ a liquid propellant thrust chamber.
 GitHub Log
 ----------
 
+* Apr 11, 2022
+    - (by: Charlie)
+        - version 0.1.11 includes more William True suggestions
 
 * Apr 4, 2022
     - (by: Charlie)

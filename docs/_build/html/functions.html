@@ -2,27 +2,27 @@
 
 <!doctype html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.11 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    <title>RocketUnits Code Functions &#8212; RocketUnits 0.1.10 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/bizstyle.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
     <link rel="next" title="Copyright" href="copyright.html" />
     <link rel="prev" title="Units for IO" href="units_io.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
-    <script src="_static/css3-mediaqueries.js"></script>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -40,212 +40,9 @@
         <li class="right" >
           <a href="units_io.html" title="Units for IO"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.11 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">RocketUnits Code Functions</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.10 documentation</a> &#187;</li> 
       </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="rocketunits-code-functions">
-<h1>RocketUnits Code Functions<a class="headerlink" href="#rocketunits-code-functions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-rocketunits.rocket_units">
-<span id="rocket-units"></span><h2>rocket_units<a class="headerlink" href="#module-rocketunits.rocket_units" title="Permalink to this headline">¶</a></h2>
-<p>RocketUnits provides a graphic user interface (GUI) for engineering units conversion.</p>
-<p>RocketUnits provides units conversion for a number of engineering categories.
-Included units categories include: Acceleration, Angle, AngVelocity, 
-Area, CoeffThermExp(CTE), DeltaT, Density, ElementDensity, Energy, EnergySpec, 
-Force, Frequency, HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, 
-MolecularWt, Power, Pressure, SurfaceTension, Tank_PV/W, Temperature, 
-ThermalCond, Time, Velocity, Viscosity_Dynamic, Viscosity_Kinematic, Volume, 
-and VolumeFlow.
-Unit conversion can be performed either with the included GUI, or directly
-from python by importing the units conversion data file.</p>
-<p>RocketUnits
-Copyright (C) 2020  Applied Python</p>
-<p>This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.</p>
-<p>This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.</p>
-<p>You should have received a copy of the GNU General Public License
-along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
-<hr class="docutils" />
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.add_units_to_category">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">add_units_to_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.add_units_to_category" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add conversion factor and offset for Units(u_name) to Category(c_name)
-Read As: 1 default unit = conv_factor u_name units</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.chk_units_in_category">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">chk_units_in_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.chk_units_in_category" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raise an error if units are not in category</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.convert_string">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">convert_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1</span> <span class="pre">atm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtn_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'psia'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_string" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a string input, parse into float of desired units.
-String must be of format “&lt;number&gt; &lt;units&gt;” (at least one space)
-NOTE: if input is NOT a string, simply return it.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.convert_value">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">convert_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'degC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'degK'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert inp_val from inp_units to out_units and return.
-:param inp_val   : input value to be converted
-:param inp_units : units of inp_val
-:param out_units : desired output units
-:type inp_val   : float
-:type inp_units : str
-:type out_units : str
-:return: value converted from inp_units to out_units
-:retype: float</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.create_category">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">create_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">def_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.create_category" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a Units Category and define the default units</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.get_category">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">get_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_category" title="Permalink to this definition">¶</a></dt>
-<dd><p>return the category that units belongs to.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.get_degK">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">get_degK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp_units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degK" title="Permalink to this definition">¶</a></dt>
-<dd><p>val uses input units… e.g. 25, ‘degC’</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.get_degR">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">get_degR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp_units</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degR" title="Permalink to this definition">¶</a></dt>
-<dd><p>val uses input units… e.g. 25, ‘degC’</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.parse_float_string">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">parse_float_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1</span> <span class="pre">atm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.parse_float_string" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a string input, parse into float and units string.
-String must be of format “&lt;number&gt; &lt;units&gt;” (at least one space)</p>
-<p>Return tuple of (float, units string)
-NOTE: if input is NOT a string, return None, None</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="rocketunits.rocket_units.units_in_category">
-<span class="sig-prename descclassname"><span class="pre">rocketunits.rocket_units.</span></span><span class="sig-name descname"><span class="pre">units_in_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.units_in_category" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True if units are in category.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-rocketunits.units_io">
-<span id="units-io"></span><h2>units_io<a class="headerlink" href="#module-rocketunits.units_io" title="Permalink to this headline">¶</a></h2>
-<p>For code using fixed internal physical units, units_io facilitates the use of 
-different units for program input and output.</p>
-<p>units_io requires all unit input parameters to be strings of the form “value units”.
-For example “14.7 psia” or “98.6 degF”.
-units_io assumes that the parameter default strings hold the internal units of the parameters.
-Output parameters can be specified either by name, or generically as “SI”, “English” or “Both”.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocketunits.units_io.</span></span><span class="sig-name descname"><span class="pre">Units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_varsD</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units" title="Permalink to this definition">¶</a></dt>
-<dd><p>For code using fixed internal physical units, units_io facilitates 
-the use of different units for program input and output.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.force_inch">
-<span class="sig-name descname"><span class="pre">force_inch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.force_inch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Regulates the different forms of inch units that are output.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.get_input_value">
-<span class="sig-name descname"><span class="pre">get_input_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">def_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.get_input_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>For inputs defined by default strings, return value in internal units</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.get_output_str">
-<span class="sig-name descname"><span class="pre">get_output_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_inp_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%g'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.get_output_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given an input value and its units, return a string with
-English, SI or Both units.
-If different primary units are desired, specify them with “out_units”.
-At the end, if default_units are not included, include them.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_print_template">
-<span class="sig-name descname"><span class="pre">set_print_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%12s</span> <span class="pre">=</span> <span class="pre">%-45s</span> <span class="pre">|</span> <span class="pre">%s'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_print_template" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the output string formatting template used by u_print</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_units">
-<span class="sig-name descname"><span class="pre">set_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the units of an internal parameter.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_units_same_as">
-<span class="sig-name descname"><span class="pre">set_units_same_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units_same_as" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the units of an internal parameter to the same as an existing parameter.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_user_units">
-<span class="sig-name descname"><span class="pre">set_user_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_user_units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set units input by the user</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.set_vars_dict">
-<span class="sig-name descname"><span class="pre">set_vars_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varsD</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_vars_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calling function or class instance will set its current locals()/vars()</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.u_print">
-<span class="sig-name descname"><span class="pre">u_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%g'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_print" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print the string returned by u_string.
-Use output template to print variable “name” in desired units.
-if primary_units is input, it will be listed first in the output line.
-if added_units is input, it will be listed 2nd in the output line.
-If SI or English is different from primary_units or added_units they will be added.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocketunits.units_io.Units.u_string">
-<span class="sig-name descname"><span class="pre">u_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%g'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_string" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a string created by using the output template.
-The template shows variable “name” in desired units.
-if primary_units is input, it will be listed first in the output line.
-if added_units is input, it will be listed 2nd in the output line.
-If SI or English is different from primary_units or added_units they will be added.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-</div>
-
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
+    </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
@@ -284,12 +81,213 @@ If SI or English is different from primary_units or added_units they will be add
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="rocketunits-code-functions">
+<h1>RocketUnits Code Functions<a class="headerlink" href="#rocketunits-code-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-rocketunits.rocket_units">
+<span id="rocket-units"></span><h2>rocket_units<a class="headerlink" href="#module-rocketunits.rocket_units" title="Permalink to this headline">¶</a></h2>
+<p>RocketUnits provides a graphic user interface (GUI) for engineering units conversion.</p>
+<p>RocketUnits provides units conversion for a number of engineering categories.
+Included units categories include: Acceleration, Angle, AngVelocity, 
+Area, CoeffThermExp(CTE), DeltaT, Density, ElementDensity, Energy, EnergySpec, 
+Force, Frequency, HeatCapacity, HeatFlux, HxCoeff, Isp, Length, Mass, MassFlow, 
+MolecularWt, Power, Pressure, SurfaceTension, Tank_PV/W, Temperature, 
+ThermalCond, Time, Velocity, Viscosity_Dynamic, Viscosity_Kinematic, Volume, 
+and VolumeFlow.
+Unit conversion can be performed either with the included GUI, or directly
+from python by importing the units conversion data file.</p>
+<p>RocketUnits
+Copyright (C) 2020  Applied Python</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
+<hr class="docutils" />
+<dl class="function">
+<dt id="rocketunits.rocket_units.add_units_to_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">add_units_to_category</code><span class="sig-paren">(</span><em class="sig-param">c_name=''</em>, <em class="sig-param">u_name=''</em>, <em class="sig-param">conv_factor=1.0</em>, <em class="sig-param">offset=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.add_units_to_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add conversion factor and offset for Units(u_name) to Category(c_name)
+Read As: 1 default unit = conv_factor u_name units</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.chk_units_in_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">chk_units_in_category</code><span class="sig-paren">(</span><em class="sig-param">units</em>, <em class="sig-param">category</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.chk_units_in_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an error if units are not in category</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.convert_string">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">convert_string</code><span class="sig-paren">(</span><em class="sig-param">sinp='1 atm'</em>, <em class="sig-param">rtn_units='psia'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a string input, parse into float of desired units.
+String must be of format “&lt;number&gt; &lt;units&gt;” (at least one space)
+NOTE: if input is NOT a string, simply return it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.convert_value">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">convert_value</code><span class="sig-paren">(</span><em class="sig-param">inp_val=20.0</em>, <em class="sig-param">inp_units='degC'</em>, <em class="sig-param">out_units='degK'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.convert_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert inp_val from inp_units to out_units and return.
+:param inp_val   : input value to be converted
+:param inp_units : units of inp_val
+:param out_units : desired output units
+:type inp_val   : float
+:type inp_units : str
+:type out_units : str
+:return: value converted from inp_units to out_units
+:retype: float</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.create_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">create_category</code><span class="sig-paren">(</span><em class="sig-param">c_name=''</em>, <em class="sig-param">def_units=''</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.create_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Units Category and define the default units</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.get_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_category</code><span class="sig-paren">(</span><em class="sig-param">units</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the category that units belongs to.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.get_degK">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_degK</code><span class="sig-paren">(</span><em class="sig-param">val</em>, <em class="sig-param">inp_units</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degK" title="Permalink to this definition">¶</a></dt>
+<dd><p>val uses input units… e.g. 25, ‘degC’</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.get_degR">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">get_degR</code><span class="sig-paren">(</span><em class="sig-param">val</em>, <em class="sig-param">inp_units</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.get_degR" title="Permalink to this definition">¶</a></dt>
+<dd><p>val uses input units… e.g. 25, ‘degC’</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.parse_float_string">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">parse_float_string</code><span class="sig-paren">(</span><em class="sig-param">sinp='1 atm'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.parse_float_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a string input, parse into float and units string.
+String must be of format “&lt;number&gt; &lt;units&gt;” (at least one space)</p>
+<p>Return tuple of (float, units string)
+NOTE: if input is NOT a string, return None, None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rocketunits.rocket_units.units_in_category">
+<code class="sig-prename descclassname">rocketunits.rocket_units.</code><code class="sig-name descname">units_in_category</code><span class="sig-paren">(</span><em class="sig-param">u_name=''</em>, <em class="sig-param">c_name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.rocket_units.units_in_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if units are in category.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rocketunits.units_io">
+<span id="units-io"></span><h2>units_io<a class="headerlink" href="#module-rocketunits.units_io" title="Permalink to this headline">¶</a></h2>
+<p>For code using fixed internal physical units, units_io facilitates the use of 
+different units for program input and output.</p>
+<p>units_io requires all unit input parameters to be strings of the form “value units”.
+For example “14.7 psia” or “98.6 degF”.
+units_io assumes that the parameter default strings hold the internal units of the parameters.
+Output parameters can be specified either by name, or generically as “SI”, “English” or “Both”.</p>
+<dl class="class">
+<dt id="rocketunits.units_io.Units">
+<em class="property">class </em><code class="sig-prename descclassname">rocketunits.units_io.</code><code class="sig-name descname">Units</code><span class="sig-paren">(</span><em class="sig-param">meth</em>, <em class="sig-param">init_varsD</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units" title="Permalink to this definition">¶</a></dt>
+<dd><p>For code using fixed internal physical units, units_io facilitates 
+the use of different units for program input and output.</p>
+<dl class="method">
+<dt id="rocketunits.units_io.Units.force_inch">
+<code class="sig-name descname">force_inch</code><span class="sig-paren">(</span><em class="sig-param">unit</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.force_inch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regulates the different forms of inch units that are output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.get_input_value">
+<code class="sig-name descname">get_input_value</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">def_units=''</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.get_input_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>For inputs defined by default strings, return value in internal units</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.get_output_str">
+<code class="sig-name descname">get_output_str</code><span class="sig-paren">(</span><em class="sig-param">inp_val=0.0</em>, <em class="sig-param">inp_units=''</em>, <em class="sig-param">out_units=''</em>, <em class="sig-param">default_units=''</em>, <em class="sig-param">user_inp_units=''</em>, <em class="sig-param">fmt='%g'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.get_output_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an input value and its units, return a string with
+English, SI or Both units.
+If different primary units are desired, specify them with “out_units”.
+At the end, if default_units are not included, include them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.set_print_template">
+<code class="sig-name descname">set_print_template</code><span class="sig-paren">(</span><em class="sig-param">template='%12s = %-45s | %s'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_print_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output string formatting template used by u_print</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.set_units">
+<code class="sig-name descname">set_units</code><span class="sig-paren">(</span><em class="sig-param">name=''</em>, <em class="sig-param">units=''</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the units of an internal parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.set_units_same_as">
+<code class="sig-name descname">set_units_same_as</code><span class="sig-paren">(</span><em class="sig-param">new_name</em>, <em class="sig-param">old_name</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_units_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the units of an internal parameter to the same as an existing parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.set_user_units">
+<code class="sig-name descname">set_user_units</code><span class="sig-paren">(</span><em class="sig-param">name=''</em>, <em class="sig-param">user_units=''</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_user_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set units input by the user</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.set_vars_dict">
+<code class="sig-name descname">set_vars_dict</code><span class="sig-paren">(</span><em class="sig-param">varsD=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.set_vars_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calling function or class instance will set its current locals()/vars()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.u_print">
+<code class="sig-name descname">u_print</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">desc=''</em>, <em class="sig-param">primary_units=''</em>, <em class="sig-param">added_units=''</em>, <em class="sig-param">fmt='%g'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the string returned by u_string.
+Use output template to print variable “name” in desired units.
+if primary_units is input, it will be listed first in the output line.
+if added_units is input, it will be listed 2nd in the output line.
+If SI or English is different from primary_units or added_units they will be added.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocketunits.units_io.Units.u_string">
+<code class="sig-name descname">u_string</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">desc=''</em>, <em class="sig-param">primary_units=''</em>, <em class="sig-param">added_units=''</em>, <em class="sig-param">fmt='%g'</em><span class="sig-paren">)</span><a class="headerlink" href="#rocketunits.units_io.Units.u_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string created by using the output template.
+The template shows variable “name” in desired units.
+if primary_units is input, it will be listed first in the output line.
+if added_units is input, it will be listed 2nd in the output line.
+If SI or English is different from primary_units or added_units they will be added.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -309,13 +307,12 @@ If SI or English is different from primary_units or added_units they will be add
         <li class="right" >
           <a href="units_io.html" title="Units for IO"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.11 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">RocketUnits Code Functions</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">RocketUnits 0.1.10 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>
