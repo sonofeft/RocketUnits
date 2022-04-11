@@ -280,6 +280,8 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 3.6 / convert_value(inp_val=1.0, inp_units="m/s", out_units="km/hr"), places=5)
         self.assertAlmostEqual(1.0, 39.3701 / convert_value(inp_val=1.0, inp_units="m/s", out_units="inch/s"), places=5)
         self.assertAlmostEqual(1.0, 100 / convert_value(inp_val=1.0, inp_units="m/s", out_units="cm/s"), places=5)
+        self.assertAlmostEqual(1.0, 1.943844 / convert_value(inp_val=1.0, inp_units="m/s", out_units="knot"), places=5)
+        self.assertAlmostEqual(1.0, 1.943844 / convert_value(inp_val=1.0, inp_units="m/s", out_units="NM/hr"), places=5)
         #  Viscosity_Dynamic  Using SI ref of 1.0 kg/s/m == kg/s/m
         self.assertAlmostEqual(1.0, 0.01 / convert_value(inp_val=1.0, inp_units="kg/s/m", out_units="kg/s/cm"), places=5)
         self.assertAlmostEqual(1.0, 0.0559974 / convert_value(inp_val=1.0, inp_units="kg/s/m", out_units="lbm/s/inch"), places=5)
@@ -544,6 +546,9 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(1.0, 1.09728 / convert_value(inp_val=1.0, inp_units="ft/s", out_units="km/hr"), places=5)
         self.assertAlmostEqual(1.0, 12 / convert_value(inp_val=1.0, inp_units="ft/s", out_units="inch/s"), places=5)
         self.assertAlmostEqual(1.0, 30.48 / convert_value(inp_val=1.0, inp_units="ft/s", out_units="cm/s"), places=5)
+        self.assertAlmostEqual(1.0, 0.5924838012959 / convert_value(inp_val=1.0, inp_units="ft/s", out_units="knot"), places=5)
+        self.assertAlmostEqual(1.0, 0.5924838012959 / convert_value(inp_val=1.0, inp_units="ft/s", out_units="NM/hr"), places=5)
+        
         #  Viscosity_Dynamic  Using English ref of 1.0 poise == poise
         self.assertAlmostEqual(1.0, 0.001 / convert_value(inp_val=1.0, inp_units="poise", out_units="kg/s/cm"), places=5)
         self.assertAlmostEqual(1.0, 0.00559974 / convert_value(inp_val=1.0, inp_units="poise", out_units="lbm/s/inch"), places=5)
